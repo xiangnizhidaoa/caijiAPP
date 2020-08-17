@@ -55,6 +55,14 @@ A different license may apply to other software included in this package,
 including GHUnit and Andrew Donoho's Reachability class. Please consult their 
 respective headers for the terms of their individual licenses.
 
+## GoogleMaps
+
+Copyright 2020 Google
+
+## GooglePlaces
+
+Copyright 2020 Google
+
 ## IQKeyboardManager
 
 MIT License

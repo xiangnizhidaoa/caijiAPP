@@ -19,6 +19,13 @@ PODS:
     - Reachability
   - ASIHTTPRequest/S3 (1.8.2):
     - ASIHTTPRequest/Core
+  - GoogleMaps (3.9.0):
+    - GoogleMaps/Maps (= 3.9.0)
+  - GoogleMaps/Base (3.9.0)
+  - GoogleMaps/Maps (3.9.0):
+    - GoogleMaps/Base
+  - GooglePlaces (3.9.0):
+    - GoogleMaps/Base (= 3.9.0)
   - IQKeyboardManager (6.5.5)
   - libextobjc (0.6):
     - libextobjc/EXTADT (= 0.6)
@@ -76,6 +83,8 @@ DEPENDENCIES:
   - AFNetworking/Security (~> 3.0)
   - AFNetworking/Serialization (~> 3.0)
   - ASIHTTPRequest
+  - GoogleMaps
+  - GooglePlaces
   - IQKeyboardManager
   - libextobjc
   - Masonry
@@ -92,6 +101,8 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - ASIHTTPRequest
+    - GoogleMaps
+    - GooglePlaces
     - IQKeyboardManager
     - libextobjc
     - Masonry
@@ -107,6 +118,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
+  GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
+  GooglePlaces: 1634d019549b969d40fe0ccb0b9513055adebe01
   IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
   libextobjc: aed8b7d2b07f511c1a7ecaacb33ea03e327c69b7
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -119,6 +132,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   ZQAlterField: c3a161d31f8ecadab77daf4fb8dc1070c0a53d72
 
-PODFILE CHECKSUM: cc63449ca4cd443ac9e3502b37a362b67c6372c1
+PODFILE CHECKSUM: c37f9c8381b8f38d828aa2b7781d79d88c036f47
 
 COCOAPODS: 1.9.3

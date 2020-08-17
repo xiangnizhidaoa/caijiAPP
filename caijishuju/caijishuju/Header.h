@@ -72,6 +72,11 @@ isPhoneX = [[[UIApplication sharedApplication] keyWindow] safeAreaInsets].bottom
 
 #define kBottomSafeSpace (IPHONE_X ? 34.0 : 0.0)
 
+/** 灰色*/
+#define ColorGray RGBCOLORV(0x757575)
+
+/** 线颜色*/
+#define ColorLineGray RGBCOLORV(0xD9D9D9)
 
 #define SystemVersion [[UIDevice currentDevice] systemVersion].floatValue
 

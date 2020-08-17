@@ -40,6 +40,7 @@ static AppUtility *instance = nil;
         if (nil == self.currentUser){
             _currentUser = [[LSCurrentUser alloc] init];
             _currentUser.userName = @"";
+            _currentUser.token = @"";
         }
     }
     return self;
@@ -60,6 +61,7 @@ static AppUtility *instance = nil;
 {
     // 清空当前用户登录的token凭证,新注册或者登录后重新获取,设置成默认的访客账号
     _currentUser.userName = @"";
+    _currentUser.token = @"";
     [self saveCurrentUser];
 }
 

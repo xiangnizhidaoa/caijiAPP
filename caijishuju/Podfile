@@ -15,5 +15,7 @@ pod 'YYImage'
 pod 'IQKeyboardManager'
 pod 'ZQAlterField'
 pod 'ASIHTTPRequest'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
 end
 

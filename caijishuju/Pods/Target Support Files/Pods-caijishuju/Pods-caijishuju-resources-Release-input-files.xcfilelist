@@ -1,4 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-caijishuju/Pods-caijishuju-resources.sh
+${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle
+${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle
 ${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle
 ${PODS_ROOT}/ZQAlterField/ZQAlterField/ZQAlterField.xib
 ${PODS_ROOT}/ZQAlterField/ZQAlterField/ZQ_Close@2x.png

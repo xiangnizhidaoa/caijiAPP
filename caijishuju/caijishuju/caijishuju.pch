@@ -21,6 +21,7 @@
 #import <MJExtension/MJExtension.h>
 #import <YYImage/YYImage.h>
 #import <AdSupport/AdSupport.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 
 #import "ZYNetworkAccessibility.h"

@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) NSString *userName;//用户名
 
+@property (nonatomic, strong) NSString *token;
+
 @end
 
 @interface AppUtility : NSObject

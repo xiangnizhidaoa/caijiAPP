@@ -70,12 +70,14 @@
 		0973802924EA341F00C0E319 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0973802724EA341F00C0E319 /* MyViewController.m */; };
 		0973802A24EA341F00C0E319 /* MyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0973802824EA341F00C0E319 /* MyViewController.xib */; };
 		0973802E24EA357800C0E319 /* HomeTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0973802D24EA357800C0E319 /* HomeTabbarViewController.m */; };
+		0973803524EA681100C0E319 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0973803324EA681100C0E319 /* LoginViewController.m */; };
+		0973803624EA681100C0E319 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0973803424EA681100C0E319 /* LoginViewController.xib */; };
 		9AB1CF8359AC9F9C9410E95D /* libPods-caijishuju.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B258B8C048D48C74BE64A5EB /* libPods-caijishuju.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		011D7498E98EE56337529954 /* Pods-caijishuju.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caijishuju.release.xcconfig"; path = "Target Support Files/Pods-caijishuju/Pods-caijishuju.release.xcconfig"; sourceTree = "<group>"; };
-		09737F4224EA27B700C0E319 /* caijishuju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = caijishuju.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09737F4224EA27B700C0E319 /* 视田.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "视田.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09737F4524EA27B700C0E319 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09737F4624EA27B700C0E319 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		09737F4F24EA27B700C0E319 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -196,6 +198,9 @@
 		0973802824EA341F00C0E319 /* MyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyViewController.xib; sourceTree = "<group>"; };
 		0973802C24EA357800C0E319 /* HomeTabbarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTabbarViewController.h; sourceTree = "<group>"; };
 		0973802D24EA357800C0E319 /* HomeTabbarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTabbarViewController.m; sourceTree = "<group>"; };
+		0973803224EA681100C0E319 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		0973803324EA681100C0E319 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		0973803424EA681100C0E319 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		B258B8C048D48C74BE64A5EB /* libPods-caijishuju.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-caijishuju.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBFA23F975C2FF2A993D4731 /* Pods-caijishuju.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caijishuju.debug.xcconfig"; path = "Target Support Files/Pods-caijishuju/Pods-caijishuju.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,7 +230,7 @@
 		09737F4324EA27B700C0E319 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				09737F4224EA27B700C0E319 /* caijishuju.app */,
+				09737F4224EA27B700C0E319 /* 视田.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -553,6 +558,9 @@
 		0973801524EA328400C0E319 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
+				0973803124EA67F900C0E319 /* Controller */,
+				0973803024EA67F600C0E319 /* Model */,
+				0973802F24EA67F200C0E319 /* View */,
 			);
 			path = LoginController;
 			sourceTree = "<group>";
@@ -571,6 +579,30 @@
 				0973802D24EA357800C0E319 /* HomeTabbarViewController.m */,
 			);
 			path = TabbarController;
+			sourceTree = "<group>";
+		};
+		0973802F24EA67F200C0E319 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0973803024EA67F600C0E319 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0973803124EA67F900C0E319 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0973803224EA681100C0E319 /* LoginViewController.h */,
+				0973803324EA681100C0E319 /* LoginViewController.m */,
+				0973803424EA681100C0E319 /* LoginViewController.xib */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		29F844A93F5210B7A05C9E3D /* Pods */ = {
@@ -609,7 +641,7 @@
 			);
 			name = caijishuju;
 			productName = caijishuju;
-			productReference = 09737F4224EA27B700C0E319 /* caijishuju.app */;
+			productReference = 09737F4224EA27B700C0E319 /* 视田.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -649,6 +681,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0973803624EA681100C0E319 /* LoginViewController.xib in Resources */,
 				09737F5524EA27B800C0E319 /* LaunchScreen.storyboard in Resources */,
 				0973802524EA341100C0E319 /* TaskViewController.xib in Resources */,
 				09737FFC24EA2EB300C0E319 /* PhotoViewController.xib in Resources */,
@@ -719,6 +752,7 @@
 				09737FBB24EA2E8700C0E319 /* LSNetworkService.m in Sources */,
 				09737FC124EA2E8700C0E319 /* NSString+AES.m in Sources */,
 				09737FD224EA2E8700C0E319 /* UILabel+AdaptiveLabel.m in Sources */,
+				0973803524EA681100C0E319 /* LoginViewController.m in Sources */,
 				09737FBE24EA2E8700C0E319 /* BSError.m in Sources */,
 				09737FB824EA2E8700C0E319 /* LPSystemManager.m in Sources */,
 				09737FC524EA2E8700C0E319 /* NSArray+WSArray.m in Sources */,
@@ -908,12 +942,13 @@
 				DEVELOPMENT_TEAM = P2E94BPQ57;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/caijishuju/caijishuju.pch";
 				INFOPLIST_FILE = caijishuju/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.caiji.www.caijishuju;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shitian.www;
+				PRODUCT_NAME = "视田";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -927,12 +962,13 @@
 				DEVELOPMENT_TEAM = P2E94BPQ57;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/caijishuju/caijishuju.pch";
 				INFOPLIST_FILE = caijishuju/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.caiji.www.caijishuju;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shitian.www;
+				PRODUCT_NAME = "视田";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
