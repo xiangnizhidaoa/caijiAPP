@@ -1,0 +1,19 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+inhibit_all_warnings!
+target 'caijishuju' do
+pod 'AFNetworking', '~> 3.0', :subspecs => ['Reachability', 'Serialization', 'Security', 'NSURLSession']
+pod 'SDWebImage'
+pod 'TYCyclePagerView'
+pod 'Masonry'
+pod 'MJRefresh'
+pod 'Reachability'
+pod 'libextobjc'
+pod 'MJExtension'
+pod 'MBProgressHUD', '~> 1.1.0'
+pod 'YYImage'
+pod 'IQKeyboardManager'
+pod 'ZQAlterField'
+pod 'ASIHTTPRequest'
+end
+
