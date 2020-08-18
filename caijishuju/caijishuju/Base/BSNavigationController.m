@@ -17,19 +17,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //设置导航栏颜色
-    [self.navigationBar setBarTintColor:RGBCOLORV(0xE9414B)];
-//    UIImage *navImg =[UIImage imageNamed:@"通用背景"];
-//    navImg = [navImg resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeStretch];
-//    [self.navigationBar setBackgroundImage:navImg forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationBar setBarTintColor:RGBCOLORV(0xE9414B)];
+    UIImage *navImg =[UIImage imageNamed:@"background"];
+    navImg = [navImg resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeStretch];
+    [self.navigationBar setBackgroundImage:navImg forBarMetrics:UIBarMetricsDefault];
     //设置导航栏透明度
     self.navigationBar.translucent = NO;
-    
+    self.navigationBar.hidden = YES;
 }
 
 //自定义右侧按钮
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (self.childViewControllers.count > 0) {
         self.tabBarController.tabBar.hidden = YES;
+        self.navigationBar.hidden = NO;
         // 如果push进来的不是第一个控制器
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
@@ -50,6 +51,7 @@
 - (void)back{
     if (self.childViewControllers.count == 2) {
         self.tabBarController.tabBar.hidden = NO;
+        self.navigationBar.hidden = NO;
     }
     [self popViewControllerAnimated:YES];
 }

@@ -32,23 +32,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.viewTitle;
-    
-    
     [self load];
-    [self setLeftBtn];
-    
+//    [self setLeftBtn];
 }
 
 -(void)load{
-    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
-    WKPreferences *preference = [[WKPreferences alloc]init];
-    configuration.preferences = preference;
-    configuration.selectionGranularity = YES; //允许与网页交互
-    NSString *js = [NSString stringWithFormat:@"function hideTips(){return 'none'}"];
-    WKUserScript *jsUserScript = [[WKUserScript alloc] initWithSource:js injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
-    [configuration.userContentController addUserScript:jsUserScript];
-    
-    self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREENH_HEIGHT - (IPHONE_X ? 84 : 64)) configuration:configuration];
+    self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREENH_HEIGHT - (IPHONE_X ? 84 : 64))];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.webUrl]];
     //请求添加自定义header
     NSMutableURLRequest *mutableRequest = [request mutableCopy];

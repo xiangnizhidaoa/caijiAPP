@@ -17,7 +17,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login:) name:@"login" object:nil];
     return YES;
+}
+
+-(void)login:(NSNotification *)notif{
+//    登录页
+    LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+    login.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self.window.rootViewController presentViewController:login animated:nil completion:nil];
 }
 
 

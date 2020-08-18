@@ -17,16 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"首页";
+// 所有需要弹出登录的时候直接发送通知就好
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
