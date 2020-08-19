@@ -36,6 +36,7 @@
 #import "LPUnitily.h"
 #import "UtilFunc.h"
 #import "LoginViewController.h"
+#import "TypeButton.h"
 
 #import "AppUtility.h"
 #import "LPSystemManager.h"

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0959202924ECC2C300958627 /* TypeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0959202824ECC2C300958627 /* TypeButton.m */; };
 		09737F4724EA27B700C0E319 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09737F4624EA27B700C0E319 /* AppDelegate.m */; };
 		09737F5024EA27B700C0E319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09737F4E24EA27B700C0E319 /* Main.storyboard */; };
 		09737F5224EA27B800C0E319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09737F5124EA27B800C0E319 /* Assets.xcassets */; };
@@ -77,6 +78,8 @@
 
 /* Begin PBXFileReference section */
 		011D7498E98EE56337529954 /* Pods-caijishuju.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caijishuju.release.xcconfig"; path = "Target Support Files/Pods-caijishuju/Pods-caijishuju.release.xcconfig"; sourceTree = "<group>"; };
+		0959202724ECC2C300958627 /* TypeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeButton.h; sourceTree = "<group>"; };
+		0959202824ECC2C300958627 /* TypeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypeButton.m; sourceTree = "<group>"; };
 		09737F4224EA27B700C0E319 /* 视田.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "视田.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09737F4524EA27B700C0E319 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09737F4624EA27B700C0E319 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -462,6 +465,8 @@
 		0973800924EA323100C0E319 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0959202724ECC2C300958627 /* TypeButton.h */,
+				0959202824ECC2C300958627 /* TypeButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -756,6 +761,7 @@
 				09737FBE24EA2E8700C0E319 /* BSError.m in Sources */,
 				09737FB824EA2E8700C0E319 /* LPSystemManager.m in Sources */,
 				09737FC524EA2E8700C0E319 /* NSArray+WSArray.m in Sources */,
+				0959202924ECC2C300958627 /* TypeButton.m in Sources */,
 				09737FF924EA2EB300C0E319 /* PhotoViewController.m in Sources */,
 				0973800624EA2EB300C0E319 /* BSWebViewController.m in Sources */,
 				09737FC924EA2E8700C0E319 /* UIColor+Ext.m in Sources */,
