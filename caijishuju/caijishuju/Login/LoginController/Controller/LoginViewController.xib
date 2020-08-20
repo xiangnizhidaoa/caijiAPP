@@ -10,6 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="changeBtn" destination="heA-Gz-veQ" id="tew-P9-FoW"/>
+                <outlet property="codde" destination="Hpj-ED-xiP" id="GBj-L0-DVJ"/>
+                <outlet property="passwordLabel" destination="d84-Mb-g6h" id="hxI-Mw-7tG"/>
+                <outlet property="phone" destination="uLh-jP-ES3" id="ydL-wI-C3f"/>
+                <outlet property="sendBtn" destination="i4L-0o-D2X" id="aod-j7-gso"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -144,6 +149,9 @@
                             <real key="value" value="4"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="login:" destination="-1" eventType="touchUpInside" id="3Xt-jn-rKd"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heA-Gz-veQ">
                     <rect key="frame" x="20" y="472" width="374" height="45"/>
@@ -160,6 +168,9 @@
                             <real key="value" value="4"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="changeLoginType:" destination="-1" eventType="touchUpInside" id="ACN-AG-fc6"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvz-VV-cMe">
                     <rect key="frame" x="176" y="527" width="62" height="40"/>
@@ -170,6 +181,9 @@
                     <state key="normal" title="地图数据">
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="map:" destination="-1" eventType="touchUpInside" id="X4A-ck-3My"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZi-gd-O7M">
                     <rect key="frame" x="83" y="527" width="62" height="40"/>
@@ -180,6 +194,9 @@
                     <state key="normal" title="授权注册">
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="regiest:" destination="-1" eventType="touchUpInside" id="WAr-qD-in2"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Odu-bN-QgZ">
                     <rect key="frame" x="160" y="537" width="1" height="20"/>
@@ -206,6 +223,9 @@
                     <state key="normal" title="忘记密码">
                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="forgetPassword:" destination="-1" eventType="touchUpInside" id="Dq9-dI-yvq"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

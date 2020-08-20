@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0910200724EE19F800E495F8 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0973802724EA341F00C0E319 /* MyViewController.m */; };
 		0959202924ECC2C300958627 /* TypeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0959202824ECC2C300958627 /* TypeButton.m */; };
 		09737F4724EA27B700C0E319 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09737F4624EA27B700C0E319 /* AppDelegate.m */; };
 		09737F5024EA27B700C0E319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09737F4E24EA27B700C0E319 /* Main.storyboard */; };
@@ -68,7 +69,6 @@
 		0973802024EA340200C0E319 /* CollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0973801E24EA340200C0E319 /* CollectionViewController.xib */; };
 		0973802424EA341100C0E319 /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0973802224EA341100C0E319 /* TaskViewController.m */; };
 		0973802524EA341100C0E319 /* TaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0973802324EA341100C0E319 /* TaskViewController.xib */; };
-		0973802924EA341F00C0E319 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0973802724EA341F00C0E319 /* MyViewController.m */; };
 		0973802A24EA341F00C0E319 /* MyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0973802824EA341F00C0E319 /* MyViewController.xib */; };
 		0973802E24EA357800C0E319 /* HomeTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0973802D24EA357800C0E319 /* HomeTabbarViewController.m */; };
 		0973803524EA681100C0E319 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0973803324EA681100C0E319 /* LoginViewController.m */; };
@@ -748,6 +748,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0910200724EE19F800E495F8 /* MyViewController.m in Sources */,
 				09737FC024EA2E8700C0E319 /* AppUtility.m in Sources */,
 				0973800524EA2EB300C0E319 /* CustomPickView.m in Sources */,
 				09737FC324EA2E8700C0E319 /* UINavigationBar+NavAlpha.m in Sources */,
@@ -782,7 +783,6 @@
 				09737FCA24EA2E8700C0E319 /* UIView+Shake.m in Sources */,
 				0973801F24EA340200C0E319 /* CollectionViewController.m in Sources */,
 				09737FFE24EA2EB300C0E319 /* BSNavigationController.m in Sources */,
-				0973802924EA341F00C0E319 /* MyViewController.m in Sources */,
 				09737FCD24EA2E8700C0E319 /* ThemeColorXIBSupports.m in Sources */,
 				09737FC624EA2E8700C0E319 /* UIView+Frame.m in Sources */,
 				0973802424EA341100C0E319 /* TaskViewController.m in Sources */,

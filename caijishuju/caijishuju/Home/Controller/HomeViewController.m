@@ -17,9 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"首页";
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(map) name:@"map" object:nil];
 // 所有需要弹出登录的时候直接发送通知就好
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
-    
+    if (!(App_Utility.currentUser.token.length > 0)) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
+    }
+}
+
+-(void)map{
+    self.tabBarController.selectedIndex = 1;
 }
 
 //采集地图

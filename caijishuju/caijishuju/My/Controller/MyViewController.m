@@ -10,6 +10,12 @@
 
 @interface MyViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *headerImage;
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+
 @end
 
 @implementation MyViewController
@@ -17,16 +23,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的";
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(map) name:@"map" object:nil];
+    if (!(App_Utility.currentUser.token.length > 0)) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)map{
+    self.tabBarController.selectedIndex = 1;
 }
-*/
+
+- (IBAction)exportData:(UIButton *)sender {
+    
+}
+
+- (IBAction)userMsg:(UIButton *)sender {
+    
+}
+
+- (IBAction)about:(UIButton *)sender {
+    
+}
+
+
+
+
 
 @end
