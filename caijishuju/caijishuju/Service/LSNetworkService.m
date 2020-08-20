@@ -14,7 +14,8 @@
 //登录
 +(void)postLoginWithDic:(NSDictionary *)dic response:(BSResponse)response
 {
-    [[MK_UseAFNetWorking NewNewWork] postNetWorkPostWithPostDic:dic Url:BS_Url.loginUrl headerDic:nil withCompletion:^(id completion) {
+    NSString *url = [NSString stringWithFormat:@"%@?userName=%@&plainPassword=%@&openid=%@",BS_Url.loginUrl,dic[@"userName"],dic[@"password"],@""];
+    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
         response(completion,nil);
     }];
 }

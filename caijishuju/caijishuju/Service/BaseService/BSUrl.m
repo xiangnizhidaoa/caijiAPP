@@ -24,7 +24,7 @@ static BSUrl * instance = nil;
 - (id)init{
     if (self = [super init]) {
         
-        self.loginUrl = [BSUrl hostUrlWithParam:@"/public/login/login"];
+        self.loginUrl = [BSUrl hostUrlWithParam:@"/wx/login"];
         
     }
     return self;
