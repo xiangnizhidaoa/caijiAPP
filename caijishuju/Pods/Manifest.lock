@@ -6,11 +6,6 @@ PODS:
   - AFNetworking/Reachability (3.2.1)
   - AFNetworking/Security (3.2.1)
   - AFNetworking/Serialization (3.2.1)
-  - AMap2DMap-NO-IDFA (5.6.1):
-    - AMapFoundation-NO-IDFA (~> 1.4)
-  - AMapFoundation-NO-IDFA (1.6.3)
-  - AMapLocation-NO-IDFA (2.6.5):
-    - AMapFoundation-NO-IDFA (~> 1.6.3)
   - ASIHTTPRequest (1.8.2):
     - ASIHTTPRequest/ASIWebPageRequest (= 1.8.2)
     - ASIHTTPRequest/CloudFiles (= 1.8.2)
@@ -87,8 +82,6 @@ DEPENDENCIES:
   - AFNetworking/Reachability (~> 3.0)
   - AFNetworking/Security (~> 3.0)
   - AFNetworking/Serialization (~> 3.0)
-  - AMap2DMap-NO-IDFA
-  - AMapLocation-NO-IDFA
   - ASIHTTPRequest
   - GoogleMaps
   - GooglePlaces
@@ -107,9 +100,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
-    - AMap2DMap-NO-IDFA
-    - AMapFoundation-NO-IDFA
-    - AMapLocation-NO-IDFA
     - ASIHTTPRequest
     - GoogleMaps
     - GooglePlaces
@@ -127,9 +117,6 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  AMap2DMap-NO-IDFA: ccecb3e2a044c17e6badb9b91c950e709368be20
-  AMapFoundation-NO-IDFA: cf241b2f4832fe6c9e121af381e34791be49ad0d
-  AMapLocation-NO-IDFA: 681a55b09638a0a5838c7c260f8825a1dbc7d98d
   ASIHTTPRequest: ec013992946676b7978dcbde6396d57312d21db4
   GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
   GooglePlaces: 1634d019549b969d40fe0ccb0b9513055adebe01
@@ -145,6 +132,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   ZQAlterField: c3a161d31f8ecadab77daf4fb8dc1070c0a53d72
 
-PODFILE CHECKSUM: 4eef464178c3a036adf392dd6cf32782e1eb1e2b
+PODFILE CHECKSUM: 5ead397b52da018c86b764995faf8b270d66902b
 
 COCOAPODS: 1.9.3
