@@ -11,6 +11,7 @@
 #import "TaskModel.h"
 #import "TaskByModel.h"
 #import "MyTaskTableViewCell.h"
+#import "MyTaskDetailsController.h"
 
 @interface MyTaskTableViewController ()<UISearchBarDelegate,UITextFieldDelegate>
 
@@ -121,6 +122,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 50.0;
+}
+
+/**
+ 点击cell
+ */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    MyTaskDetailsController *mtdc = [MyTaskDetailsController new];
+    [self.navigationController pushViewController:mtdc animated:YES];
 }
 
 @end

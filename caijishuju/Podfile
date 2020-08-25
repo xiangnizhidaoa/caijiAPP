@@ -17,7 +17,7 @@ pod 'ZQAlterField'
 pod 'ASIHTTPRequest'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
-
+pod 'AMap2DMap-NO-IDFA'
 
 end
 

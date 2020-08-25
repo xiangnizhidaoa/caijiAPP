@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
 
 @interface AppDelegate ()
 
@@ -26,6 +27,9 @@
     LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     login.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.window.rootViewController presentViewController:login animated:nil completion:nil];
+    
+    [AMapServices sharedServices].apiKey = @"17eba3596dc056770a725b19d93ef4e0";
+    
 }
 
 

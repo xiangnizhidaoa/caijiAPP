@@ -94,6 +94,14 @@
 		0973803524EA681100C0E319 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0973803324EA681100C0E319 /* LoginViewController.m */; };
 		0973803624EA681100C0E319 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0973803424EA681100C0E319 /* LoginViewController.xib */; };
 		0C0BA4B024EEAA0F0068E12A /* LYLUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0BA4AE24EEAA0F0068E12A /* LYLUnicode.m */; };
+		0C7171E324F53ACC00C7221D /* MyTaskDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7171E124F53ACC00C7221D /* MyTaskDetailsController.m */; };
+		0C7171E424F53ACC00C7221D /* MyTaskDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7171E224F53ACC00C7221D /* MyTaskDetailsController.xib */; };
+		0C7171E824F549E700C7221D /* MyTaskDetailsOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7171E624F549E700C7221D /* MyTaskDetailsOneCell.m */; };
+		0C7171E924F549E700C7221D /* MyTaskDetailsOneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7171E724F549E700C7221D /* MyTaskDetailsOneCell.xib */; };
+		0C7171ED24F54AD900C7221D /* MyTaskDetailsTwoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7171EB24F54AD900C7221D /* MyTaskDetailsTwoCell.m */; };
+		0C7171EE24F54AD900C7221D /* MyTaskDetailsTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7171EC24F54AD900C7221D /* MyTaskDetailsTwoCell.xib */; };
+		0C7171F224F54AFD00C7221D /* MyTaskDetailsThrCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7171F024F54AFD00C7221D /* MyTaskDetailsThrCell.m */; };
+		0C7171F324F54AFD00C7221D /* MyTaskDetailsThrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7171F124F54AFD00C7221D /* MyTaskDetailsThrCell.xib */; };
 		9AB1CF8359AC9F9C9410E95D /* libPods-caijishuju.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B258B8C048D48C74BE64A5EB /* libPods-caijishuju.a */; };
 /* End PBXBuildFile section */
 
@@ -258,6 +266,18 @@
 		0973803424EA681100C0E319 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0C0BA4AE24EEAA0F0068E12A /* LYLUnicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLUnicode.m; sourceTree = "<group>"; };
 		0C0BA4AF24EEAA0F0068E12A /* LYLUnicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLUnicode.h; sourceTree = "<group>"; };
+		0C7171E024F53ACC00C7221D /* MyTaskDetailsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTaskDetailsController.h; sourceTree = "<group>"; };
+		0C7171E124F53ACC00C7221D /* MyTaskDetailsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTaskDetailsController.m; sourceTree = "<group>"; };
+		0C7171E224F53ACC00C7221D /* MyTaskDetailsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTaskDetailsController.xib; sourceTree = "<group>"; };
+		0C7171E524F549E700C7221D /* MyTaskDetailsOneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTaskDetailsOneCell.h; sourceTree = "<group>"; };
+		0C7171E624F549E700C7221D /* MyTaskDetailsOneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTaskDetailsOneCell.m; sourceTree = "<group>"; };
+		0C7171E724F549E700C7221D /* MyTaskDetailsOneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTaskDetailsOneCell.xib; sourceTree = "<group>"; };
+		0C7171EA24F54AD900C7221D /* MyTaskDetailsTwoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTaskDetailsTwoCell.h; sourceTree = "<group>"; };
+		0C7171EB24F54AD900C7221D /* MyTaskDetailsTwoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTaskDetailsTwoCell.m; sourceTree = "<group>"; };
+		0C7171EC24F54AD900C7221D /* MyTaskDetailsTwoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTaskDetailsTwoCell.xib; sourceTree = "<group>"; };
+		0C7171EF24F54AFD00C7221D /* MyTaskDetailsThrCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTaskDetailsThrCell.h; sourceTree = "<group>"; };
+		0C7171F024F54AFD00C7221D /* MyTaskDetailsThrCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTaskDetailsThrCell.m; sourceTree = "<group>"; };
+		0C7171F124F54AFD00C7221D /* MyTaskDetailsThrCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTaskDetailsThrCell.xib; sourceTree = "<group>"; };
 		B258B8C048D48C74BE64A5EB /* libPods-caijishuju.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-caijishuju.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBFA23F975C2FF2A993D4731 /* Pods-caijishuju.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caijishuju.debug.xcconfig"; path = "Target Support Files/Pods-caijishuju/Pods-caijishuju.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -416,6 +436,7 @@
 		09737F6024EA2DE100C0E319 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				0C7171DD24F539F300C7221D /* MyTaskDetails */,
 				0903A39F24F4FB19003A0430 /* HomeNextController */,
 				0973800B24EA323800C0E319 /* Controller */,
 				0973800A24EA323400C0E319 /* Model */,
@@ -769,6 +790,41 @@
 			path = LYLUnicode;
 			sourceTree = "<group>";
 		};
+		0C7171DD24F539F300C7221D /* MyTaskDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0C7171DF24F53A4D00C7221D /* View */,
+				0C7171DE24F53A4100C7221D /* Controller */,
+			);
+			path = MyTaskDetails;
+			sourceTree = "<group>";
+		};
+		0C7171DE24F53A4100C7221D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0C7171E024F53ACC00C7221D /* MyTaskDetailsController.h */,
+				0C7171E124F53ACC00C7221D /* MyTaskDetailsController.m */,
+				0C7171E224F53ACC00C7221D /* MyTaskDetailsController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0C7171DF24F53A4D00C7221D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C7171E524F549E700C7221D /* MyTaskDetailsOneCell.h */,
+				0C7171E624F549E700C7221D /* MyTaskDetailsOneCell.m */,
+				0C7171E724F549E700C7221D /* MyTaskDetailsOneCell.xib */,
+				0C7171EA24F54AD900C7221D /* MyTaskDetailsTwoCell.h */,
+				0C7171EB24F54AD900C7221D /* MyTaskDetailsTwoCell.m */,
+				0C7171EC24F54AD900C7221D /* MyTaskDetailsTwoCell.xib */,
+				0C7171EF24F54AFD00C7221D /* MyTaskDetailsThrCell.h */,
+				0C7171F024F54AFD00C7221D /* MyTaskDetailsThrCell.m */,
+				0C7171F124F54AFD00C7221D /* MyTaskDetailsThrCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		29F844A93F5210B7A05C9E3D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -847,11 +903,14 @@
 			files = (
 				0973803624EA681100C0E319 /* LoginViewController.xib in Resources */,
 				09737F5524EA27B800C0E319 /* LaunchScreen.storyboard in Resources */,
+				0C7171F324F54AFD00C7221D /* MyTaskDetailsThrCell.xib in Resources */,
 				0973802524EA341100C0E319 /* TaskViewController.xib in Resources */,
 				09737FFC24EA2EB300C0E319 /* PhotoViewController.xib in Resources */,
 				0903A37B24F4BA1C003A0430 /* MyMsgTableViewController.xib in Resources */,
 				0973802024EA340200C0E319 /* CollectionViewController.xib in Resources */,
+				0C7171E924F549E700C7221D /* MyTaskDetailsOneCell.xib in Resources */,
 				0973800024EA2EB300C0E319 /* CustomPickView.xib in Resources */,
+				0C7171EE24F54AD900C7221D /* MyTaskDetailsTwoCell.xib in Resources */,
 				09737F5224EA27B800C0E319 /* Assets.xcassets in Resources */,
 				0903A39424F4C246003A0430 /* ExportViewController.xib in Resources */,
 				0903A38524F4BD02003A0430 /* MyMsgTableViewCell.xib in Resources */,
@@ -860,6 +919,7 @@
 				0973801B24EA33EB00C0E319 /* HomeViewController.xib in Resources */,
 				0903A38024F4BAED003A0430 /* MyMsgHeaderTableViewCell.xib in Resources */,
 				0903A3AC24F50376003A0430 /* SearchView.xib in Resources */,
+				0C7171E424F53ACC00C7221D /* MyTaskDetailsController.xib in Resources */,
 				0903A39924F4E739003A0430 /* AboutUsTableViewController.xib in Resources */,
 				0973802A24EA341F00C0E319 /* MyViewController.xib in Resources */,
 				0903A3B724F50C92003A0430 /* MyTaskTableViewCell.xib in Resources */,
@@ -930,6 +990,7 @@
 				09737FD224EA2E8700C0E319 /* UILabel+AdaptiveLabel.m in Sources */,
 				0973803524EA681100C0E319 /* LoginViewController.m in Sources */,
 				09737FBE24EA2E8700C0E319 /* BSError.m in Sources */,
+				0C7171F224F54AFD00C7221D /* MyTaskDetailsThrCell.m in Sources */,
 				09737FB824EA2E8700C0E319 /* LPSystemManager.m in Sources */,
 				09737FC524EA2E8700C0E319 /* NSArray+WSArray.m in Sources */,
 				0959202924ECC2C300958627 /* TypeButton.m in Sources */,
@@ -949,6 +1010,7 @@
 				09737FBA24EA2E8700C0E319 /* MK_UseAFNetWorking.m in Sources */,
 				0903A37A24F4BA1C003A0430 /* MyMsgTableViewController.m in Sources */,
 				09737FCE24EA2E8700C0E319 /* UtilFunc.m in Sources */,
+				0C7171ED24F54AD900C7221D /* MyTaskDetailsTwoCell.m in Sources */,
 				0903A3AF24F50978003A0430 /* TaskModel.m in Sources */,
 				09737FD124EA2E8700C0E319 /* UIButton+Detect.m in Sources */,
 				09737FD424EA2E8700C0E319 /* LPUnitily.m in Sources */,
@@ -956,12 +1018,14 @@
 				09737FBF24EA2E8700C0E319 /* LPRequest.m in Sources */,
 				09737FD924EA2E8700C0E319 /* UIImage+Extensions.m in Sources */,
 				09737FD324EA2E8700C0E319 /* UIView+UIViewController.m in Sources */,
+				0C7171E824F549E700C7221D /* MyTaskDetailsOneCell.m in Sources */,
 				0903A3AA24F5036E003A0430 /* SearchView.m in Sources */,
 				09737FCA24EA2E8700C0E319 /* UIView+Shake.m in Sources */,
 				0973801F24EA340200C0E319 /* CollectionViewController.m in Sources */,
 				09737FFE24EA2EB300C0E319 /* BSNavigationController.m in Sources */,
 				09737FCD24EA2E8700C0E319 /* ThemeColorXIBSupports.m in Sources */,
 				09737FC624EA2E8700C0E319 /* UIView+Frame.m in Sources */,
+				0C7171E324F53ACC00C7221D /* MyTaskDetailsController.m in Sources */,
 				0973802424EA341100C0E319 /* TaskViewController.m in Sources */,
 				09737FD624EA2E8700C0E319 /* CommonUtils.m in Sources */,
 				09737FC724EA2E8700C0E319 /* NSString+Ext.m in Sources */,
