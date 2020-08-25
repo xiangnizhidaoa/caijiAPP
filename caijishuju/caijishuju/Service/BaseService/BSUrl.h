@@ -23,6 +23,14 @@
 
 @property (nonatomic, copy) NSString *loginUrl;//一键登录
 
+@property (nonatomic, copy) NSString *getCode;//获取验证码
+
+@property (nonatomic, copy) NSString *handbook;//使用手册
+
+@property (nonatomic, copy) NSString *MyTask;//我的任务
+
+@property (nonatomic, copy) NSString *isLogin;//用户是否登录
+
 
 + (NSString *)hostUrlWithParam:(NSString *)param;
 

@@ -26,6 +26,14 @@ static BSUrl * instance = nil;
         
         self.loginUrl = [BSUrl hostUrlWithParam:@"/wx/login"];
         
+        self.getCode = [BSUrl hostUrlWithParam:@"/wx/register/sendSMS"];
+        
+        self.handbook = [BSUrl hostUrlWithParam:@"/servlet/FileDownloadServlet"];
+        
+        self.MyTask = [BSUrl hostUrlWithParam:@"/wx/markerfill/mymarkerfilllist"];
+        
+        self.isLogin = [BSUrl hostUrlWithParam:@"/wx/islogin"];
+        
     }
     return self;
 }

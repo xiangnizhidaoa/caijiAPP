@@ -33,18 +33,27 @@
     [super viewDidLoad];
     self.title = self.viewTitle;
     [self load];
-//    [self setLeftBtn];
 }
 
 -(void)load{
-    self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREENH_HEIGHT - (IPHONE_X ? 84 : 64))];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.webUrl]];
-    //请求添加自定义header
-    NSMutableURLRequest *mutableRequest = [request mutableCopy];
-    request = [mutableRequest copy];
-    self.webView.scrollView.delegate = self;
-    [self.webView loadRequest:request];
-    [self.view addSubview:self.webView];
+    if (self.type == 0) {
+        self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREENH_HEIGHT - (IPHONE_X ? 84 : 64))];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.webUrl]];
+        //请求添加自定义header
+        NSMutableURLRequest *mutableRequest = [request mutableCopy];
+        request = [mutableRequest copy];
+        self.webView.scrollView.delegate = self;
+        [self.webView loadRequest:request];
+        [self.view addSubview:self.webView];
+    }else{
+        self.webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREENH_HEIGHT - (IPHONE_X ? 84 : 64))];
+        self.webView.scrollView.bounces = NO;
+        [LSNetworkService getHandBookResponse:^(id dict, BSError *error)  {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
+            [self.webView loadHTMLString:dic[@"data"] baseURL:nil];
+        }];
+        [self.view addSubview:self.webView];
+    }
     self.webView.navigationDelegate = self;
     self.progresslayer = [[CALayer alloc]init];
     self.progresslayer.frame = CGRectMake(0, 0, SCREEN_WIDTH * 0.1, 2);

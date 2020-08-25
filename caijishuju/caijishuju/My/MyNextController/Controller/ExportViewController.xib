@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExportViewController">
+            <connections>
+                <outlet property="exportView" destination="g5K-ac-hcU" id="Yqy-4x-E7X"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g5K-ac-hcU">
+                    <rect key="frame" x="15" y="15" width="384" height="110"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="data" translatesAutoresizingMaskIntoConstraints="NO" id="K5D-8J-4ud">
+                            <rect key="frame" x="0.0" y="0.0" width="128" height="110"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="导出数据" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTN-sX-6bK">
+                            <rect key="frame" x="143" y="22" width="61.333333333333343" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="1pu-6z-HK6"/>
+                                <constraint firstAttribute="height" constant="15" id="boj-zw-yhf"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请访问系统后台进行导出,访问地址:https://farmviewer.digitaltest.cn/web" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RWF-zp-ziF">
+                            <rect key="frame" x="143" y="47" width="226" height="28.666666666666671"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="6EV-qB-J7w"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="K5D-8J-4ud" firstAttribute="leading" secondItem="g5K-ac-hcU" secondAttribute="leading" id="5W2-hg-zM6"/>
+                        <constraint firstAttribute="trailing" secondItem="RWF-zp-ziF" secondAttribute="trailing" constant="15" id="6Vp-hg-CJf"/>
+                        <constraint firstAttribute="height" constant="110" id="9J4-fq-G6J"/>
+                        <constraint firstItem="eTN-sX-6bK" firstAttribute="leading" secondItem="K5D-8J-4ud" secondAttribute="trailing" constant="15" id="Cif-ab-zx3"/>
+                        <constraint firstItem="RWF-zp-ziF" firstAttribute="top" secondItem="eTN-sX-6bK" secondAttribute="bottom" constant="10" id="Eb3-SE-osp"/>
+                        <constraint firstItem="eTN-sX-6bK" firstAttribute="top" secondItem="g5K-ac-hcU" secondAttribute="top" constant="22" id="HN2-ln-xJm"/>
+                        <constraint firstItem="K5D-8J-4ud" firstAttribute="width" secondItem="g5K-ac-hcU" secondAttribute="width" multiplier="0.333333" id="PjV-bd-Jvp"/>
+                        <constraint firstItem="K5D-8J-4ud" firstAttribute="top" secondItem="g5K-ac-hcU" secondAttribute="top" id="TvY-sl-qVL"/>
+                        <constraint firstItem="RWF-zp-ziF" firstAttribute="leading" secondItem="K5D-8J-4ud" secondAttribute="trailing" constant="15" id="syx-Wh-kaX"/>
+                        <constraint firstAttribute="bottom" secondItem="K5D-8J-4ud" secondAttribute="bottom" id="xQR-5f-Hq5"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="g5K-ac-hcU" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="ZC7-d2-1g3"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="g5K-ac-hcU" secondAttribute="trailing" constant="15" id="bTL-2T-Sws"/>
+                <constraint firstItem="g5K-ac-hcU" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="15" id="kYM-ZO-9hW"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="137.68115942028987" y="124.72826086956523"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="data" width="105" height="105"/>
+    </resources>
+</document>

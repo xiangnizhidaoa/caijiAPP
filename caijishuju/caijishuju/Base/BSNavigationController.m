@@ -51,7 +51,7 @@
 - (void)back{
     if (self.childViewControllers.count == 2) {
         self.tabBarController.tabBar.hidden = NO;
-        self.navigationBar.hidden = NO;
+        self.navigationBar.hidden = YES;
     }
     [self popViewControllerAnimated:YES];
 }

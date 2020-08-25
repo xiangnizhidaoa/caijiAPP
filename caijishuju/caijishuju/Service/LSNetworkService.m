@@ -20,6 +20,50 @@
     }];
 }
 
+//获取验证码
++(void)getPhoneCodeWithPhone:(NSString *)phone response:(BSResponse)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@?type=%@&phone=%@",BS_Url.getCode,@"2",phone];
+    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
+        response(completion,nil);
+    }];
+}
+
+//验证码登录
++(void)getCodeLoginWithDic:(NSDictionary *)dic response:(BSResponse)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@?userName=%@&yanzhengma=%@",BS_Url.loginUrl,dic[@"userName"],dic[@"password"]];
+    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
+        response(completion,nil);
+    }];
+}
+
+//使用手册
++(void)getHandBookResponse:(BSResponse)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@?wxhelp=%@",BS_Url.handbook,@"false"];
+    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
+        response(completion,nil);
+    }];
+}
+
+//我的任务
++(void)getMyTaskWithDic:(NSDictionary *)dic response:(BSResponse)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@?istask=ture&pageNo=%@&pageSize=%@&zuowumc=%@&token=%@",BS_Url.MyTask,dic[@"pageNo"],dic[@"pageSize"],dic[@"zuowumc"],App_Utility.currentUser.token];
+    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
+        response(completion,nil);
+    }];
+}
+
+//是否登录(token是否过期)
++(void)getIsLoginResponse:(BSResponse)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@?token=%@",BS_Url.isLogin,App_Utility.currentUser.token];
+    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
+        response(completion,nil);
+    }];
+}
 
 
 

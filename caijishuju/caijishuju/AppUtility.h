@@ -16,6 +16,18 @@
 
 @property (nonatomic, strong) NSString *token;
 
+@property (nonatomic, strong) NSString *eMail;
+
+@property (nonatomic, strong) NSString *mobile;
+
+@property (nonatomic, strong) NSString *officeName;
+
+@property (nonatomic, strong) NSString *phone;
+
+@property (nonatomic, strong) NSString *roleNames;
+
+@property (nonatomic, strong) NSString *userid;
+
 @end
 
 @interface AppUtility : NSObject

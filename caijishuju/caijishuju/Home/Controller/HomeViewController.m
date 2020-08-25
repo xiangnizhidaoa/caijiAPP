@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "MyTaskTableViewController.h"
 
 @interface HomeViewController ()
 
@@ -18,10 +19,18 @@
     [super viewDidLoad];
     self.title = @"首页";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(map) name:@"map" object:nil];
-// 所有需要弹出登录的时候直接发送通知就好
-    if (!(App_Utility.currentUser.token.length > 0)) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
-    }
+    [LSNetworkService getIsLoginResponse:^(id dict, BSError *error) {
+        if (dict != nil) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
+            NSLog(@"%@",dic);
+            if ([dic[@"status"] integerValue] == 1) {
+                
+            }else{
+                // 所有需要弹出登录的时候直接发送通知就好
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
+            }
+        }
+    }];
 }
 
 -(void)map{
@@ -45,7 +54,8 @@
 
 //我的任务
 - (IBAction)myTask:(UIButton *)sender {
-    
+    MyTaskTableViewController *myTask = [[MyTaskTableViewController alloc] initWithNibName:@"MyTaskTableViewController" bundle:nil];
+    [self.navigationController pushViewController:myTask animated:YES];
 }
 
 
