@@ -80,4 +80,16 @@ isPhoneX = [[[UIApplication sharedApplication] keyWindow] safeAreaInsets].bottom
 
 #define SystemVersion [[UIDevice currentDevice] systemVersion].floatValue
 
+
+/** debug模式 */
+#ifdef DEBUG
+/** 打印日志 */
+# define MLog(fmt, ...) NSLog((@"%s line:%d \n" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+/** release模式 */
+#else
+#define MLog(...)
+#endif
+
+
+
 #endif /* Header_h */
