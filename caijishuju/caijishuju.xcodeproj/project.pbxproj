@@ -28,6 +28,14 @@
 		0903A3B624F50C92003A0430 /* MyTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0903A3B424F50C92003A0430 /* MyTaskTableViewCell.m */; };
 		0903A3B724F50C92003A0430 /* MyTaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0903A3B524F50C92003A0430 /* MyTaskTableViewCell.xib */; };
 		0910200724EE19F800E495F8 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0973802724EA341F00C0E319 /* MyViewController.m */; };
+		091E4FD624F5F7F000C3BE79 /* MyCollectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 091E4FD424F5F7F000C3BE79 /* MyCollectionTableViewController.m */; };
+		091E4FD724F5F7F000C3BE79 /* MyCollectionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091E4FD524F5F7F000C3BE79 /* MyCollectionTableViewController.xib */; };
+		091E4FDB24F602D100C3BE79 /* MyCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 091E4FD924F602D100C3BE79 /* MyCollectionTableViewCell.m */; };
+		091E4FDC24F602D100C3BE79 /* MyCollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091E4FDA24F602D100C3BE79 /* MyCollectionTableViewCell.xib */; };
+		091E4FDF24F6030700C3BE79 /* CollectionSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 091E4FDE24F6030700C3BE79 /* CollectionSearchView.m */; };
+		091E4FE124F6031000C3BE79 /* CollectionSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091E4FE024F6031000C3BE79 /* CollectionSearchView.xib */; };
+		091E4FEA24F6050900C3BE79 /* TimeTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 091E4FE824F6050900C3BE79 /* TimeTypeViewController.m */; };
+		091E4FEB24F6050900C3BE79 /* TimeTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091E4FE924F6050900C3BE79 /* TimeTypeViewController.xib */; };
 		0959202924ECC2C300958627 /* TypeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0959202824ECC2C300958627 /* TypeButton.m */; };
 		09737F4724EA27B700C0E319 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09737F4624EA27B700C0E319 /* AppDelegate.m */; };
 		09737F5024EA27B700C0E319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09737F4E24EA27B700C0E319 /* Main.storyboard */; };
@@ -138,6 +146,18 @@
 		0903A3B324F50C92003A0430 /* MyTaskTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTaskTableViewCell.h; sourceTree = "<group>"; };
 		0903A3B424F50C92003A0430 /* MyTaskTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTaskTableViewCell.m; sourceTree = "<group>"; };
 		0903A3B524F50C92003A0430 /* MyTaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTaskTableViewCell.xib; sourceTree = "<group>"; };
+		091E4FD324F5F7F000C3BE79 /* MyCollectionTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionTableViewController.h; sourceTree = "<group>"; };
+		091E4FD424F5F7F000C3BE79 /* MyCollectionTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionTableViewController.m; sourceTree = "<group>"; };
+		091E4FD524F5F7F000C3BE79 /* MyCollectionTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionTableViewController.xib; sourceTree = "<group>"; };
+		091E4FD824F602D100C3BE79 /* MyCollectionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionTableViewCell.h; sourceTree = "<group>"; };
+		091E4FD924F602D100C3BE79 /* MyCollectionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionTableViewCell.m; sourceTree = "<group>"; };
+		091E4FDA24F602D100C3BE79 /* MyCollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionTableViewCell.xib; sourceTree = "<group>"; };
+		091E4FDD24F6030700C3BE79 /* CollectionSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionSearchView.h; sourceTree = "<group>"; };
+		091E4FDE24F6030700C3BE79 /* CollectionSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionSearchView.m; sourceTree = "<group>"; };
+		091E4FE024F6031000C3BE79 /* CollectionSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionSearchView.xib; sourceTree = "<group>"; };
+		091E4FE724F6050900C3BE79 /* TimeTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeTypeViewController.h; sourceTree = "<group>"; };
+		091E4FE824F6050900C3BE79 /* TimeTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeTypeViewController.m; sourceTree = "<group>"; };
+		091E4FE924F6050900C3BE79 /* TimeTypeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeTypeViewController.xib; sourceTree = "<group>"; };
 		0959202724ECC2C300958627 /* TypeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeButton.h; sourceTree = "<group>"; };
 		0959202824ECC2C300958627 /* TypeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypeButton.m; sourceTree = "<group>"; };
 		09737F4224EA27B700C0E319 /* 视田.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "视田.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -362,6 +382,12 @@
 				0903A3B324F50C92003A0430 /* MyTaskTableViewCell.h */,
 				0903A3B424F50C92003A0430 /* MyTaskTableViewCell.m */,
 				0903A3B524F50C92003A0430 /* MyTaskTableViewCell.xib */,
+				091E4FD824F602D100C3BE79 /* MyCollectionTableViewCell.h */,
+				091E4FD924F602D100C3BE79 /* MyCollectionTableViewCell.m */,
+				091E4FDA24F602D100C3BE79 /* MyCollectionTableViewCell.xib */,
+				091E4FDD24F6030700C3BE79 /* CollectionSearchView.h */,
+				091E4FDE24F6030700C3BE79 /* CollectionSearchView.m */,
+				091E4FE024F6031000C3BE79 /* CollectionSearchView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -383,6 +409,12 @@
 				0903A3A324F4FB48003A0430 /* MyTaskTableViewController.h */,
 				0903A3A424F4FB48003A0430 /* MyTaskTableViewController.m */,
 				0903A3A524F4FB48003A0430 /* MyTaskTableViewController.xib */,
+				091E4FD324F5F7F000C3BE79 /* MyCollectionTableViewController.h */,
+				091E4FD424F5F7F000C3BE79 /* MyCollectionTableViewController.m */,
+				091E4FD524F5F7F000C3BE79 /* MyCollectionTableViewController.xib */,
+				091E4FE724F6050900C3BE79 /* TimeTypeViewController.h */,
+				091E4FE824F6050900C3BE79 /* TimeTypeViewController.m */,
+				091E4FE924F6050900C3BE79 /* TimeTypeViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -905,6 +937,7 @@
 				09737F5524EA27B800C0E319 /* LaunchScreen.storyboard in Resources */,
 				0C7171F324F54AFD00C7221D /* MyTaskDetailsThrCell.xib in Resources */,
 				0973802524EA341100C0E319 /* TaskViewController.xib in Resources */,
+				091E4FEB24F6050900C3BE79 /* TimeTypeViewController.xib in Resources */,
 				09737FFC24EA2EB300C0E319 /* PhotoViewController.xib in Resources */,
 				0903A37B24F4BA1C003A0430 /* MyMsgTableViewController.xib in Resources */,
 				0973802024EA340200C0E319 /* CollectionViewController.xib in Resources */,
@@ -918,11 +951,14 @@
 				0903A3A724F4FB48003A0430 /* MyTaskTableViewController.xib in Resources */,
 				0973801B24EA33EB00C0E319 /* HomeViewController.xib in Resources */,
 				0903A38024F4BAED003A0430 /* MyMsgHeaderTableViewCell.xib in Resources */,
+				091E4FDC24F602D100C3BE79 /* MyCollectionTableViewCell.xib in Resources */,
 				0903A3AC24F50376003A0430 /* SearchView.xib in Resources */,
 				0C7171E424F53ACC00C7221D /* MyTaskDetailsController.xib in Resources */,
 				0903A39924F4E739003A0430 /* AboutUsTableViewController.xib in Resources */,
 				0973802A24EA341F00C0E319 /* MyViewController.xib in Resources */,
+				091E4FD724F5F7F000C3BE79 /* MyCollectionTableViewController.xib in Resources */,
 				0903A3B724F50C92003A0430 /* MyTaskTableViewCell.xib in Resources */,
+				091E4FE124F6031000C3BE79 /* CollectionSearchView.xib in Resources */,
 				0903A39E24F4EA5A003A0430 /* AboutUsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1015,6 +1051,7 @@
 				09737FD124EA2E8700C0E319 /* UIButton+Detect.m in Sources */,
 				09737FD424EA2E8700C0E319 /* LPUnitily.m in Sources */,
 				09737FDA24EA2E8700C0E319 /* UINavigationBar+Awesome.m in Sources */,
+				091E4FDB24F602D100C3BE79 /* MyCollectionTableViewCell.m in Sources */,
 				09737FBF24EA2E8700C0E319 /* LPRequest.m in Sources */,
 				09737FD924EA2E8700C0E319 /* UIImage+Extensions.m in Sources */,
 				09737FD324EA2E8700C0E319 /* UIView+UIViewController.m in Sources */,
@@ -1030,10 +1067,12 @@
 				09737FD624EA2E8700C0E319 /* CommonUtils.m in Sources */,
 				09737FC724EA2E8700C0E319 /* NSString+Ext.m in Sources */,
 				09737FD724EA2E8700C0E319 /* UILabel+MFillAlign.m in Sources */,
+				091E4FEA24F6050900C3BE79 /* TimeTypeViewController.m in Sources */,
 				0903A3B224F50A36003A0430 /* TaskByModel.m in Sources */,
 				09737FFD24EA2EB300C0E319 /* BSTableViewController.m in Sources */,
 				09737FCC24EA2E8700C0E319 /* BSRefreshHeader.m in Sources */,
 				09737FD824EA2E8700C0E319 /* NSDictionary+NullReplacement.m in Sources */,
+				091E4FDF24F6030700C3BE79 /* CollectionSearchView.m in Sources */,
 				09737FC824EA2E8700C0E319 /* XXNibBridge.m in Sources */,
 				09737FDB24EA2E8700C0E319 /* UIImage+Ext.m in Sources */,
 				09737FFB24EA2EB300C0E319 /* XHInputView.m in Sources */,
@@ -1043,6 +1082,7 @@
 				09737FCF24EA2E8700C0E319 /* NSString+WSString.m in Sources */,
 				0C0BA4B024EEAA0F0068E12A /* LYLUnicode.m in Sources */,
 				09737FD524EA2E8700C0E319 /* UIDevice+Ext.m in Sources */,
+				091E4FD624F5F7F000C3BE79 /* MyCollectionTableViewController.m in Sources */,
 				09737F4724EA27B700C0E319 /* AppDelegate.m in Sources */,
 				09737FD024EA2E8700C0E319 /* MPhoneType.m in Sources */,
 				09737FBD24EA2E8700C0E319 /* BSUrl.m in Sources */,

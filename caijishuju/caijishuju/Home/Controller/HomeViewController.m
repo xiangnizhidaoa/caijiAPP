@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "MyTaskTableViewController.h"
+#import "MyCollectionTableViewController.h"
 
 @interface HomeViewController ()
 
@@ -19,6 +20,11 @@
     [super viewDidLoad];
     self.title = @"首页";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(map) name:@"map" object:nil];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [LSNetworkService getIsLoginResponse:^(id dict, BSError *error) {
         if (dict != nil) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
@@ -44,7 +50,8 @@
 
 //我的采集
 - (IBAction)myCollection:(UIButton *)sender {
-    
+    MyCollectionTableViewController *myCollection = [[MyCollectionTableViewController alloc] initWithNibName:@"MyCollectionTableViewController" bundle:nil];
+    [self.navigationController pushViewController:myCollection animated:YES];
 }
 
 //任务地图

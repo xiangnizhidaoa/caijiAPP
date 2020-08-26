@@ -29,4 +29,13 @@
 //是否登录(token是否过期)
 +(void)getIsLoginResponse:(BSResponse)response;
 
+//退出登录
++(void)getLogOutResponse:(BSResponse)response;
+
+//我的采集
++(void)getMyCollectionWithDic:(NSDictionary *)dic response:(BSResponse)response;
+
+//删除数据填报
++(void)getDeleatWithID:(NSString *)ID response:(BSResponse)response;
+
 @end

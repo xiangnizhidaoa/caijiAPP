@@ -34,6 +34,12 @@ static BSUrl * instance = nil;
         
         self.isLogin = [BSUrl hostUrlWithParam:@"/wx/islogin"];
         
+        self.logOut = [BSUrl hostUrlWithParam:@"/wx/loginout"];
+        
+        self.myCollection = [BSUrl hostUrlWithParam:@"/wx/markerfill/mymarkerfilllist"];
+        
+        self.deleat = [BSUrl hostUrlWithParam:@"/wx/markerfill/delete"];
+        
     }
     return self;
 }

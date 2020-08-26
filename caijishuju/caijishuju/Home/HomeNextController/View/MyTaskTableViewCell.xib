@@ -62,28 +62,27 @@
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFc-AT-aX9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yFc-AT-aX9">
                                 <rect key="frame" x="240" y="60" width="60" height="25"/>
-                                <color key="backgroundColor" red="0.40784313729999999" green="0.68627450980000004" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="6E8-0Y-4MN"/>
                                     <constraint firstAttribute="width" constant="60" id="BzS-Vh-R9q"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="详情">
+                                <state key="normal" image="详情">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="12.5"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J0I-GR-8v9">
-                                <rect key="frame" x="137.33333333333334" y="7.6666666666666643" width="60" height="30"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="共享" translatesAutoresizingMaskIntoConstraints="NO" id="J0I-GR-8v9">
+                                <rect key="frame" x="137.33333333333334" y="15" width="35" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="1Am-hT-qFL"/>
-                                    <constraint firstAttribute="width" constant="60" id="98k-2m-nLo"/>
+                                    <constraint firstAttribute="height" constant="15" id="1Am-hT-qFL"/>
+                                    <constraint firstAttribute="width" constant="35" id="98k-2m-nLo"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -125,14 +124,17 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="name" destination="8yg-m3-BKl" id="8If-qe-fkF"/>
+                <outlet property="shareImageView" destination="J0I-GR-8v9" id="qNb-r9-8ai"/>
                 <outlet property="time" destination="nTP-fG-vfx" id="41o-RD-kh0"/>
-                <outlet property="typeImageView" destination="J0I-GR-8v9" id="9TJ-hz-r9J"/>
+                <outlet property="typeImageView" destination="jHV-Ux-iF2" id="1gw-Ga-CqX"/>
                 <outlet property="weizhi" destination="OZt-O0-cgr" id="WLf-Zb-CtU"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="97.826086956521749"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="共享" width="35" height="13.666666984558105"/>
         <image name="小麦选项" width="70" height="70"/>
+        <image name="详情" width="55" height="22"/>
     </resources>
 </document>

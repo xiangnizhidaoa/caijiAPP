@@ -65,6 +65,33 @@
     }];
 }
 
+//退出登录
++(void)getLogOutResponse:(BSResponse)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@?token=%@",BS_Url.logOut,App_Utility.currentUser.token];
+    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
+        response(completion,nil);
+    }];
+}
+
+//我的采集
++(void)getMyCollectionWithDic:(NSDictionary *)dic response:(BSResponse)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@?pageNo=%@&pageSize=%@&timetype=%@&starttime=%@&endtime=%@&token=%@",BS_Url.myCollection,dic[@"pageNo"],dic[@"pageSize"],dic[@"timetype"],dic[@"starttime"],dic[@"endtime"],App_Utility.currentUser.token];
+    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
+        response(completion,nil);
+    }];
+}
+
+//删除数据填报
++(void)getDeleatWithID:(NSString *)ID response:(BSResponse)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@?id=%@&token=%@",BS_Url.deleat,ID,App_Utility.currentUser.token];
+    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
+        response(completion,nil);
+    }];
+}
+
 
 
 

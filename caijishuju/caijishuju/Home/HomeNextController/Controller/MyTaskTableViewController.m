@@ -77,7 +77,7 @@
     }
     if (self.modelArray.count == 0) {
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 167) / 2, (SCREENH_HEIGHT - 91)/ 2, 176, 91)];
-        self.imageView.image = [UIImage imageNamed:@"暂无采集"];
+        self.imageView.image = [UIImage imageNamed:@"暂无任务"];
         [[[UIApplication sharedApplication] keyWindow] addSubview:self.imageView];
     }else{
         [self.imageView removeFromSuperview];
@@ -100,9 +100,9 @@
     cell.weizhi.text = [NSString stringWithFormat:@"%@%@",model.province,model.district];
     cell.time.text = model.updateDate;
     if ([model.zuowumc isEqualToString:@"非作物"]) {
-        cell.typeImageView.image = [UIImage imageNamed:@""];
+        cell.typeImageView.image = [UIImage imageNamed:@"植物"];
     }else{
-        cell.typeImageView.image = [UIImage imageNamed:@""];
+        cell.typeImageView.image = [UIImage imageNamed:@"小麦选项"];
     }
     return cell;
 }

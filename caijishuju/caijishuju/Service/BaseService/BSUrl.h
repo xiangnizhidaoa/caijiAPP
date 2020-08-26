@@ -31,6 +31,12 @@
 
 @property (nonatomic, copy) NSString *isLogin;//用户是否登录
 
+@property (nonatomic, copy) NSString *logOut;//退出登录
+
+@property (nonatomic, copy) NSString *myCollection;//我的采集
+
+@property (nonatomic, copy) NSString *deleat;//删除接口
+
 
 + (NSString *)hostUrlWithParam:(NSString *)param;
 

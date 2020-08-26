@@ -27,6 +27,11 @@
     [super viewDidLoad];
     self.title = @"我的";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(map) name:@"map" object:nil];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [LSNetworkService getIsLoginResponse:^(id dict, BSError *error) {
         if (dict != nil) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
@@ -63,6 +68,20 @@
 }
 
 
+- (IBAction)logOut:(UIButton *)sender {
+    [LSNetworkService getLogOutResponse:^(id dict, BSError *error) {
+        if (dict != nil) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
+            NSLog(@"%@",dic);
+            if ([dic[@"status"] integerValue] == 1) {
+                [App_Utility clearCurrentUser];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
+            }else{
+                [LPUnitily showToastWithText:dic[@"message"]];
+            }
+        }
+    }];
+}
 
 
 
