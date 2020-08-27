@@ -16,6 +16,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycx-P1-zg7">
+                        <rect key="frame" x="303" y="-1" width="1" height="47"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="D3f-FN-aav"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCo-MC-xHY">
+                        <rect key="frame" x="16" y="-1" width="1" height="47"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="4Cv-Sh-qb6"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P9M-LO-Vnn">
                         <rect key="frame" x="16" y="0.0" width="288" height="45"/>
                         <subviews>
@@ -63,14 +77,22 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ycx-P1-zg7" firstAttribute="leading" secondItem="P9M-LO-Vnn" secondAttribute="trailing" constant="-1" id="2Yo-Ni-FDe"/>
                     <constraint firstItem="P9M-LO-Vnn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="L3H-u5-txw"/>
+                    <constraint firstItem="ycx-P1-zg7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="-1" id="L9l-0a-1Pt"/>
+                    <constraint firstItem="P9M-LO-Vnn" firstAttribute="leading" secondItem="vCo-MC-xHY" secondAttribute="trailing" constant="-1" id="NuS-vv-Fo6"/>
                     <constraint firstAttribute="bottom" secondItem="P9M-LO-Vnn" secondAttribute="bottom" id="TRY-Qf-hhb"/>
+                    <constraint firstAttribute="bottom" secondItem="vCo-MC-xHY" secondAttribute="bottom" constant="-1" id="Zzx-Dg-htO"/>
                     <constraint firstAttribute="trailing" secondItem="P9M-LO-Vnn" secondAttribute="trailing" constant="16" id="gW1-sz-2en"/>
                     <constraint firstItem="P9M-LO-Vnn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="lkb-ay-w9d"/>
+                    <constraint firstAttribute="bottom" secondItem="ycx-P1-zg7" secondAttribute="bottom" constant="-1" id="sZi-ja-Rec"/>
+                    <constraint firstItem="vCo-MC-xHY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="-1" id="xuc-Go-SwI"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="detailsLb" destination="aTd-Ei-KzQ" id="ZIi-bG-CuC"/>
+                <outlet property="leftBgV" destination="vCo-MC-xHY" id="1go-QP-cFD"/>
+                <outlet property="rightBgV" destination="ycx-P1-zg7" id="BZI-An-sdt"/>
                 <outlet property="titleLb" destination="bcA-sj-yb0" id="jY0-RO-aq9"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="128.23660714285714"/>

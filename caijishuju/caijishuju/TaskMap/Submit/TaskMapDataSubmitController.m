@@ -1,20 +1,18 @@
 //
-//  MyTaskDetailsController.m
+//  TaskMapDataSubmitController.m
 //  caijishuju
 //
-//  Created by 🍭M on 2020/8/25.
+//  Created by 🍭M on 2020/8/28.
 //  Copyright © 2020 牛方路. All rights reserved.
 //
 
-#import "MyTaskDetailsController.h"
-#import "MyTaskDetailsOneCell.h"
-#import "MyTaskDetailsTwoCell.h"
+#import "TaskMapDataSubmitController.h"
 #import "MyTaskDetailsThrCell.h"
 #import "MyTaskDetailsHeadCell.h"
 #import "MyTaskDetailsFouCell.h"
 #import "MyTaskDetailsFootCell.h"
 
-@interface MyTaskDetailsController ()<UITableViewDataSource,UITableViewDelegate>
+@interface TaskMapDataSubmitController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tabV;
 
@@ -23,7 +21,7 @@
 
 @end
 
-@implementation MyTaskDetailsController
+@implementation TaskMapDataSubmitController
 
 - (NSMutableArray *)dataArr {
     if (!_dataArr) {
@@ -33,46 +31,13 @@
                 @"title":@"",
                 @"text":@""
             },
-            @{
-                @"type":@"4",
-                @"title":@"",
-                @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"地理位置",
-                @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"填报时间",
-                @"text":@""
-            },
-            @{
+            [@{
                 @"type":@"2",
                 @"title":@"作物名称",
+                @"count":[NSNumber numberWithInteger:200],
+                @"holder":@"作物名称(自动识别)",
                 @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"朝向",
-                @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"朝向精度",
-                @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"填报时间",
-                @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"状态",
-                @"text":@""
-            },
+            } mutableCopy],
             @{
                 @"type":@"3",
                 @"title":@"叶子照片",
@@ -89,14 +54,14 @@
                 @"text":@""
             },
             [@{
-                @"type":@"5",
+                @"type":@"2",
                 @"title":@"备注",
                 @"count":[NSNumber numberWithInteger:200],
                 @"holder":@"备注(200字)",
                 @"text":@""
             } mutableCopy],
             @{
-                @"type":@"6",
+                @"type":@"4",
                 @"title":@"",
                 @"text":@""
             },
@@ -107,7 +72,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"小麦";
+    self.navigationItem.title = @"数据填报";
     
     if (@available(iOS 11.0, *)) {
         self.tabV.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -120,27 +85,25 @@
     self.tabV.estimatedRowHeight = 30;
     
     
-    [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsOneCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsOneCell"];
-    [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsTwoCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsTwoCell"];
+
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsThrCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsThrCell"];
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsHeadCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsHeadCell"];
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsFouCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsFouCell"];
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsFootCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsFootCell"];
+    
+    
 }
 
 /** 保存 */
-- (IBAction)MTDSaveBtAction:(UIButton *)sender {
+- (IBAction)TMDSSaveBtAction:(UIButton *)sender {
     
 }
 
 /** 采集地图 */
-- (IBAction)MTDMapBtAction:(UIButton *)sender {
+- (IBAction)TMDSMapBtAction:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)MTDDetailsBtAction:(UIButton *)sender {
-    
-}
 
 #pragma mark ---- UItableView
 /**
@@ -181,37 +144,31 @@
     NSString *typeStr = [[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"type"];
     NSString *titleStr = [[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"title"];
     NSString *detailStr = [[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"text"];
+    
     if ([typeStr isEqualToString:@"1"]) {
-        MyTaskDetailsOneCell *cellOne = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsOneCell" forIndexPath:indexPath];
-        [cellOne MTDTCreateMap];
-         return cellOne;
+        MyTaskDetailsHeadCell *cellOne = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsHeadCell" forIndexPath:indexPath];
+        return cellOne;
+        
+        
     } else if ([typeStr isEqualToString:@"2"]) {
-        MyTaskDetailsTwoCell *cellTwo = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsTwoCell" forIndexPath:indexPath];
+        MyTaskDetailsFouCell *cellTwo = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFouCell" forIndexPath:indexPath];
+        cellTwo.wordCount = [[[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"count"] integerValue];
+        cellTwo.detailsTf.placeholder = [[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"holder"];
         cellTwo.titleLb.text = titleStr;
-        cellTwo.detailsLb.text = detailStr;
-         return cellTwo;
+        cellTwo.finishBlock = ^(NSString * _Nonnull text) {
+            [[self.dataArr objectAtIndex:indexPath.row] setObject:[self isNoBlankText:text] forKey:@"text"];
+        };
+        return cellTwo;
     } else if ([typeStr isEqualToString:@"3"]) {
         MyTaskDetailsThrCell *cellThr = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsThrCell" forIndexPath:indexPath];
         cellThr.titleLb.text = titleStr;
         cellThr.selectBlock = ^{
             
         };
-         return cellThr;
-    } else if ([typeStr isEqualToString:@"4"]) {
-        MyTaskDetailsHeadCell *cellFou = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsHeadCell" forIndexPath:indexPath];
-         return cellFou;
-    } else if ([typeStr isEqualToString:@"5"]) {
-       MyTaskDetailsFouCell *cellFiv = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFouCell" forIndexPath:indexPath];
-        cellFiv.wordCount = [[[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"count"] integerValue];
-        cellFiv.detailsTf.placeholder = [[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"holder"];
-        cellFiv.titleLb.text = titleStr;
-        cellFiv.finishBlock = ^(NSString * _Nonnull text) {
-            [[self.dataArr objectAtIndex:indexPath.row] setObject:[self isNoBlankText:text] forKey:@"text"];
-        };
-        return cellFiv;
-   } else if ([typeStr isEqualToString:@"6"]) {
-      MyTaskDetailsFootCell *cellSix = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFootCell" forIndexPath:indexPath];
-       return cellSix;
+        return cellThr;
+   } else if ([typeStr isEqualToString:@"4"]) {
+      MyTaskDetailsFootCell *cellFou = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFootCell" forIndexPath:indexPath];
+       return cellFou;
   }
     return nil;
 }
@@ -255,5 +212,7 @@
     }
     return text;
 }
+
+
 
 @end

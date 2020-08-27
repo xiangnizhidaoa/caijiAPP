@@ -16,6 +16,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVA-zS-2CK">
+                        <rect key="frame" x="303" y="-1" width="1" height="108"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="ElV-u0-vtg"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="95E-kd-zfk">
+                        <rect key="frame" x="16" y="-1" width="1" height="108"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="ggz-2h-dar"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4sm-B7-Zs9">
                         <rect key="frame" x="16" y="0.0" width="288" height="106"/>
                         <subviews>
@@ -42,8 +56,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXh-D3-MdG">
                                 <rect key="frame" x="98" y="8" width="90" height="90"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ijW-Co-eOR">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload" translatesAutoresizingMaskIntoConstraints="NO" id="Acl-Zv-iJ4">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ijW-Co-eOR">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jnC-GR-flO">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
@@ -54,16 +72,20 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Acl-Zv-iJ4" secondAttribute="trailing" id="A4I-pl-bzi"/>
                                     <constraint firstAttribute="width" constant="90" id="EGD-XC-ssZ"/>
+                                    <constraint firstItem="Acl-Zv-iJ4" firstAttribute="leading" secondItem="UXh-D3-MdG" secondAttribute="leading" id="HcW-8Y-kbC"/>
                                     <constraint firstItem="ijW-Co-eOR" firstAttribute="leading" secondItem="UXh-D3-MdG" secondAttribute="leading" id="JvF-xj-hV8"/>
                                     <constraint firstItem="jnC-GR-flO" firstAttribute="top" secondItem="UXh-D3-MdG" secondAttribute="top" id="MxI-6I-sCx"/>
                                     <constraint firstItem="jnC-GR-flO" firstAttribute="leading" secondItem="UXh-D3-MdG" secondAttribute="leading" id="NYb-QN-5cu"/>
+                                    <constraint firstAttribute="bottom" secondItem="Acl-Zv-iJ4" secondAttribute="bottom" id="PdE-ti-q9i"/>
                                     <constraint firstAttribute="trailing" secondItem="jnC-GR-flO" secondAttribute="trailing" id="TlY-S7-Js8"/>
                                     <constraint firstItem="ijW-Co-eOR" firstAttribute="top" secondItem="UXh-D3-MdG" secondAttribute="top" id="ZXt-HN-VfN"/>
                                     <constraint firstAttribute="trailing" secondItem="ijW-Co-eOR" secondAttribute="trailing" id="da3-y8-X0c"/>
                                     <constraint firstAttribute="bottom" secondItem="ijW-Co-eOR" secondAttribute="bottom" id="haW-6Z-dhj"/>
                                     <constraint firstAttribute="bottom" secondItem="jnC-GR-flO" secondAttribute="bottom" id="jva-OT-bEb"/>
                                     <constraint firstAttribute="height" constant="90" id="lHn-yR-2Xo"/>
+                                    <constraint firstItem="Acl-Zv-iJ4" firstAttribute="top" secondItem="UXh-D3-MdG" secondAttribute="top" id="vAm-tU-0JV"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -81,16 +103,27 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="4sm-B7-Zs9" secondAttribute="trailing" constant="16" id="0ca-co-DBH"/>
+                    <constraint firstItem="qVA-zS-2CK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="-1" id="Bp8-m2-AFK"/>
                     <constraint firstAttribute="bottom" secondItem="4sm-B7-Zs9" secondAttribute="bottom" id="Eo3-80-RbM"/>
                     <constraint firstItem="4sm-B7-Zs9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="RQf-GI-hYp"/>
                     <constraint firstItem="4sm-B7-Zs9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Uww-kS-nSp"/>
+                    <constraint firstItem="qVA-zS-2CK" firstAttribute="leading" secondItem="4sm-B7-Zs9" secondAttribute="trailing" constant="-1" id="YbC-4r-7wn"/>
+                    <constraint firstAttribute="bottom" secondItem="qVA-zS-2CK" secondAttribute="bottom" constant="-1" id="Zhx-bm-hhK"/>
+                    <constraint firstAttribute="bottom" secondItem="95E-kd-zfk" secondAttribute="bottom" constant="-1" id="ZqC-3J-ahi"/>
+                    <constraint firstItem="4sm-B7-Zs9" firstAttribute="leading" secondItem="95E-kd-zfk" secondAttribute="trailing" constant="-1" id="d9V-YS-ZpA"/>
+                    <constraint firstItem="95E-kd-zfk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="-1" id="m9s-Vh-Zhc"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="detailsIv" destination="ijW-Co-eOR" id="rd5-iH-8Bf"/>
+                <outlet property="leftBgV" destination="95E-kd-zfk" id="wkm-XI-k9c"/>
+                <outlet property="rightBgV" destination="qVA-zS-2CK" id="HV6-Fe-meF"/>
                 <outlet property="titleLb" destination="33Y-iu-Km1" id="oec-ng-uhy"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="148.66071428571428"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="upload" width="93.5" height="93.5"/>
+    </resources>
 </document>
