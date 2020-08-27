@@ -104,6 +104,12 @@
     }else{
         cell.typeImageView.image = [UIImage imageNamed:@"小麦选项"];
     }
+    if ([model.zhuangtai integerValue] == 20) {
+        cell.shareImageView.image = [UIImage imageNamed:@"共享"];
+    }else{
+        cell.shareImageView.image = [UIImage imageNamed:@"为共享"];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

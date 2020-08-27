@@ -53,6 +53,7 @@
         }
         cell.nameLable.text = App_Utility.currentUser.userName;
         cell.contentLabel.text = App_Utility.currentUser.roleNames;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
         MyMsgTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyMsgTableViewCell"];
@@ -70,6 +71,7 @@
         }else if (indexPath.row == 3){
             cell.msgLabel.text = App_Utility.currentUser.officeName;
         }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
 }

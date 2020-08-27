@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) NSString *endtime;
 
+@property (nonatomic, strong) NSString *zuowuName;
+
 @property (nonatomic, assign) NSInteger pageNo;
 
 @property (nonatomic, assign) NSInteger pageSize;
@@ -117,8 +119,14 @@
     }else{
         cell.typeImageView.image = [UIImage imageNamed:@"小麦选项"];
     }
+    if ([model.zhuangtai integerValue] == 20) {
+        cell.shareImageView.image = [UIImage imageNamed:@"共享"];
+    }else{
+        cell.shareImageView.image = [UIImage imageNamed:@"为共享"];
+    }
     cell.delegate = self;
     cell.tag = 2000 + indexPath.row;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -149,7 +157,7 @@
     view.searchBar.delegate = self;
     view.delegate = self;
     UITextField *searchField = [view.searchBar valueForKey:@"searchField"];
-//    searchField.text = self.zuowuName;
+    searchField.text = self.zuowuName;
     searchField.delegate = self;
     return view;
 }

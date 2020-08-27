@@ -194,6 +194,11 @@
                         <constraint firstItem="Rqc-Xz-Itn" firstAttribute="top" secondItem="0kn-k6-VxC" secondAttribute="bottom" constant="15" id="rE3-ib-Y2h"/>
                         <constraint firstAttribute="height" constant="200" id="xHa-Nq-eCW"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
