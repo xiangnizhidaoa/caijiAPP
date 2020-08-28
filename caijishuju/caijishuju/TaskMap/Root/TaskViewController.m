@@ -9,7 +9,7 @@
 #import "TaskViewController.h"
 #import <WebKit/WebKit.h>
 
-@interface TaskViewController ()<WKNavigationDelegate>
+@interface TaskViewController ()<WKNavigationDelegate,WKScriptMessageHandler>
 
 @property (nonatomic, strong) WKWebView *wkWV;
 /** 进度条 */
@@ -33,12 +33,20 @@
     self.wkWV = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREENH_HEIGHT-nHeight)];
     self.wkWV.navigationDelegate = self;
     self.wkWV.backgroundColor = [UIColor whiteColor];
-    [self.wkWV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]]];
+    [self.wkWV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.20.10.10:8848/Map/test.html"]]];
 
     [self.view addSubview:self.wkWV];
     [self.view addSubview:self.progressV];
     
     [self.wkWV addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self.wkWV.configuration.userContentController addScriptMessageHandler:self name:@"collectData"];
+}
+
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+    if ([message.name isEqualToString:@"collectData"]) {
+        //这里通过捕获这个先判断是否登录 未登录登录 登录跳转录入数据页面(记得修改下你现在这里是任务地图 不是采集地图).
+    }
 }
 
 #pragma mark - WKNavigationDelegate

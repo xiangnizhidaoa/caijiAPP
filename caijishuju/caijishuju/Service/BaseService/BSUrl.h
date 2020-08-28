@@ -37,6 +37,8 @@
 
 @property (nonatomic, copy) NSString *deleat;//删除接口
 
+@property (nonatomic, copy) NSString *regiest;//注册
+
 
 + (NSString *)hostUrlWithParam:(NSString *)param;
 

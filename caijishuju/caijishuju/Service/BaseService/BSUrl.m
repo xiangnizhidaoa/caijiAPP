@@ -40,6 +40,8 @@ static BSUrl * instance = nil;
         
         self.deleat = [BSUrl hostUrlWithParam:@"/wx/markerfill/delete"];
         
+        self.regiest = [BSUrl hostUrlWithParam:@"/regiester/phone"];
+        
     }
     return self;
 }
