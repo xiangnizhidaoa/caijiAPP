@@ -46,6 +46,19 @@
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     if ([message.name isEqualToString:@"collectData"]) {
         //这里通过捕获这个先判断是否登录 未登录登录 登录跳转录入数据页面(记得修改下你现在这里是任务地图 不是采集地图).
+        //这个请求是判断当前用户是否已经登录
+        [LSNetworkService getIsLoginResponse:^(id dict, BSError *error) {
+            if (dict != nil) {
+                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
+                NSLog(@"%@",dic);
+                if ([dic[@"status"] integerValue] == 1) {
+                    //这里处理登录后的逻辑就行
+                }else{
+                    // 所有需要弹出登录的时候直接发送通知就好
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
+                }
+            }
+        }];
     }
 }
 
