@@ -25,8 +25,9 @@
 -(void)login:(NSNotification *)notif{
 //    登录页
     LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    login.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self.window.rootViewController presentViewController:login animated:nil completion:nil];
+    BSNavigationController *navc = [[BSNavigationController alloc] initWithRootViewController:login];
+    navc.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self.window.rootViewController presentViewController:navc animated:nil completion:nil];
     
     [AMapServices sharedServices].apiKey = @"17eba3596dc056770a725b19d93ef4e0";
     

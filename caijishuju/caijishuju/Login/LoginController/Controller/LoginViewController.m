@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "RegiestViewController.h"
+#import "PasswordViewController.h"
 
 @interface LoginViewController ()
 
@@ -111,7 +113,8 @@ static int i = 0;
 }
 
 - (IBAction)regiest:(UIButton *)sender {
-    
+    RegiestViewController *regiest = [[RegiestViewController alloc] initWithNibName:@"RegiestViewController" bundle:nil];
+    [self.navigationController pushViewController:regiest animated:YES];
 }
 
 - (IBAction)map:(UIButton *)sender {
@@ -120,7 +123,8 @@ static int i = 0;
 }
 
 - (IBAction)forgetPassword:(UIButton *)sender {
-    
+    PasswordViewController *password = [[PasswordViewController alloc] initWithNibName:@"PasswordViewController" bundle:nil];
+    [self.navigationController pushViewController:password animated:YES];
 }
 
 //获取验证码

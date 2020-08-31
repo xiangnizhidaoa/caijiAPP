@@ -92,6 +92,23 @@
     }];
 }
 
+//注册
++(void)postRegiestWithDic:(NSDictionary *)dic response:(BSResponse)response
+{
+    [[MK_UseAFNetWorking NewNewWork] postNetWorkPostWithPostDic:dic Url:BS_Url.regiest headerDic:nil withCompletion:^(id completion) {
+        response(completion,nil);
+    }];
+}
+
+//找回密码
++(void)getPasswordWithDic:(NSDictionary *)dic response:(BSResponse)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@?phone=%@&plainPassword=%@&yanzhengma=%@",BS_Url.deleat,dic[@"phone"],dic[@"plainPassword"],dic[@"yanzhengma"]];
+    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
+        response(completion,nil);
+    }];
+}
+
 
 
 

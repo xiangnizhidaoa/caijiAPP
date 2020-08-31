@@ -42,6 +42,8 @@ static BSUrl * instance = nil;
         
         self.regiest = [BSUrl hostUrlWithParam:@"/regiester/phone"];
         
+        self.password = [BSUrl hostUrlWithParam:@"/wx/reset"];
+        
     }
     return self;
 }

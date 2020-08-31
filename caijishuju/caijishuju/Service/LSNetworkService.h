@@ -38,4 +38,10 @@
 //删除数据填报
 +(void)getDeleatWithID:(NSString *)ID response:(BSResponse)response;
 
+//注册
++(void)postRegiestWithDic:(NSDictionary *)dic response:(BSResponse)response;
+
+//找回密码
++(void)getPasswordWithDic:(NSDictionary *)dic response:(BSResponse)response;
+
 @end

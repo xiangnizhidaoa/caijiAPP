@@ -36,6 +36,10 @@
 		091E4FE124F6031000C3BE79 /* CollectionSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091E4FE024F6031000C3BE79 /* CollectionSearchView.xib */; };
 		091E4FEA24F6050900C3BE79 /* TimeTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 091E4FE824F6050900C3BE79 /* TimeTypeViewController.m */; };
 		091E4FEB24F6050900C3BE79 /* TimeTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 091E4FE924F6050900C3BE79 /* TimeTypeViewController.xib */; };
+		0924076E24FC88D50049F671 /* RegiestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0924076C24FC88D50049F671 /* RegiestViewController.m */; };
+		0924076F24FC88D50049F671 /* RegiestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0924076D24FC88D50049F671 /* RegiestViewController.xib */; };
+		0924077C24FC923B0049F671 /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0924077A24FC923B0049F671 /* PasswordViewController.m */; };
+		0924077D24FC923B0049F671 /* PasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0924077B24FC923B0049F671 /* PasswordViewController.xib */; };
 		0959202924ECC2C300958627 /* TypeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0959202824ECC2C300958627 /* TypeButton.m */; };
 		09737F4724EA27B700C0E319 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09737F4624EA27B700C0E319 /* AppDelegate.m */; };
 		09737F5024EA27B700C0E319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09737F4E24EA27B700C0E319 /* Main.storyboard */; };
@@ -166,6 +170,12 @@
 		091E4FE724F6050900C3BE79 /* TimeTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeTypeViewController.h; sourceTree = "<group>"; };
 		091E4FE824F6050900C3BE79 /* TimeTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeTypeViewController.m; sourceTree = "<group>"; };
 		091E4FE924F6050900C3BE79 /* TimeTypeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeTypeViewController.xib; sourceTree = "<group>"; };
+		0924076B24FC88D50049F671 /* RegiestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegiestViewController.h; sourceTree = "<group>"; };
+		0924076C24FC88D50049F671 /* RegiestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegiestViewController.m; sourceTree = "<group>"; };
+		0924076D24FC88D50049F671 /* RegiestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegiestViewController.xib; sourceTree = "<group>"; };
+		0924077924FC923B0049F671 /* PasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordViewController.h; sourceTree = "<group>"; };
+		0924077A24FC923B0049F671 /* PasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordViewController.m; sourceTree = "<group>"; };
+		0924077B24FC923B0049F671 /* PasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordViewController.xib; sourceTree = "<group>"; };
 		0959202724ECC2C300958627 /* TypeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeButton.h; sourceTree = "<group>"; };
 		0959202824ECC2C300958627 /* TypeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypeButton.m; sourceTree = "<group>"; };
 		09737F4224EA27B700C0E319 /* 视田.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "视田.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -439,6 +449,64 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		0924076824FC88A80049F671 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0924076924FC88AC0049F671 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0924076A24FC88AF0049F671 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0924076B24FC88D50049F671 /* RegiestViewController.h */,
+				0924076C24FC88D50049F671 /* RegiestViewController.m */,
+				0924076D24FC88D50049F671 /* RegiestViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0924077024FC91C30049F671 /* PsaawordController */ = {
+			isa = PBXGroup;
+			children = (
+				0924077324FC91D90049F671 /* Controller */,
+				0924077224FC91D50049F671 /* Model */,
+				0924077124FC91D20049F671 /* View */,
+			);
+			path = PsaawordController;
+			sourceTree = "<group>";
+		};
+		0924077124FC91D20049F671 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0924077224FC91D50049F671 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0924077324FC91D90049F671 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0924077924FC923B0049F671 /* PasswordViewController.h */,
+				0924077A24FC923B0049F671 /* PasswordViewController.m */,
+				0924077B24FC923B0049F671 /* PasswordViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		09737F3924EA27B700C0E319 = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +568,7 @@
 		09737F6124EA2DE900C0E319 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				0924077024FC91C30049F671 /* PsaawordController */,
 				0973801624EA329000C0E319 /* RegisterController */,
 				0973801524EA328400C0E319 /* LoginController */,
 			);
@@ -781,6 +850,9 @@
 		0973801624EA329000C0E319 /* RegisterController */ = {
 			isa = PBXGroup;
 			children = (
+				0924076A24FC88AF0049F671 /* Controller */,
+				0924076924FC88AC0049F671 /* Model */,
+				0924076824FC88A80049F671 /* View */,
 			);
 			path = RegisterController;
 			sourceTree = "<group>";
@@ -964,6 +1036,7 @@
 				091E4FEB24F6050900C3BE79 /* TimeTypeViewController.xib in Resources */,
 				09737FFC24EA2EB300C0E319 /* PhotoViewController.xib in Resources */,
 				0903A37B24F4BA1C003A0430 /* MyMsgTableViewController.xib in Resources */,
+				0924077D24FC923B0049F671 /* PasswordViewController.xib in Resources */,
 				0C626CCC24F7FF6C00F0E1E2 /* MyTaskDetailsFootCell.xib in Resources */,
 				0973802024EA340200C0E319 /* CollectionViewController.xib in Resources */,
 				0C7171E924F549E700C7221D /* MyTaskDetailsOneCell.xib in Resources */,
@@ -985,6 +1058,7 @@
 				0973802A24EA341F00C0E319 /* MyViewController.xib in Resources */,
 				0C626CC224F7EC6A00F0E1E2 /* MyTaskDetailsHeadCell.xib in Resources */,
 				091E4FD724F5F7F000C3BE79 /* MyCollectionTableViewController.xib in Resources */,
+				0924076F24FC88D50049F671 /* RegiestViewController.xib in Resources */,
 				0903A3B724F50C92003A0430 /* MyTaskTableViewCell.xib in Resources */,
 				091E4FE124F6031000C3BE79 /* CollectionSearchView.xib in Resources */,
 				0903A39E24F4EA5A003A0430 /* AboutUsTableViewCell.xib in Resources */,
@@ -1070,6 +1144,7 @@
 				0903A38424F4BD02003A0430 /* MyMsgTableViewCell.m in Sources */,
 				0903A39D24F4EA5A003A0430 /* AboutUsTableViewCell.m in Sources */,
 				0973802E24EA357800C0E319 /* HomeTabbarViewController.m in Sources */,
+				0924076E24FC88D50049F671 /* RegiestViewController.m in Sources */,
 				0903A3B624F50C92003A0430 /* MyTaskTableViewCell.m in Sources */,
 				09737FC224EA2E8700C0E319 /* NSMutableArray+WSMutableArray.m in Sources */,
 				09737FBA24EA2E8700C0E319 /* MK_UseAFNetWorking.m in Sources */,
@@ -1120,6 +1195,7 @@
 				09737FBD24EA2E8700C0E319 /* BSUrl.m in Sources */,
 				09737F5824EA27B800C0E319 /* main.m in Sources */,
 				09737FB924EA2E8700C0E319 /* JSONKit.m in Sources */,
+				0924077C24FC923B0049F671 /* PasswordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

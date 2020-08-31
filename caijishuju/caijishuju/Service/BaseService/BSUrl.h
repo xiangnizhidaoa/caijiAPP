@@ -39,6 +39,8 @@
 
 @property (nonatomic, copy) NSString *regiest;//注册
 
+@property (nonatomic, copy) NSString *password;//找回密码
+
 
 + (NSString *)hostUrlWithParam:(NSString *)param;
 
