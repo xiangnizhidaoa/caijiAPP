@@ -12,6 +12,7 @@
 #import "TaskModel.h"
 #import "TaskByModel.h"
 #import "MyCollectionTableViewCell.h"
+#import "TaskMapDataSubmitController.h"
 
 @interface MyCollectionTableViewController ()<UISearchBarDelegate,UITextFieldDelegate,CollectionSearchViewDelegate,TimeTypeViewControllerDelegate,THDatePickerViewDelegate,MyCollectionTableViewCellDelegate>
 
@@ -128,6 +129,14 @@
     cell.tag = 2000 + indexPath.row;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TaskModel *model = self.modelArray[indexPath.row];
+    TaskMapDataSubmitController *tmdsc = [TaskMapDataSubmitController new];
+    tmdsc.type = 1;
+    tmdsc.model = model;
+    [self.navigationController pushViewController:tmdsc animated:YES];
 }
 
 - (void)deleatWithTag:(NSInteger)tag{

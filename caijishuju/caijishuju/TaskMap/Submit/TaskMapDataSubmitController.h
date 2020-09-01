@@ -7,10 +7,16 @@
 //
 
 #import "BSViewController.h"
+#import "TaskModel.h"
+#import "TaskByModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TaskMapDataSubmitController : BSViewController
+
+@property (nonatomic, strong) TaskModel *model;
+
+@property (nonatomic, assign) NSInteger type;
 
 @end
 

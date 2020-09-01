@@ -41,6 +41,8 @@
 
 @property (nonatomic, copy) NSString *password;//找回密码
 
+@property (nonatomic, copy) NSString *downImage;//下载图片
+
 
 + (NSString *)hostUrlWithParam:(NSString *)param;
 

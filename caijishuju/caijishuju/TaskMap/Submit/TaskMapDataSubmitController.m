@@ -151,21 +151,45 @@
         
         
     } else if ([typeStr isEqualToString:@"2"]) {
-        MyTaskDetailsFouCell *cellTwo = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFouCell" forIndexPath:indexPath];
-        cellTwo.wordCount = [[[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"count"] integerValue];
-        cellTwo.detailsTf.placeholder = [[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"holder"];
-        cellTwo.titleLb.text = titleStr;
-        cellTwo.finishBlock = ^(NSString * _Nonnull text) {
-            [[self.dataArr objectAtIndex:indexPath.row] setObject:[self isNoBlankText:text] forKey:@"text"];
-        };
-        return cellTwo;
+        if (self.type == 0) {
+            MyTaskDetailsFouCell *cellTwo = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFouCell" forIndexPath:indexPath];
+            cellTwo.wordCount = [[[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"count"] integerValue];
+            cellTwo.detailsTf.placeholder = [[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"holder"];
+            cellTwo.titleLb.text = titleStr;
+            cellTwo.finishBlock = ^(NSString * _Nonnull text) {
+                [[self.dataArr objectAtIndex:indexPath.row] setObject:[self isNoBlankText:text] forKey:@"text"];
+            };
+            return cellTwo;
+        }else{
+            MyTaskDetailsFouCell *cellTwo = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFouCell" forIndexPath:indexPath];
+            cellTwo.wordCount = [[[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"count"] integerValue];
+            cellTwo.titleLb.text = titleStr;
+            cellTwo.detailsTf.text = self.model.zuowumc;
+            cellTwo.detailsTf.userInteractionEnabled = NO;
+            return cellTwo;
+        }
     } else if ([typeStr isEqualToString:@"3"]) {
-        MyTaskDetailsThrCell *cellThr = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsThrCell" forIndexPath:indexPath];
-        cellThr.titleLb.text = titleStr;
-        cellThr.selectBlock = ^{
-            
-        };
-        return cellThr;
+        if (self.type == 0) {
+            MyTaskDetailsThrCell *cellThr = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsThrCell" forIndexPath:indexPath];
+            cellThr.titleLb.text = titleStr;
+            cellThr.selectBlock = ^{
+                
+            };
+            return cellThr;
+        }else{
+            MyTaskDetailsThrCell *cellThr = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsThrCell" forIndexPath:indexPath];
+            cellThr.titleLb.text = titleStr;
+            NSLog(@"%@",[NSString stringWithFormat:@"%@%@",BS_Url.downImage,self.model.yepianzpid]);
+            if (indexPath.row == 2) {
+                [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BS_Url.downImage,self.model.yepianzpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
+            }else if (indexPath.row == 3){
+                [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BS_Url.downImage,self.model.zhizhuzpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
+            }else if (indexPath.row == 4){
+                [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BS_Url.downImage,self.model.dikuaizpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
+            }
+            cellThr.detailsIv.userInteractionEnabled = NO;
+            return cellThr;
+        }
    } else if ([typeStr isEqualToString:@"4"]) {
       MyTaskDetailsFootCell *cellFou = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFootCell" forIndexPath:indexPath];
        return cellFou;

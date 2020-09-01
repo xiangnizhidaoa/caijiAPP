@@ -41,6 +41,7 @@
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.webUrl]];
         //请求添加自定义header
         NSMutableURLRequest *mutableRequest = [request mutableCopy];
+        [mutableRequest addValue:App_Utility.currentUser.token forHTTPHeaderField:@"token"];
         request = [mutableRequest copy];
         self.webView.scrollView.delegate = self;
         [self.webView loadRequest:request];
