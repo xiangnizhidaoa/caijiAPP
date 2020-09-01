@@ -33,8 +33,12 @@
     self.wkWV = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREENH_HEIGHT-nHeight)];
     self.wkWV.navigationDelegate = self;
     self.wkWV.backgroundColor = [UIColor whiteColor];
-    [self.wkWV loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.20.10.10:8848/Map/test.html"]]];
-
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@" https://farmviewer.digitaltest.cn/web/static/wx/myMap/test.html"]];
+//    //请求添加自定义header
+//    NSMutableURLRequest *mutableRequest = [request mutableCopy];
+//    [mutableRequest addValue:App_Utility.currentUser.token forHTTPHeaderField:@"token"];
+//    request = [mutableRequest copy];
+    [self.wkWV loadRequest:request];
     [self.view addSubview:self.wkWV];
     [self.view addSubview:self.progressV];
     
