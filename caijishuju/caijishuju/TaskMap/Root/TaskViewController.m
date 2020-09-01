@@ -34,6 +34,7 @@
     self.wkWV.navigationDelegate = self;
     self.wkWV.backgroundColor = [UIColor whiteColor];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@" https://farmviewer.digitaltest.cn/web/static/wx/myMap/test.html"]];
+    
 //    //请求添加自定义header
 //    NSMutableURLRequest *mutableRequest = [request mutableCopy];
 //    [mutableRequest addValue:App_Utility.currentUser.token forHTTPHeaderField:@"token"];

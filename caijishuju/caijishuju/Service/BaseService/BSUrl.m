@@ -46,6 +46,8 @@ static BSUrl * instance = nil;
         
         self.downImage = [BSUrl hostUrlWithParam:@"/"];
         
+        self.dataSave = [BSUrl hostUrlWithParam:@"/wx/markerfill/save"];
+        
     }
     return self;
 }

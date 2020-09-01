@@ -44,4 +44,7 @@
 //找回密码
 +(void)getPasswordWithDic:(NSDictionary *)dic response:(BSResponse)response;
 
+/// 数据采集保存请求
++ (void)getDataCollectionSaveWithString:(NSString *)bodyStr response:(BSResponse)response;
+
 @end

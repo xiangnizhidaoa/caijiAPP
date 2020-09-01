@@ -14,6 +14,7 @@
 #import "MyTaskDetailsFouCell.h"
 #import "MyTaskDetailsFootCell.h"
 #import "UIImageView+WebCache.h"
+#import "MyTaskDetailsFivCell.h"
 
 @interface MyTaskDetailsController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -54,6 +55,7 @@
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsHeadCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsHeadCell"];
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsFouCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsFouCell"];
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsFootCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsFootCell"];
+    [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsFivCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsFivCell"];
 }
 
 /** 保存 */
@@ -130,13 +132,19 @@
         MyTaskDetailsHeadCell *cellFou = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsHeadCell" forIndexPath:indexPath];
          return cellFou;
     } else if ([typeStr isEqualToString:@"5"]) {
-       MyTaskDetailsFouCell *cellFiv = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFouCell" forIndexPath:indexPath];
-        cellFiv.wordCount = [[[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"count"] integerValue];
-        cellFiv.detailsTf.placeholder = [[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"holder"];
-        cellFiv.titleLb.text = titleStr;
+//       MyTaskDetailsFouCell *cellFiv = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFouCell" forIndexPath:indexPath];
+//        cellFiv.wordCount = [[[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"count"] integerValue];
+//        cellFiv.detailsTf.placeholder = [[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"holder"];
+//        cellFiv.titleLb.text = titleStr;
+//        cellFiv.finishBlock = ^(NSString * _Nonnull text) {
+//            [[self.dataArr objectAtIndex:indexPath.row] setObject:[self isNoBlankText:text] forKey:@"text"];
+//        };
+//        return cellFiv;
+        MyTaskDetailsFivCell *cellFiv = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFivCell" forIndexPath:indexPath];
         cellFiv.finishBlock = ^(NSString * _Nonnull text) {
             [[self.dataArr objectAtIndex:indexPath.row] setObject:[self isNoBlankText:text] forKey:@"text"];
         };
+        
         return cellFiv;
    } else if ([typeStr isEqualToString:@"6"]) {
       MyTaskDetailsFootCell *cellSix = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFootCell" forIndexPath:indexPath];

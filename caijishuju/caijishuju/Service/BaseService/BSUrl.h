@@ -43,6 +43,10 @@
 
 @property (nonatomic, copy) NSString *downImage;//下载图片
 
+/*** 数据采集 ***/
+@property (nonatomic, copy) NSString *dataSave;
+
+
 
 + (NSString *)hostUrlWithParam:(NSString *)param;
 
