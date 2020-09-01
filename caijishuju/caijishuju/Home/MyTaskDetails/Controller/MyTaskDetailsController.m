@@ -13,6 +13,7 @@
 #import "MyTaskDetailsHeadCell.h"
 #import "MyTaskDetailsFouCell.h"
 #import "MyTaskDetailsFootCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface MyTaskDetailsController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -27,80 +28,7 @@
 
 - (NSMutableArray *)dataArr {
     if (!_dataArr) {
-        self.dataArr = [@[
-            @{
-                @"type":@"1",
-                @"title":@"",
-                @"text":@""
-            },
-            @{
-                @"type":@"4",
-                @"title":@"",
-                @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"地理位置",
-                @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"填报时间",
-                @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"作物名称",
-                @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"朝向",
-                @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"朝向精度",
-                @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"填报时间",
-                @"text":@""
-            },
-            @{
-                @"type":@"2",
-                @"title":@"状态",
-                @"text":@""
-            },
-            @{
-                @"type":@"3",
-                @"title":@"叶子照片",
-                @"text":@""
-            },
-            @{
-                @"type":@"3",
-                @"title":@"植株照片",
-                @"text":@""
-            },
-            @{
-                @"type":@"3",
-                @"title":@"地块照片",
-                @"text":@""
-            },
-            [@{
-                @"type":@"5",
-                @"title":@"备注",
-                @"count":[NSNumber numberWithInteger:200],
-                @"holder":@"备注(200字)",
-                @"text":@""
-            } mutableCopy],
-            @{
-                @"type":@"6",
-                @"title":@"",
-                @"text":@""
-            },
-        ] mutableCopy];
+        self.dataArr = [NSMutableArray array];
     }
     return _dataArr;
 }
@@ -108,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"小麦";
-    
+    [self MTDCreateUIInfo];
     if (@available(iOS 11.0, *)) {
         self.tabV.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         self.tabV.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -193,6 +121,7 @@
     } else if ([typeStr isEqualToString:@"3"]) {
         MyTaskDetailsThrCell *cellThr = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsThrCell" forIndexPath:indexPath];
         cellThr.titleLb.text = titleStr;
+        [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:detailStr] placeholderImage:[UIImage imageNamed:@"upload"]];
         cellThr.selectBlock = ^{
             
         };
@@ -220,6 +149,87 @@
  点击cell
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)MTDCreateUIInfo {
+    if (self.tkModel!=nil) {
+        NSArray *rstArr = @[
+            @{
+                @"type":@"1",
+                @"title":@"",
+                @"text":@""
+            },
+            @{
+                @"type":@"4",
+                @"title":@"",
+                @"text":@""
+            },
+            @{
+                @"type":@"2",
+                @"title":@"地理位置",
+                @"text":[NSString stringWithFormat:@"%@%@%@",self.tkModel.province,self.tkModel.city,self.tkModel.district]
+            },
+            @{
+                @"type":@"2",
+                @"title":@"填报时间",
+                @"text":self.tkModel.createDate
+            },
+            @{
+                @"type":@"2",
+                @"title":@"作物名称",
+                @"text":self.tkModel.zuowumc
+            },
+            @{
+                @"type":@"2",
+                @"title":@"朝向",
+                @"text":self.tkModel.chaoxiang
+            },
+            @{
+                @"type":@"2",
+                @"title":@"朝向精度",
+                @"text":self.tkModel.jingduzhi
+            },
+            @{
+                @"type":@"2",
+                @"title":@"填报时间",
+                @"text":self.tkModel.createDate
+            },
+            @{
+                @"type":@"2",
+                @"title":@"状态",
+                @"text":self.tkModel.zhuangtai
+            },
+            @{
+                @"type":@"3",
+                @"title":@"叶子照片",
+                @"text":self.tkModel.yepianzpid
+            },
+            @{
+                @"type":@"3",
+                @"title":@"植株照片",
+                @"text":self.tkModel.zhizhuzpid
+            },
+            @{
+                @"type":@"3",
+                @"title":@"地块照片",
+                @"text":self.tkModel.dikuaizpid
+            },
+            [@{
+                @"type":@"5",
+                @"title":@"备注",
+                @"count":[NSNumber numberWithInteger:200],
+                @"holder":@"备注(200字)",
+                @"text":@""
+            } mutableCopy],
+            @{
+                @"type":@"6",
+                @"title":@"",
+                @"text":@""
+            },
+        ];
+        [self.dataArr addObjectsFromArray:rstArr];
+    }
     
 }
 
@@ -255,5 +265,15 @@
     }
     return text;
 }
+
+#pragma mark - 网络请求
+- (void)MTDSubmitRequest {
+    
+    
+    
+    
+}
+
+
 
 @end

@@ -11,6 +11,7 @@
 #import "MyTaskDetailsHeadCell.h"
 #import "MyTaskDetailsFouCell.h"
 #import "MyTaskDetailsFootCell.h"
+#import <AMapLocationKit/AMapLocationKit.h>
 
 @interface TaskMapDataSubmitController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -18,6 +19,19 @@
 
 /** 数据 */
 @property (nonatomic, strong) NSMutableArray *dataArr;
+/** 定位 */
+@property (nonatomic, strong) AMapLocationManager *locationManager;
+
+/** 当前位置 */
+@property (nonatomic, assign) CLLocationCoordinate2D nowClCoor2d;
+
+/** 叶子图片 */
+@property (nonatomic, strong) UIImage *yeziImg;
+/** 植株图片 */
+@property (nonatomic, strong) UIImage *zhizhuImg;
+/** 地块 */
+@property (nonatomic, strong) UIImage *dikuaiImg;
+
 
 @end
 
@@ -83,13 +97,13 @@
     }
     self.tabV.rowHeight = UITableViewAutomaticDimension;
     self.tabV.estimatedRowHeight = 30;
-    
-    
 
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsThrCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsThrCell"];
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsHeadCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsHeadCell"];
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsFouCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsFouCell"];
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsFootCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsFootCell"];
+    
+    [self isHomeGetMyLocation];
     
     
 }
@@ -213,6 +227,34 @@
     return text;
 }
 
+#pragma mark - 定位
+/**
+ 获取定位
+ */
+- (void)isHomeGetMyLocation {
+    self.locationManager = [[AMapLocationManager alloc] init];
+    // 带逆地理信息的一次定位（返回坐标和地址信息）
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    //   定位超时时间，最低2s，此处设置为2s
+    self.locationManager.locationTimeout =5;
+    //   逆地理请求超时时间，最低2s，此处设置为2s
+    self.locationManager.reGeocodeTimeout =5;
+    [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+        
+        if (error) {
+            MLog(@"定位异常\nlocError:{%ld - %@};", (long)error.code, error.localizedDescription);
+            
+            if (error.code == AMapLocationErrorLocateFailed) {
+                return;
+            }
+        }
+        
+        MLog(@"location:%@\n%f,%f", location,location.coordinate.longitude,location.coordinate.latitude);
+        /** 经纬度 */
+        CLLocationCoordinate2D gcj02Coord = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
+        self.nowClCoor2d = gcj02Coord;
 
+    }];
+}
 
 @end

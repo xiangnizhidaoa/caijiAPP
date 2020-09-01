@@ -135,6 +135,7 @@
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MyTaskDetailsController *mtdc = [MyTaskDetailsController new];
+    mtdc.tkModel = [self.modelArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:mtdc animated:YES];
 }
 
