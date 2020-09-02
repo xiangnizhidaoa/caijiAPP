@@ -47,6 +47,8 @@
 /*** 数据采集 ***/
 @property (nonatomic, copy) NSString *dataSave;
 
+@property (nonatomic, copy) NSString *upLoadImage;//上传图片
+
 
 + (NSString *)hostUrlWithParam:(NSString *)param;
 

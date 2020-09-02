@@ -225,13 +225,13 @@
         }else{
             MyTaskDetailsThrCell *cellThr = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsThrCell" forIndexPath:indexPath];
             cellThr.titleLb.text = titleStr;
-            NSLog(@"%@",[NSString stringWithFormat:@"%@%@",BS_Url.downImage,self.model.yepianzpid]);
+            NSLog(@"%@",[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.model.yepianzpid]);
             if (indexPath.row == 2) {
-                [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BS_Url.downImage,self.model.yepianzpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
+                [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.model.yepianzpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
             }else if (indexPath.row == 3){
-                [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BS_Url.downImage,self.model.zhizhuzpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
+                [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.model.zhizhuzpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
             }else if (indexPath.row == 4){
-                [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BS_Url.downImage,self.model.dikuaizpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
+                [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.model.dikuaizpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
             }
             cellThr.detailsIv.userInteractionEnabled = NO;
             return cellThr;
@@ -240,12 +240,22 @@
       MyTaskDetailsFootCell *cellFou = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFootCell" forIndexPath:indexPath];
        return cellFou;
    } else if ([typeStr isEqualToString:@"5"]) {
-       MyTaskDetailsFivCell *cellFiv = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFivCell" forIndexPath:indexPath];
-       cellFiv.finishBlock = ^(NSString * _Nonnull text) {
-           [[self.dataArr objectAtIndex:indexPath.row] setObject:[self isNoBlankText:text] forKey:@"text"];
-       };
+       if (self.type == 0) {
+           MyTaskDetailsFivCell *cellFiv = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFivCell" forIndexPath:indexPath];
+           cellFiv.finishBlock = ^(NSString * _Nonnull text) {
+               [[self.dataArr objectAtIndex:indexPath.row] setObject:[self isNoBlankText:text] forKey:@"text"];
+           };
+           
+           return cellFiv;
+       }else{
+           MyTaskDetailsFivCell *cellFiv = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFivCell" forIndexPath:indexPath];
+           cellFiv.detailTv.text = self.model.remarks;
+           cellFiv.hintLb.hidden = YES;
+           cellFiv.detailTv.userInteractionEnabled = NO;
+           
+           return cellFiv;
+       }
        
-       return cellFiv;
    }
     return nil;
 }
@@ -465,10 +475,20 @@
 //    self.siModel.imgData = imgData;
     if (self.imgSelect==2) {
         self.yeziImg = originalImage;
+        NSData *imgData = UIImageJPEGRepresentation(originalImage, 0.2f);
+        NSDictionary *dic = @{@"code_id":@"4355549-d04f-40e0-afb7-bbb1faf",@"column":@"yepian",@"isreplace":@"1",@"filePath":imgData};
+        [self loadImageWithDic:dic];
+        
     } else if (self.imgSelect==3) {
         self.zhizhuImg = originalImage;
+        NSData *imgData = UIImageJPEGRepresentation(originalImage, 0.2f);
+        NSDictionary *dic = @{@"code_id":@"4355549-d04f-40e0-afb7-bbb1faf",@"column":@"zhizhu",@"isreplace":@"1",@"filePath":imgData};
+        [self loadImageWithDic:dic];
     } else if (self.imgSelect==4) {
         self.dikuaiImg = originalImage;
+        NSData *imgData = UIImageJPEGRepresentation(originalImage, 0.2f);
+        NSDictionary *dic = @{@"code_id":@"4355549-d04f-40e0-afb7-bbb1faf",@"column":@"dikuai",@"isreplace":@"1",@"filePath":imgData};
+        [self loadImageWithDic:dic];
     }
     [self.tabV reloadData];
     // 将模态显示的视图控制器消失
@@ -476,6 +496,22 @@
     
     
 }
+
+//上传图片
+-(void)loadImageWithDic:(NSDictionary *)dic{
+    [LSNetworkService postUpLoadImageWithDic:dic response:^(id dict, BSError *error) {
+        if (dict != nil) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
+            NSLog(@"%@",dic);
+            if ([dic[@"status"] integerValue] == 1) {
+                
+            }else{
+                [LPUnitily showToastWithText:dic[@"message"]];
+            }
+        }
+    }];
+}
+
 
 /**
  取消拍照

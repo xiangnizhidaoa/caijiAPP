@@ -48,6 +48,8 @@ static BSUrl * instance = nil;
         
         self.dataSave = [BSUrl hostUrlWithParam:@"/wx/markerfill/save"];
         
+        self.upLoadImage = [BSUrl hostUrlWithParam:@"/servlet/FileUploadServlet"];
+        
     }
     return self;
 }

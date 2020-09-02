@@ -96,7 +96,7 @@
     [manager POST:urlString parameters:bodyDic constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
         for (NSString *key in imageDic) {
             [formData appendPartWithFileData:imageDic[key]
-                                        name:@"files"
+                                        name:@"filePath"
                                     fileName:@"11111.png"
                                     mimeType:@"image/png"];
         }

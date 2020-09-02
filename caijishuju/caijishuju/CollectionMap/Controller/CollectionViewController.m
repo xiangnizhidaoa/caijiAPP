@@ -35,7 +35,7 @@
     self.wkWV = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREENH_HEIGHT-nHeight)];
     self.wkWV.navigationDelegate = self;
     self.wkWV.backgroundColor = [UIColor whiteColor];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@" https://farmviewer.digitaltest.cn/web/static/wx/myMap/test.html"]];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://farmviewer.digitaltest.cn/web/static/wx/myMap/test.html"]];
     
 //    //请求添加自定义header
 //    NSMutableURLRequest *mutableRequest = [request mutableCopy];

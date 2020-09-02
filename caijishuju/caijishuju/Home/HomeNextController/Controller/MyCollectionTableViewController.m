@@ -55,6 +55,21 @@
     [self loadData];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"MyCollectionTableViewCell" bundle:nil] forCellReuseIdentifier:@"MyCollectionTableViewCell"];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        self.pageSize = 10;
+        self.timetype = 0;
+        self.clickType = 0;
+        self.starttime = @"";
+        self.endtime = @"";
+        self.pageNo = 1;
+        self.modelArray = [NSMutableArray array];
+        [self loadData];
+    }];
+    
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        self.pageNo ++;
+        [self loadData];
+    }];
 }
 
 -(void)loadData{

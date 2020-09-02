@@ -20,7 +20,7 @@
     [super viewDidLoad];
     self.title = @"首页";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(map) name:@"map" object:nil];
-    
+    self.tabBarController.selectedIndex = 1;
 }
 
 - (void)viewWillAppear:(BOOL)animated{

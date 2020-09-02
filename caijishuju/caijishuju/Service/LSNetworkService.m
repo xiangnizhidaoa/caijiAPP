@@ -121,6 +121,16 @@
     
 }
 
+//上传图片
++(void)postUpLoadImageWithDic:(NSDictionary *)dic response:(BSResponse)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@?type=image&code_id=%@&column=%@&isreplace=%@",BS_Url.upLoadImage,dic[@"code_id"],dic[@"column"],dic[@"isreplace"]];
+    NSDictionary *dicc = @{@"files":dic[@"filePath"]};
+    [[MK_UseAFNetWorking NewNewWork] postUpLoadDataByString:url BODYDic:nil imageDic:dicc headerDic:nil WithDataBlock:^(id dict) {
+        response(dict,nil);
+    }];
+}
+
 
 
 

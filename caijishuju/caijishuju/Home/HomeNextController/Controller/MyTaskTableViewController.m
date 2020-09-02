@@ -39,10 +39,24 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerNib:[UINib nibWithNibName:@"MyTaskTableViewCell" bundle:nil] forCellReuseIdentifier:@"MyTaskTableViewCell"];
     [self loadData];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        self.pageNo = 1;
+        self.pageSize = 10;
+        self.zuowuName = @"";
+        self.modelArray = [NSMutableArray array];
+        [self loadData];
+    }];
+    
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        self.pageNo ++;
+        [self loadData];
+    }];
 }
 
 -(void)loadData{
     [LSNetworkService getMyTaskWithDic:@{@"pageNo":@(self.pageNo),@"pageSize":@(self.pageSize),@"zuowumc":self.zuowuName} response:^(id dict, BSError *error) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
         if (dict != nil) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
             NSLog(@"%@",dic);

@@ -8,6 +8,7 @@
 
 #import "TaskViewController.h"
 #import <WebKit/WebKit.h>
+#import "TaskMapDataSubmitController.h"
 
 @interface TaskViewController ()<WKNavigationDelegate,WKScriptMessageHandler>
 
@@ -22,7 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"任务地图";
-    
+//    TaskMapDataSubmitController *tmdsc = [TaskMapDataSubmitController new];
+//    tmdsc.type = 0;
+//    [self.navigationController pushViewController:tmdsc animated:YES];
     self.view.backgroundColor = [UIColor whiteColor];
     self.progressV = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 8)];
     self.progressV.progressViewStyle = UIProgressViewStyleDefault;
@@ -33,7 +36,7 @@
     self.wkWV = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREENH_HEIGHT-nHeight)];
     self.wkWV.navigationDelegate = self;
     self.wkWV.backgroundColor = [UIColor whiteColor];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@" https://farmviewer.digitaltest.cn/web/static/wx/myMap/test.html"]];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://farmviewer.digitaltest.cn/web/static/wx/myMap/test.html"]];
     
 //    //请求添加自定义header
 //    NSMutableURLRequest *mutableRequest = [request mutableCopy];
@@ -58,6 +61,9 @@
                 NSLog(@"%@",dic);
                 if ([dic[@"status"] integerValue] == 1) {
                     //这里处理登录后的逻辑就行
+                    TaskMapDataSubmitController *tmdsc = [TaskMapDataSubmitController new];
+                    tmdsc.type = 0;
+                    [self.navigationController pushViewController:tmdsc animated:YES];
                 }else{
                     // 所有需要弹出登录的时候直接发送通知就好
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
