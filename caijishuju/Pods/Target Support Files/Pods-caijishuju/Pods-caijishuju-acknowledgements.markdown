@@ -34,6 +34,11 @@ Copyright © 2014 AutoNavi. All Rights Reserved.
 Copyright © 2014 AutoNavi. All Rights Reserved.
 
 
+## AMapLocation-NO-IDFA
+
+Copyright © 2014 AutoNavi. All Rights Reserved.
+
+
 ## ASIHTTPRequest
 
 * Copyright (c) 2007-2011, All-Seeing Interactive
