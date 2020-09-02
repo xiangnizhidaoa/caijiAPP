@@ -44,7 +44,7 @@ static BSUrl * instance = nil;
         
         self.password = [BSUrl hostUrlWithParam:@"/wx/reset"];
         
-        self.downImage = [BSUrl hostUrlWithParam:@"/"];
+        self.downImage = [BSUrl hostUrlWithParam:@"/servlet/FileDownloadServlet"];
         
     }
     return self;
