@@ -50,4 +50,7 @@
 //上传图片
 +(void)postUpLoadImageWithDic:(NSDictionary *)dic response:(BSResponse)response;
 
+//图片识别
++(void)getZhiwuImageWithDic:(NSDictionary *)dic response:(BSResponse)response;
+
 @end

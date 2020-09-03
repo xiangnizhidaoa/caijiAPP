@@ -50,6 +50,8 @@ static BSUrl * instance = nil;
         
         self.upLoadImage = [BSUrl hostUrlWithParam:@"/servlet/FileUploadServlet"];
         
+        self.zhiwuImage = [BSUrl hostUrlWithParam:@"/wx/imageclassify/zhiwusavepicforhighfind"];
+        
     }
     return self;
 }

@@ -49,6 +49,8 @@
 
 @property (nonatomic, copy) NSString *upLoadImage;//上传图片
 
+@property (nonatomic, copy) NSString *zhiwuImage;//植物识别
+
 
 + (NSString *)hostUrlWithParam:(NSString *)param;
 

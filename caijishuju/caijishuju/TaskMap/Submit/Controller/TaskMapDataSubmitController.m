@@ -225,7 +225,6 @@
         }else{
             MyTaskDetailsThrCell *cellThr = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsThrCell" forIndexPath:indexPath];
             cellThr.titleLb.text = titleStr;
-            NSLog(@"%@",[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.model.yepianzpid]);
             if (indexPath.row == 2) {
                 [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.model.yepianzpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
             }else if (indexPath.row == 3){
@@ -501,12 +500,24 @@
 -(void)loadImageWithDic:(NSDictionary *)dic{
     [LSNetworkService postUpLoadImageWithDic:dic response:^(id dict, BSError *error) {
         if (dict != nil) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
-            NSLog(@"%@",dic);
-            if ([dic[@"status"] integerValue] == 1) {
-                
+            NSDictionary *dicc = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
+            NSLog(@"%@",dicc);
+            if (dicc != nil) {
+                if ([dic[@"column"] isEqualToString:@"yepian"]) {
+                    [LSNetworkService getZhiwuImageWithDic:@{@"fileid":dicc[@"id"]} response:^(id dict, BSError *error) {
+                        if (dict != nil) {
+                            NSDictionary *dic1 = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
+                            NSLog(@"%@",dic1);
+                            if ([dic1[@"status"] integerValue] == 20000) {
+                                
+                            }else{
+                                [LPUnitily showToastWithText:dic1[@"message"]];
+                            }
+                        }
+                    }];
+                }
             }else{
-                [LPUnitily showToastWithText:dic[@"message"]];
+                [LPUnitily showToastWithText:dicc[@"message"]];
             }
         }
     }];

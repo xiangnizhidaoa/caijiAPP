@@ -131,7 +131,14 @@
     }];
 }
 
-
+//图片识别
++(void)getZhiwuImageWithDic:(NSDictionary *)dic response:(BSResponse)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@?fileid=%@&token=%@",BS_Url.zhiwuImage,dic[@"fileid"],App_Utility.currentUser.token];
+    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
+        response(completion,nil);
+    }];
+}
 
 
 
