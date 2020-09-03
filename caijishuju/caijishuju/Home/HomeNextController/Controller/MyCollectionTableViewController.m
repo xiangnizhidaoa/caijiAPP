@@ -74,6 +74,8 @@
 
 -(void)loadData{
     [LSNetworkService getMyCollectionWithDic:@{@"pageNo":@(self.pageNo),@"pageSize":@(self.pageSize),@"timetype":@(self.timetype),@"starttime":self.starttime,@"endtime":self.endtime} response:^(id dict, BSError *error) {
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
         if (dict != nil) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
             NSLog(@"%@",dic);

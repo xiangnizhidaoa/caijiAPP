@@ -98,6 +98,7 @@ static int i = 0;
         self.codde.text = @"";
         self.sendBtn.hidden = NO;
         [self.changeBtn setTitle:@"密码登录" forState:UIControlStateNormal];
+        self.codde.secureTextEntry = NO;
         i = 1;
         self.isCode = 1;
     }else{
@@ -107,6 +108,7 @@ static int i = 0;
         self.sendBtn.hidden = YES;
         [self.changeBtn setTitle:@"验证码登录" forState:UIControlStateNormal];
         i = 0;
+        self.codde.secureTextEntry = YES;
         self.isCode = 0;
     }
     

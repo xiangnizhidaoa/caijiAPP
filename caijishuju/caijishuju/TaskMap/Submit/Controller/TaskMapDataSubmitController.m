@@ -508,7 +508,7 @@
                         if (dict != nil) {
                             NSDictionary *dic1 = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
                             NSLog(@"%@",dic1);
-                            if ([dic1[@"status"] integerValue] == 20000) {
+                            if ([dic1[@"status"] integerValue] == 1) {
                                 
                             }else{
                                 [LPUnitily showToastWithText:dic1[@"message"]];
