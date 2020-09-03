@@ -14,9 +14,9 @@
 #import <AMapLocationKit/AMapLocationKit.h>
 #import "MViewToast.h"
 #import "MyTaskDetailsFivCell.h"
+#import "CarTaskManagePhotoDetailsController.h"
 
-
-@interface TaskMapDataSubmitController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,CLLocationManagerDelegate>
+@interface TaskMapDataSubmitController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,CLLocationManagerDelegate,CTMPhotoDetailsDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tabV;
 
@@ -69,21 +69,21 @@
                 @"holder":@"作物名称(自动识别)",
                 @"text":@""
             } mutableCopy],
-            @{
+            [@{
                 @"type":@"3",
                 @"title":@"叶子照片",
                 @"text":@""
-            },
-            @{
+            } mutableCopy],
+            [@{
                 @"type":@"3",
                 @"title":@"植株照片",
                 @"text":@""
-            },
-            @{
+            } mutableCopy] ,
+            [@{
                 @"type":@"3",
                 @"title":@"地块照片",
                 @"text":@""
-            },
+            } mutableCopy],
             [@{
                 @"type":@"5",
                 @"title":@"备注",
@@ -191,6 +191,7 @@
             cellTwo.wordCount = [[[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"count"] integerValue];
             cellTwo.detailsTf.placeholder = [[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"holder"];
             cellTwo.titleLb.text = titleStr;
+            cellTwo.detailsTf.text = detailStr;
             cellTwo.finishBlock = ^(NSString * _Nonnull text) {
                 [[self.dataArr objectAtIndex:indexPath.row] setObject:[self isNoBlankText:text] forKey:@"text"];
             };
@@ -210,7 +211,30 @@
             cellThr.selectBlock = ^{
                 self.imgSelect = indexPath.row;
                 [self HPSICameraJurisdiction];
-                
+                if ((self.zhizhuImg !=nil)&&(indexPath.row==3)) {
+                    CarTaskManagePhotoDetailsController *ctmpdc = [CarTaskManagePhotoDetailsController new];
+                    ctmpdc.isModification = YES;
+                    ctmpdc.cellInd = 0;
+                    ctmpdc.delegate = self;
+                    [ctmpdc.photosDetailsArr addObject:self.zhizhuImg];
+                    [self.navigationController pushViewController:ctmpdc animated:YES];
+                }
+                if ((self.yeziImg !=nil)&&(indexPath.row==2)) {
+                    CarTaskManagePhotoDetailsController *ctmpdc = [CarTaskManagePhotoDetailsController new];
+                    ctmpdc.isModification = YES;
+                    ctmpdc.cellInd = 0;
+                    ctmpdc.delegate = self;
+                    [ctmpdc.photosDetailsArr addObject:self.yeziImg];
+                    [self.navigationController pushViewController:ctmpdc animated:YES];
+                }
+                if ((self.dikuaiImg !=nil)&&(indexPath.row==4)) {
+                    CarTaskManagePhotoDetailsController *ctmpdc = [CarTaskManagePhotoDetailsController new];
+                    ctmpdc.isModification = YES;
+                    ctmpdc.cellInd = 0;
+                    ctmpdc.delegate = self;
+                    [ctmpdc.photosDetailsArr addObject:self.dikuaiImg];
+                    [self.navigationController pushViewController:ctmpdc animated:YES];
+                }
             };
             
             if (indexPath.row==2) {
@@ -557,7 +581,7 @@
 /// 保存
 - (void)TMDSSubmitRequest {
     
-    NSString *bodyStr = [NSString stringWithFormat:@"%@?zuowumc=%@􏱻􏱻􏰧􏰧􏱭􏱭&remarks=%@&id=f774f06d434d4e549da35de897196559&fi lecode=a8894ed2-48a4-d549-8680-9ca6fba5bba0&weidu1=&jingdu1=& weidu=0&jingdu=0&weidu2=%f&jingdu2=%f&province=%@&city=%@&distric t=%@&renwuid=&chaoxiang=146&jingduzhi=high&zhuangtai=5",BS_Url.dataSave,[[self.dataArr objectAtIndex:1] objectForKey:@"text"],[[self.dataArr objectAtIndex:5] objectForKey:@"text"],self.nowClCoor2d.latitude,self.nowClCoor2d.longitude,self.provinceStr,self.cityStr,self.districtStr   ];
+    NSString *bodyStr = [NSString stringWithFormat:@"%@?zuowumc=%@􏱻􏱻􏰧􏰧􏱭􏱭&remarks=%@&id=f774f06d434d4e549da35de897196559&fi lecode=a8894ed2-48a4-d549-8680-9ca6fba5bba0&weidu1=&jingdu1=& weidu=0&jingdu=0&weidu2=%f&jingdu2=%f&province=%@&city=%@&distric t=%@&renwuid=&chaoxiang=146&jingduzhi=high&zhuangtai=5",BS_Url.dataSave,[[self.dataArr objectAtIndex:1] objectForKey:@"text"],[[self.dataArr objectAtIndex:5] objectForKey:@"text"],self.nowClCoor2d.latitude,self.nowClCoor2d.longitude,self.provinceStr,self.cityStr,self.districtStr];
     
     [LSNetworkService getDataCollectionSaveWithString:bodyStr response:^(id dict, BSError *error) {
         if (dict != nil) {
@@ -577,6 +601,20 @@
         }
     }];
     
+}
+
+/**
+ 删除照片
+ */
+- (void)photosDetailsWithDelete:(NSInteger)arrInd {
+    if (self.imgSelect==2) {
+        self.yeziImg=nil;
+    } else if (self.imgSelect==3) {
+        self.zhizhuImg=nil;
+    } else if (self.imgSelect==4) {
+        self.dikuaiImg=nil;
+    }
+    [self.tabV reloadData];
 }
 
 

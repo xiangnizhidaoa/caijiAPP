@@ -106,6 +106,15 @@
 		0973803524EA681100C0E319 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0973803324EA681100C0E319 /* LoginViewController.m */; };
 		0973803624EA681100C0E319 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0973803424EA681100C0E319 /* LoginViewController.xib */; };
 		0C0BA4B024EEAA0F0068E12A /* LYLUnicode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0BA4AE24EEAA0F0068E12A /* LYLUnicode.m */; };
+		0C5314F52501A5770010675A /* CarTaskManagePhotoDetailsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5314EF2501A5770010675A /* CarTaskManagePhotoDetailsController.xib */; };
+		0C5314F62501A5770010675A /* CarTaskManagePhotoDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5314F02501A5770010675A /* CarTaskManagePhotoDetailsController.m */; };
+		0C5314F72501A5770010675A /* CTMPhotosDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5314F22501A5770010675A /* CTMPhotosDetailsCell.xib */; };
+		0C5314F82501A5770010675A /* CTMPhotosDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5314F32501A5770010675A /* CTMPhotosDetailsCell.m */; };
+		0C5315002501AB150010675A /* HHRLaunchPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5314FC2501AB150010675A /* HHRLaunchPageCell.xib */; };
+		0C5315012501AB150010675A /* HHRLaunchPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5314FD2501AB150010675A /* HHRLaunchPageCell.m */; };
+		0C5315022501AB150010675A /* HHRLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5314FE2501AB150010675A /* HHRLaunchViewController.xib */; };
+		0C5315032501AB150010675A /* HHRLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5314FF2501AB150010675A /* HHRLaunchViewController.m */; };
+		0C5315072501AB610010675A /* ZJPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5315052501AB610010675A /* ZJPageControl.m */; };
 		0C626CC124F7EC6A00F0E1E2 /* MyTaskDetailsHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C626CBF24F7EC6A00F0E1E2 /* MyTaskDetailsHeadCell.m */; };
 		0C626CC224F7EC6A00F0E1E2 /* MyTaskDetailsHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C626CC024F7EC6A00F0E1E2 /* MyTaskDetailsHeadCell.xib */; };
 		0C626CC624F7F9E300F0E1E2 /* MyTaskDetailsFouCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C626CC424F7F9E300F0E1E2 /* MyTaskDetailsFouCell.m */; };
@@ -307,6 +316,20 @@
 		0973803424EA681100C0E319 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		0C0BA4AE24EEAA0F0068E12A /* LYLUnicode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLUnicode.m; sourceTree = "<group>"; };
 		0C0BA4AF24EEAA0F0068E12A /* LYLUnicode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLUnicode.h; sourceTree = "<group>"; };
+		0C5314EE2501A5770010675A /* CarTaskManagePhotoDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTaskManagePhotoDetailsController.h; sourceTree = "<group>"; };
+		0C5314EF2501A5770010675A /* CarTaskManagePhotoDetailsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarTaskManagePhotoDetailsController.xib; sourceTree = "<group>"; };
+		0C5314F02501A5770010675A /* CarTaskManagePhotoDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTaskManagePhotoDetailsController.m; sourceTree = "<group>"; };
+		0C5314F22501A5770010675A /* CTMPhotosDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTMPhotosDetailsCell.xib; sourceTree = "<group>"; };
+		0C5314F32501A5770010675A /* CTMPhotosDetailsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMPhotosDetailsCell.m; sourceTree = "<group>"; };
+		0C5314F42501A5770010675A /* CTMPhotosDetailsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMPhotosDetailsCell.h; sourceTree = "<group>"; };
+		0C5314FA2501AB150010675A /* HHRLaunchPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHRLaunchPageCell.h; sourceTree = "<group>"; };
+		0C5314FB2501AB150010675A /* HHRLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHRLaunchViewController.h; sourceTree = "<group>"; };
+		0C5314FC2501AB150010675A /* HHRLaunchPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHRLaunchPageCell.xib; sourceTree = "<group>"; };
+		0C5314FD2501AB150010675A /* HHRLaunchPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHRLaunchPageCell.m; sourceTree = "<group>"; };
+		0C5314FE2501AB150010675A /* HHRLaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHRLaunchViewController.xib; sourceTree = "<group>"; };
+		0C5314FF2501AB150010675A /* HHRLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHRLaunchViewController.m; sourceTree = "<group>"; };
+		0C5315052501AB610010675A /* ZJPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPageControl.m; sourceTree = "<group>"; };
+		0C5315062501AB610010675A /* ZJPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPageControl.h; sourceTree = "<group>"; };
 		0C626CBE24F7EC6A00F0E1E2 /* MyTaskDetailsHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTaskDetailsHeadCell.h; sourceTree = "<group>"; };
 		0C626CBF24F7EC6A00F0E1E2 /* MyTaskDetailsHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTaskDetailsHeadCell.m; sourceTree = "<group>"; };
 		0C626CC024F7EC6A00F0E1E2 /* MyTaskDetailsHeadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTaskDetailsHeadCell.xib; sourceTree = "<group>"; };
@@ -536,6 +559,7 @@
 		09737F4424EA27B700C0E319 /* caijishuju */ = {
 			isa = PBXGroup;
 			children = (
+				0C5314F92501AB150010675A /* FirstLaunchPage */,
 				09737F4524EA27B700C0E319 /* AppDelegate.h */,
 				09737F4624EA27B700C0E319 /* AppDelegate.m */,
 				09737F7E24EA2E8700C0E319 /* AppUtility.h */,
@@ -755,6 +779,7 @@
 		0973800824EA322100C0E319 /* TaskMap */ = {
 			isa = PBXGroup;
 			children = (
+				0C5314EC2501A5770010675A /* PhotosDetails */,
 				0C626CCD24F8116900F0E1E2 /* Submit */,
 				0973801124EA325C00C0E319 /* Root */,
 			);
@@ -905,6 +930,58 @@
 				0C0BA4AF24EEAA0F0068E12A /* LYLUnicode.h */,
 			);
 			path = LYLUnicode;
+			sourceTree = "<group>";
+		};
+		0C5314EC2501A5770010675A /* PhotosDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0C5314ED2501A5770010675A /* Controller */,
+				0C5314F12501A5770010675A /* View */,
+			);
+			path = PhotosDetails;
+			sourceTree = "<group>";
+		};
+		0C5314ED2501A5770010675A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0C5314EE2501A5770010675A /* CarTaskManagePhotoDetailsController.h */,
+				0C5314F02501A5770010675A /* CarTaskManagePhotoDetailsController.m */,
+				0C5314EF2501A5770010675A /* CarTaskManagePhotoDetailsController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0C5314F12501A5770010675A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C5314F22501A5770010675A /* CTMPhotosDetailsCell.xib */,
+				0C5314F32501A5770010675A /* CTMPhotosDetailsCell.m */,
+				0C5314F42501A5770010675A /* CTMPhotosDetailsCell.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C5314F92501AB150010675A /* FirstLaunchPage */ = {
+			isa = PBXGroup;
+			children = (
+				0C5315042501AB610010675A /* ZJPageControl */,
+				0C5314FA2501AB150010675A /* HHRLaunchPageCell.h */,
+				0C5314FB2501AB150010675A /* HHRLaunchViewController.h */,
+				0C5314FC2501AB150010675A /* HHRLaunchPageCell.xib */,
+				0C5314FD2501AB150010675A /* HHRLaunchPageCell.m */,
+				0C5314FE2501AB150010675A /* HHRLaunchViewController.xib */,
+				0C5314FF2501AB150010675A /* HHRLaunchViewController.m */,
+			);
+			path = FirstLaunchPage;
+			sourceTree = "<group>";
+		};
+		0C5315042501AB610010675A /* ZJPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				0C5315052501AB610010675A /* ZJPageControl.m */,
+				0C5315062501AB610010675A /* ZJPageControl.h */,
+			);
+			path = ZJPageControl;
 			sourceTree = "<group>";
 		};
 		0C626CCD24F8116900F0E1E2 /* Submit */ = {
@@ -1062,7 +1139,9 @@
 				09737F5524EA27B800C0E319 /* LaunchScreen.storyboard in Resources */,
 				0C7171F324F54AFD00C7221D /* MyTaskDetailsThrCell.xib in Resources */,
 				0973802524EA341100C0E319 /* TaskViewController.xib in Resources */,
+				0C5315022501AB150010675A /* HHRLaunchViewController.xib in Resources */,
 				091E4FEB24F6050900C3BE79 /* TimeTypeViewController.xib in Resources */,
+				0C5314F52501A5770010675A /* CarTaskManagePhotoDetailsController.xib in Resources */,
 				0C6D8C8E24FEC05700E34520 /* MyTaskDetailsFivCell.xib in Resources */,
 				09737FFC24EA2EB300C0E319 /* PhotoViewController.xib in Resources */,
 				0903A37B24F4BA1C003A0430 /* MyMsgTableViewController.xib in Resources */,
@@ -1077,6 +1156,7 @@
 				0903A38524F4BD02003A0430 /* MyMsgTableViewCell.xib in Resources */,
 				09737F5024EA27B700C0E319 /* Main.storyboard in Resources */,
 				0903A3A724F4FB48003A0430 /* MyTaskTableViewController.xib in Resources */,
+				0C5314F72501A5770010675A /* CTMPhotosDetailsCell.xib in Resources */,
 				0973801B24EA33EB00C0E319 /* HomeViewController.xib in Resources */,
 				0903A38024F4BAED003A0430 /* MyMsgHeaderTableViewCell.xib in Resources */,
 				091E4FDC24F602D100C3BE79 /* MyCollectionTableViewCell.xib in Resources */,
@@ -1091,6 +1171,7 @@
 				0924076F24FC88D50049F671 /* RegiestViewController.xib in Resources */,
 				0903A3B724F50C92003A0430 /* MyTaskTableViewCell.xib in Resources */,
 				091E4FE124F6031000C3BE79 /* CollectionSearchView.xib in Resources */,
+				0C5315002501AB150010675A /* HHRLaunchPageCell.xib in Resources */,
 				0903A39E24F4EA5A003A0430 /* AboutUsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1176,14 +1257,17 @@
 				0C6D8C8D24FEC05700E34520 /* MyTaskDetailsFivCell.m in Sources */,
 				0903A39D24F4EA5A003A0430 /* AboutUsTableViewCell.m in Sources */,
 				0973802E24EA357800C0E319 /* HomeTabbarViewController.m in Sources */,
+				0C5315032501AB150010675A /* HHRLaunchViewController.m in Sources */,
 				0924076E24FC88D50049F671 /* RegiestViewController.m in Sources */,
 				0903A3B624F50C92003A0430 /* MyTaskTableViewCell.m in Sources */,
 				09737FC224EA2E8700C0E319 /* NSMutableArray+WSMutableArray.m in Sources */,
+				0C5315012501AB150010675A /* HHRLaunchPageCell.m in Sources */,
 				09737FBA24EA2E8700C0E319 /* MK_UseAFNetWorking.m in Sources */,
 				0903A37A24F4BA1C003A0430 /* MyMsgTableViewController.m in Sources */,
 				09737FCE24EA2E8700C0E319 /* UtilFunc.m in Sources */,
 				0C7171ED24F54AD900C7221D /* MyTaskDetailsTwoCell.m in Sources */,
 				0903A3AF24F50978003A0430 /* TaskModel.m in Sources */,
+				0C5314F82501A5770010675A /* CTMPhotosDetailsCell.m in Sources */,
 				09737FD124EA2E8700C0E319 /* UIButton+Detect.m in Sources */,
 				09737FD424EA2E8700C0E319 /* LPUnitily.m in Sources */,
 				09737FDA24EA2E8700C0E319 /* UINavigationBar+Awesome.m in Sources */,
@@ -1191,6 +1275,7 @@
 				09737FBF24EA2E8700C0E319 /* LPRequest.m in Sources */,
 				09737FD924EA2E8700C0E319 /* UIImage+Extensions.m in Sources */,
 				09737FD324EA2E8700C0E319 /* UIView+UIViewController.m in Sources */,
+				0C5315072501AB610010675A /* ZJPageControl.m in Sources */,
 				0C7171E824F549E700C7221D /* MyTaskDetailsOneCell.m in Sources */,
 				0903A3AA24F5036E003A0430 /* SearchView.m in Sources */,
 				09737FCA24EA2E8700C0E319 /* UIView+Shake.m in Sources */,
@@ -1228,6 +1313,7 @@
 				09737F5824EA27B800C0E319 /* main.m in Sources */,
 				09737FB924EA2E8700C0E319 /* JSONKit.m in Sources */,
 				0924077C24FC923B0049F671 /* PasswordViewController.m in Sources */,
+				0C5314F62501A5770010675A /* CarTaskManagePhotoDetailsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

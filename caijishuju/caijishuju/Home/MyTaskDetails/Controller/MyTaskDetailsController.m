@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"小麦";
+    self.navigationItem.title = self.tkModel.zuowumc;
     [self MTDCreateUIInfo];
     if (@available(iOS 11.0, *)) {
         self.tabV.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -60,7 +60,7 @@
 
 /** 保存 */
 - (IBAction)MTDSaveBtAction:(UIButton *)sender {
-    
+    [self MTDSubmitRequest];
 }
 
 /** 采集地图 */
@@ -277,10 +277,31 @@
 #pragma mark - 网络请求
 - (void)MTDSubmitRequest {
     
+    NSString *bodyStr = [NSString stringWithFormat:@"%@?zuowumc=%@􏱻􏱻􏰧􏰧􏱭􏱭&remarks=%@&id=%@&fi lecode=%@&weidu1=%@&jingdu1=%@&weidu=%@&jingdu=%@&weidu2=%@&jingdu2=%@&province=%@&city=%@&district=%@&renwuid=&chaoxiang=146&jingduzhi=high&zhuangtai=5",BS_Url.dataSave,self.tkModel.zuowumc,[[self.dataArr objectAtIndex:12] objectForKey:@"text"],self.tkModel.ID,self.tkModel.filecode,self.tkModel.weidu1,self.tkModel.jingdu1,self.tkModel.weidu,self.tkModel.jingdu,self.tkModel.weidu2,self.tkModel.jingdu2,self.tkModel.province,self.tkModel.city,self.tkModel.district];
     
+    [LSNetworkService getDataCollectionSaveWithString:bodyStr response:^(id dict, BSError *error) {
+        if (dict != nil) {
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
+            NSLog(@"%@",dic);
+            if ([dic[@"status"] integerValue] == 1) {
+                
+                UIAlertController *cameraAc = [UIAlertController alertControllerWithTitle:nil message:@"保存成功" preferredStyle:UIAlertControllerStyleAlert];
+                [cameraAc addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }]];
+                [self presentViewController:cameraAc animated:YES completion:nil];
+                
+            }else{
+                [LPUnitily showToastWithText:dic[@"message"]];
+            }
+        }
+    }];
     
     
 }
+
+
+
 
 
 
