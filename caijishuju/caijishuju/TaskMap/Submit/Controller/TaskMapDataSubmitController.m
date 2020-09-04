@@ -48,6 +48,11 @@
 /*** 区 ***/
 @property (nonatomic, copy) NSString *districtStr;
 
+@property (nonatomic, strong) NSString *yepianID;
+
+@property (nonatomic, strong) NSString *zhizhuID;
+
+@property (nonatomic, strong) NSString *dikuaiID;
 
 
 @end
@@ -528,17 +533,23 @@
             NSLog(@"%@",dicc);
             if (dicc != nil) {
                 if ([dic[@"column"] isEqualToString:@"yepian"]) {
+                    self.yepianID = dicc[@"id"];
                     [LSNetworkService getZhiwuImageWithDic:@{@"fileid":dicc[@"id"]} response:^(id dict, BSError *error) {
                         if (dict != nil) {
                             NSDictionary *dic1 = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
                             NSLog(@"%@",dic1);
                             if ([dic1[@"status"] integerValue] == 1) {
-                                
+                                [[self.dataArr objectAtIndex:1] setObject:dic1[@"dataValue"][@"name"] forKey:@"text"];
+                                [self.tabV reloadData];
                             }else{
                                 [LPUnitily showToastWithText:dic1[@"message"]];
                             }
                         }
                     }];
+                }else if ([dic[@"column"] isEqualToString:@"zhizhu"]){
+                    self.zhizhuID = dicc[@"id"];
+                }else if ([dic[@"column"] isEqualToString:@"dikuai"]){
+                    self.dikuaiID = dicc[@"id"];
                 }
             }else{
                 [LPUnitily showToastWithText:dicc[@"message"]];
@@ -581,9 +592,31 @@
 /// 保存
 - (void)TMDSSubmitRequest {
     
-    NSString *bodyStr = [NSString stringWithFormat:@"%@?zuowumc=%@􏱻􏱻􏰧􏰧􏱭􏱭&remarks=%@&id=f774f06d434d4e549da35de897196559&fi lecode=a8894ed2-48a4-d549-8680-9ca6fba5bba0&weidu1=&jingdu1=& weidu=0&jingdu=0&weidu2=%f&jingdu2=%f&province=%@&city=%@&distric t=%@&renwuid=&chaoxiang=146&jingduzhi=high&zhuangtai=5",BS_Url.dataSave,[[self.dataArr objectAtIndex:1] objectForKey:@"text"],[[self.dataArr objectAtIndex:5] objectForKey:@"text"],self.nowClCoor2d.latitude,self.nowClCoor2d.longitude,self.provinceStr,self.cityStr,self.districtStr];
+//    NSString *bodyStr = [NSString stringWithFormat:@"%@?zuowumc=%@􏱻􏱻􏰧􏰧􏱭􏱭&remarks=%@&id=f774f06d434d4e549da35de897196559&filecode=a8894ed2-48a4-d549-8680-9ca6fba5bba0&weidu1=&jingdu1=&weidu=0&jingdu=0&weidu2=%f&jingdu2=%f&province=%@&city=%@&district=%@&renwuid=&chaoxiang=146&jingduzhi=high&zhuangtai=5",BS_Url.dataSave,[[self.dataArr objectAtIndex:1] objectForKey:@"text"],[[self.dataArr objectAtIndex:5] objectForKey:@"text"],self.nowClCoor2d.latitude,self.nowClCoor2d.longitude,self.provinceStr,self.cityStr,self.districtStr];
+    NSDictionary *bodyDic = @{@"zuowumc":[[self.dataArr objectAtIndex:1] objectForKey:@"text"],
+                              @"remarks":[[self.dataArr objectAtIndex:5] objectForKey:@"text"],
+                              @"id":App_Utility.currentUser.userid,
+                              @"filecode":@"",
+                              @"weidu1":@"",
+                              @"jingdu1":@"",
+                              @"weidu":@"",
+                              @"jingdu":@"",
+                              @"weidu2":@(self.nowClCoor2d.latitude),
+                              @"jingdu2":@(self.nowClCoor2d.longitude),
+                              @"province":self.provinceStr != nil ? self.provinceStr : @"",
+                              @"city":self.cityStr != nil ? self.cityStr : @"",
+                              @"district":self.districtStr != nil ? self.districtStr : @"",
+                              @"renwuid":@"",
+                              @"chaoxiang":@"146",
+                              @"jingduzhi":@"high",
+                              @"zhuangtai":@"",
+                              @"isfugai":@"0",
+                              @"zhizhuzpid":self.zhizhuID != nil ? self.zhizhuID : @"",
+                              @"yepianzpid":self.yepianID != nil ? self.yepianID : @"",
+                              @"dikuaizpid":self.dikuaiID != nil ? self.dikuaiID : @""
+    };
     
-    [LSNetworkService getDataCollectionSaveWithString:bodyStr response:^(id dict, BSError *error) {
+    [LSNetworkService getDataCollectionSaveWithString:bodyDic response:^(id dict, BSError *error) {
         if (dict != nil) {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
             NSLog(@"%@",dic);
@@ -591,6 +624,7 @@
                 
                 UIAlertController *cameraAc = [UIAlertController alertControllerWithTitle:nil message:@"保存成功" preferredStyle:UIAlertControllerStyleAlert];
                 [cameraAc addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    self.tabBarController.tabBar.hidden = NO;
                     [self.navigationController popViewControllerAnimated:YES];
                 }]];
                 [self presentViewController:cameraAc animated:YES completion:nil];

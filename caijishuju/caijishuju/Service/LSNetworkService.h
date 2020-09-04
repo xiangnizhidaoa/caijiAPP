@@ -45,7 +45,7 @@
 +(void)getPasswordWithDic:(NSDictionary *)dic response:(BSResponse)response;
 
 /// 数据采集保存请求
-+ (void)getDataCollectionSaveWithString:(NSString *)bodyStr response:(BSResponse)response;
++ (void)getDataCollectionSaveWithString:(NSDictionary *)bodyStr response:(BSResponse)response;
 
 //上传图片
 +(void)postUpLoadImageWithDic:(NSDictionary *)dic response:(BSResponse)response;

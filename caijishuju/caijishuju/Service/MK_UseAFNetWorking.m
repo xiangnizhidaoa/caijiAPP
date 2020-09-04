@@ -38,7 +38,7 @@
     }
     
     
-    [manager POST:url parameters:postDic progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] parameters:postDic progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //        NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
@@ -64,7 +64,7 @@
     if (headDic != nil){
         [manager.requestSerializer setValue:[[headDic allValues] firstObject] forHTTPHeaderField:[[headDic allKeys] firstObject]];
     }
-    [manager GET:url parameters:postDic progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager GET:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] parameters:postDic progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
@@ -93,7 +93,7 @@
     if (headerDic != nil){
         [manager.requestSerializer setValue:[[headerDic allValues] firstObject] forHTTPHeaderField:[[headerDic allKeys] firstObject]];
     }
-    [manager POST:urlString parameters:bodyDic constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+    [manager POST:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] parameters:bodyDic constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
         for (NSString *key in imageDic) {
             [formData appendPartWithFileData:imageDic[key]
                                         name:@"filePath"

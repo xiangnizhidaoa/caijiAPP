@@ -113,9 +113,9 @@
 
 
 /// 数据采集保存请求
-+ (void)getDataCollectionSaveWithString:(NSString *)bodyStr response:(BSResponse)response {
++ (void)getDataCollectionSaveWithString:(NSDictionary *)bodyStr response:(BSResponse)response {
     
-    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:bodyStr headerDic:nil withCompletion:^(id completion) {
+    [[MK_UseAFNetWorking NewNewWork] postNetWorkPostWithPostDic:bodyStr Url:[NSString stringWithFormat:@"%@?token=%@",BS_Url.dataSave,App_Utility.currentUser.token] headerDic:nil withCompletion:^(id completion) {
         response(completion,nil);
     }];
     

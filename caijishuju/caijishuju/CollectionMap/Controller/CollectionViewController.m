@@ -7,9 +7,8 @@
 //
 
 #import "CollectionViewController.h"
-//#import "MyTaskDetailsController.h"
-//#import "TaskMapDataSubmitController.h"
 #import <WebKit/WebKit.h>
+#import "TaskMapDataSubmitController.h"
 
 @interface CollectionViewController ()<WKNavigationDelegate,WKScriptMessageHandler>
 
@@ -61,6 +60,10 @@
                 NSLog(@"%@",dic);
                 if ([dic[@"status"] integerValue] == 1) {
                     //这里处理登录后的逻辑就行
+                    //这里处理登录后的逻辑就行
+                    TaskMapDataSubmitController *tmdsc = [TaskMapDataSubmitController new];
+                    tmdsc.type = 0;
+                    [self.navigationController pushViewController:tmdsc animated:YES];
                 }else{
                     // 所有需要弹出登录的时候直接发送通知就好
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
