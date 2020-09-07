@@ -22,6 +22,7 @@
 #import <YYImage/YYImage.h>
 #import <AdSupport/AdSupport.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <TencentLBS/TencentLBS.h>
 
 
 #import "ZYNetworkAccessibility.h"

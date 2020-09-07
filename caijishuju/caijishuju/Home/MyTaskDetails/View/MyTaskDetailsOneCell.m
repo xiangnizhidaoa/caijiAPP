@@ -7,14 +7,17 @@
 //
 
 #import "MyTaskDetailsOneCell.h"
-#import <MAMapKit/MAMapKit.h>
-#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <QMapKit/QMapKit.h>
 
-@interface MyTaskDetailsOneCell ()<MAMapViewDelegate>
+//#import <MAMapKit/MAMapKit.h>
+//#import <AMapFoundationKit/AMapFoundationKit.h>
 
-/** 高德地图 */
-@property (nonatomic, strong) MAMapView *mapView;
+@interface MyTaskDetailsOneCell ()<QMapViewDelegate>
 
+///** 高德地图 */
+//@property (nonatomic, strong) MAMapView *mapView;
+/** 腾讯地图 */
+@property (nonatomic, strong) QMapView *mapView;
 @end
 
 @implementation MyTaskDetailsOneCell
@@ -30,51 +33,25 @@
     // Configure the view for the selected state
 }
 
-- (void)MTDTCreateMap {
-    ///地图需要v4.5.0及以上版本才必须要打开此选项（v4.5.0以下版本，需要手动配置info.plist）
-    [AMapServices sharedServices].enableHTTPS = YES;
-    
-    ///初始化地图
-    _mapView = [[MAMapView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
-    _mapView.delegate = self;
-    ///把地图添加至view
-    [self.contentView addSubview:_mapView];
-    
-    MAPointAnnotation *pointAnnotation = [[MAPointAnnotation alloc] init];
-    pointAnnotation.coordinate = CLLocationCoordinate2DMake(39.989631, 118.481018);
-//    pointAnnotation.title = @"方恒国际";
-//    pointAnnotation.subtitle = @"阜通东大街6号";
 
-    [_mapView addAnnotation:pointAnnotation];
-    [_mapView selectAnnotation:pointAnnotation animated:YES];
+/** 初始化数据 */
+- (void)MTDTCreateMap:(NSString *)jingdu weidu:(NSString *)weidu {
+    self.mapView = [[QMapView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 180)];
+    //接受地图的delegate回调
+    self.mapView.delegate = self;
+    //把mapView添加到view中进行显示
+    [self.contentView addSubview:self.mapView];
+    
+    QPointAnnotation *pointAnnotation = [[QPointAnnotation alloc] init];
+    pointAnnotation.coordinate = CLLocationCoordinate2DMake([weidu doubleValue], [jingdu doubleValue]);
+//    // 点标注的标题
+//    pointAnnotation.title = @"腾讯";
+//    // 副标题
+//    pointAnnotation.subtitle = @"腾讯北京总部";
+
+    // 将点标记添加到地图中
+    [self.mapView addAnnotation:pointAnnotation];
     
 }
-
-
-/**
- 高德修改大头针代理方法
- */
-- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation {
-
-
-    static NSString *reuseIndetifier = @"annotationReuseIndetifier";
-    MAAnnotationView *annotationView = (MAAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:reuseIndetifier];
-    if (annotationView == nil) {
-        annotationView = [[MAAnnotationView alloc] initWithAnnotation:annotation
-                                                      reuseIdentifier:reuseIndetifier];
-    }
-    annotationView.image = [UIImage imageNamed:@"bubbleRed"];
-    //设置中心点偏移，使得标注底部中间点成为经纬度对应点
-    annotationView.centerOffset = CGPointMake(0, -18);
-    annotationView.canShowCallout= NO;       //设置气泡可以弹出，默认为NO
-    annotationView.selected=YES;
-    [self.mapView selectAnnotation:annotation animated:YES];
-    return annotationView;
-
-}
-
-
-
-
 
 @end

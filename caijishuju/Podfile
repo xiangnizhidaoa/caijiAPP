@@ -17,8 +17,7 @@ pod 'ZQAlterField'
 pod 'ASIHTTPRequest'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
-pod 'AMap2DMap-NO-IDFA'
-pod 'AMapLocation-NO-IDFA'
+pod 'Tencent-MapSDK'
 
 end
 

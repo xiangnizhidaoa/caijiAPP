@@ -134,6 +134,7 @@
 		0C7171EE24F54AD900C7221D /* MyTaskDetailsTwoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7171EC24F54AD900C7221D /* MyTaskDetailsTwoCell.xib */; };
 		0C7171F224F54AFD00C7221D /* MyTaskDetailsThrCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7171F024F54AFD00C7221D /* MyTaskDetailsThrCell.m */; };
 		0C7171F324F54AFD00C7221D /* MyTaskDetailsThrCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7171F124F54AFD00C7221D /* MyTaskDetailsThrCell.xib */; };
+		0C7827B1250490C10041FAD0 /* TencentLBS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C7827B0250490C10041FAD0 /* TencentLBS.framework */; };
 		9AB1CF8359AC9F9C9410E95D /* libPods-caijishuju.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B258B8C048D48C74BE64A5EB /* libPods-caijishuju.a */; };
 /* End PBXBuildFile section */
 
@@ -359,6 +360,7 @@
 		0C7171EF24F54AFD00C7221D /* MyTaskDetailsThrCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyTaskDetailsThrCell.h; sourceTree = "<group>"; };
 		0C7171F024F54AFD00C7221D /* MyTaskDetailsThrCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyTaskDetailsThrCell.m; sourceTree = "<group>"; };
 		0C7171F124F54AFD00C7221D /* MyTaskDetailsThrCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTaskDetailsThrCell.xib; sourceTree = "<group>"; };
+		0C7827B0250490C10041FAD0 /* TencentLBS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentLBS.framework; sourceTree = "<group>"; };
 		B258B8C048D48C74BE64A5EB /* libPods-caijishuju.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-caijishuju.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBFA23F975C2FF2A993D4731 /* Pods-caijishuju.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-caijishuju.debug.xcconfig"; path = "Target Support Files/Pods-caijishuju/Pods-caijishuju.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -368,6 +370,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C7827B1250490C10041FAD0 /* TencentLBS.framework in Frameworks */,
 				9AB1CF8359AC9F9C9410E95D /* libPods-caijishuju.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -660,6 +663,7 @@
 		09737F6524EA2E8700C0E319 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				0C7827B0250490C10041FAD0 /* TencentLBS.framework */,
 				0C0BA4AD24EEAA0F0068E12A /* LYLUnicode */,
 				09737F6624EA2E8700C0E319 /* THDatePickerView.m */,
 				09737F6724EA2E8700C0E319 /* SystemManager */,
@@ -1456,6 +1460,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P2E94BPQ57;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/caijishuju/Third",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/caijishuju/caijishuju.pch";
 				INFOPLIST_FILE = caijishuju/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1476,6 +1484,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P2E94BPQ57;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/caijishuju/Third",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/caijishuju/caijishuju.pch";
 				INFOPLIST_FILE = caijishuju/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

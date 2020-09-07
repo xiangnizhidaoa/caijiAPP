@@ -11,19 +11,17 @@
 #import "MyTaskDetailsHeadCell.h"
 #import "MyTaskDetailsFouCell.h"
 #import "MyTaskDetailsFootCell.h"
-#import <AMapLocationKit/AMapLocationKit.h>
+
 #import "MViewToast.h"
 #import "MyTaskDetailsFivCell.h"
 #import "CarTaskManagePhotoDetailsController.h"
 
-@interface TaskMapDataSubmitController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,CLLocationManagerDelegate,CTMPhotoDetailsDelegate>
+@interface TaskMapDataSubmitController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,CLLocationManagerDelegate,CTMPhotoDetailsDelegate,TencentLBSLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tabV;
 
 /** 数据 */
 @property (nonatomic, strong) NSMutableArray *dataArr;
-/** 定位 */
-@property (nonatomic, strong) AMapLocationManager *locationManager;
 
 /** 当前位置 */
 @property (nonatomic, assign) CLLocationCoordinate2D nowClCoor2d;
@@ -53,6 +51,12 @@
 @property (nonatomic, strong) NSString *zhizhuID;
 
 @property (nonatomic, strong) NSString *dikuaiID;
+/** 朝向 */
+@property (nonatomic, strong) NSString *chaoxiang;
+/** 腾讯定位 */
+@property (nonatomic, strong) TencentLBSLocationManager *locationManager;
+
+@property (nonatomic, strong) NSString *GUID;
 
 
 @end
@@ -127,7 +131,7 @@
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsFivCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsFivCell"];
     
     [self HPSILocationJurisdiction];
-    
+    self.GUID = [self getUniqueStrByUUID];
     
 }
 
@@ -206,7 +210,6 @@
             cellTwo.wordCount = [[[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"count"] integerValue];
             cellTwo.titleLb.text = titleStr;
             cellTwo.detailsTf.text = self.model.zuowumc;
-            cellTwo.detailsTf.userInteractionEnabled = NO;
             return cellTwo;
         }
     } else if ([typeStr isEqualToString:@"3"]) {
@@ -214,32 +217,18 @@
             MyTaskDetailsThrCell *cellThr = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsThrCell" forIndexPath:indexPath];
             cellThr.titleLb.text = titleStr;
             cellThr.selectBlock = ^{
+                [self.view endEditing:YES];
                 self.imgSelect = indexPath.row;
-                [self HPSICameraJurisdiction];
-                if ((self.zhizhuImg !=nil)&&(indexPath.row==3)) {
-                    CarTaskManagePhotoDetailsController *ctmpdc = [CarTaskManagePhotoDetailsController new];
-                    ctmpdc.isModification = YES;
-                    ctmpdc.cellInd = 0;
-                    ctmpdc.delegate = self;
-                    [ctmpdc.photosDetailsArr addObject:self.zhizhuImg];
-                    [self.navigationController pushViewController:ctmpdc animated:YES];
+                if (self.zhizhuImg !=nil && indexPath.row == 3) {
+                    [self TMDSSelectCellIndex:indexPath.row];
+                }else if (self.yeziImg != nil && indexPath.row == 2){
+                    [self TMDSSelectCellIndex:indexPath.row];
+                }else if (self.dikuaiImg && indexPath.row == 4){
+                    [self TMDSSelectCellIndex:indexPath.row];
+                }else {
+                    [self HPSICameraJurisdiction];
                 }
-                if ((self.yeziImg !=nil)&&(indexPath.row==2)) {
-                    CarTaskManagePhotoDetailsController *ctmpdc = [CarTaskManagePhotoDetailsController new];
-                    ctmpdc.isModification = YES;
-                    ctmpdc.cellInd = 0;
-                    ctmpdc.delegate = self;
-                    [ctmpdc.photosDetailsArr addObject:self.yeziImg];
-                    [self.navigationController pushViewController:ctmpdc animated:YES];
-                }
-                if ((self.dikuaiImg !=nil)&&(indexPath.row==4)) {
-                    CarTaskManagePhotoDetailsController *ctmpdc = [CarTaskManagePhotoDetailsController new];
-                    ctmpdc.isModification = YES;
-                    ctmpdc.cellInd = 0;
-                    ctmpdc.delegate = self;
-                    [ctmpdc.photosDetailsArr addObject:self.dikuaiImg];
-                    [self.navigationController pushViewController:ctmpdc animated:YES];
-                }
+//                445011
             };
             
             if (indexPath.row==2) {
@@ -261,7 +250,6 @@
             }else if (indexPath.row == 4){
                 [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.model.dikuaizpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
             }
-            cellThr.detailsIv.userInteractionEnabled = NO;
             return cellThr;
         }
    } else if ([typeStr isEqualToString:@"4"]) {
@@ -279,7 +267,6 @@
            MyTaskDetailsFivCell *cellFiv = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFivCell" forIndexPath:indexPath];
            cellFiv.detailTv.text = self.model.remarks;
            cellFiv.hintLb.hidden = YES;
-           cellFiv.detailTv.userInteractionEnabled = NO;
            
            return cellFiv;
        }
@@ -294,6 +281,31 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
+
+/** 添加照片或删除 */
+- (void)TMDSSelectCellIndex:(NSInteger)row {
+    UIAlertController *sltAc = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [sltAc addAction:[UIAlertAction actionWithTitle:@"查看附件" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        CarTaskManagePhotoDetailsController *ctmpdc = [CarTaskManagePhotoDetailsController new];
+        ctmpdc.isModification = NO;
+        ctmpdc.cellInd = 0;
+        ctmpdc.delegate = self;
+        if (row==2) {
+            [ctmpdc.photosDetailsArr addObject:self.yeziImg];
+        } else if (row==3) {
+            [ctmpdc.photosDetailsArr addObject:self.zhizhuImg];
+        } else if (row==4) {
+            [ctmpdc.photosDetailsArr addObject:self.dikuaiImg];
+        }
+        [self.navigationController pushViewController:ctmpdc animated:YES];
+    }]];
+    [sltAc addAction:[UIAlertAction actionWithTitle:@"删除附件" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self photosDetailsWithDelete:row];
+    }]];
+    [sltAc addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    [self presentViewController:sltAc animated:YES completion:nil];
+}
+
 
 /**
  判断非空
@@ -392,36 +404,73 @@
  获取定位
  */
 - (void)isHomeGetMyLocation {
-    self.locationManager = [[AMapLocationManager alloc] init];
-    // 带逆地理信息的一次定位（返回坐标和地址信息）
-    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
-    //   定位超时时间，最低2s，此处设置为2s
-    self.locationManager.locationTimeout =5;
-    //   逆地理请求超时时间，最低2s，此处设置为2s
-    self.locationManager.reGeocodeTimeout =5;
-    [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
-        
-        if (error) {
-            MLog(@"定位异常\nlocError:{%ld - %@};", (long)error.code, error.localizedDescription);
-            
-            if (error.code == AMapLocationErrorLocateFailed) {
-                return;
-            }
-        }
-        
-        MLog(@"location:%@\n%f,%f", location,location.coordinate.longitude,location.coordinate.latitude);
-        /** 经纬度 */
-        CLLocationCoordinate2D gcj02Coord = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
-        self.nowClCoor2d = gcj02Coord;
-        if (regeocode) {
-            MLog(@"reGeocode:%@", regeocode);
-            self.provinceStr = regeocode.province;
-            self.cityStr = regeocode.city;
-            self.districtStr = regeocode.district;
-        }
-        
-        
-    }];
+    
+    self.locationManager = [[TencentLBSLocationManager alloc] init];
+    [self.locationManager setDelegate:self];
+    [self.locationManager setApiKey:@"F7ABZ-EKRWW-MEGR4-RIYHI-GQHIH-7CFHU"];
+    [self.locationManager setPausesLocationUpdatesAutomatically:NO];
+    // 如果需要POI信息的话，根据所需要的级别来设定，定位结果将会根据设定的POI级别来返回，如：
+    [self.locationManager setRequestLevel:TencentLBSRequestLevelPoi];
+//    [self.locationManager requestLocationWithCompletionBlock:^(TencentLBSLocation *location, NSError *error) {
+//
+//        if (error) {
+//            MLog(@"定位异常\nlocError:{%ld - %@};", (long)error.code, error.localizedDescription);
+//            return;
+//        }
+//
+//        self.provinceStr = location.province;
+//        self.cityStr = location.city;
+//        self.districtStr = location.district;
+////        self.nowClCoor2d = CLLocationCoordinate2DMake(location.latitude, location.location);
+//        MLog(@"%@, %@, %@", location.location, location.name, location.address);
+//
+//
+//
+//    }];
+    [self startSerialLocation];
+    
+}
+
+// 连续定位
+- (void)startSerialLocation {
+    //开始定位
+    [self.locationManager startUpdatingLocation];
+}
+ 
+- (void)stopSerialLocation {
+    //停止定位
+    [self.locationManager stopUpdatingLocation];
+}
+
+/**
+ *  定位朝向改变时回调函数
+ *
+ *  @param manager 定位 TencentLBSLocationManager 类
+ *  @param newHeading  新的定位朝向
+ */
+- (void)tencentLBSLocationManager:(TencentLBSLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+    self.chaoxiang = [NSString stringWithFormat:@"%@",newHeading];
+}
+
+- (void)tencentLBSLocationManager:(TencentLBSLocationManager *)manager
+                didUpdateLocation:(TencentLBSLocation *)location {
+    //定位结果
+    self.provinceStr = location.province;
+    self.cityStr = location.city;
+    self.districtStr = location.district;
+    TencentLBSPoi *tlbs = location.poiList.firstObject;
+    self.nowClCoor2d = CLLocationCoordinate2DMake(tlbs.latitude, tlbs.longitude);
+}
+
+/**
+ *  当定位发生错误时，会调用代理的此方法
+ *
+ *  @param manager 定位 TencentLBSLocationManager 类
+ *  @param error 返回的错误，参考 TencentLBSLocationError
+ */
+- (void)tencentLBSLocationManager:(TencentLBSLocationManager *)manager didFailWithError:(NSError *)error {
+    
+    return;
 }
 
 /**
@@ -504,18 +553,18 @@
     if (self.imgSelect==2) {
         self.yeziImg = originalImage;
         NSData *imgData = UIImageJPEGRepresentation(originalImage, 0.2f);
-        NSDictionary *dic = @{@"code_id":@"4355549-d04f-40e0-afb7-bbb1faf",@"column":@"yepian",@"isreplace":@"1",@"filePath":imgData};
+        NSDictionary *dic = @{@"code_id":self.GUID,@"column":@"yepian",@"isreplace":@"1",@"filePath":imgData};
         [self loadImageWithDic:dic];
         
     } else if (self.imgSelect==3) {
         self.zhizhuImg = originalImage;
         NSData *imgData = UIImageJPEGRepresentation(originalImage, 0.2f);
-        NSDictionary *dic = @{@"code_id":@"4355549-d04f-40e0-afb7-bbb1faf",@"column":@"zhizhu",@"isreplace":@"1",@"filePath":imgData};
+        NSDictionary *dic = @{@"code_id":self.GUID,@"column":@"zhizhu",@"isreplace":@"1",@"filePath":imgData};
         [self loadImageWithDic:dic];
     } else if (self.imgSelect==4) {
         self.dikuaiImg = originalImage;
         NSData *imgData = UIImageJPEGRepresentation(originalImage, 0.2f);
-        NSDictionary *dic = @{@"code_id":@"4355549-d04f-40e0-afb7-bbb1faf",@"column":@"dikuai",@"isreplace":@"1",@"filePath":imgData};
+        NSDictionary *dic = @{@"code_id":self.GUID,@"column":@"dikuai",@"isreplace":@"1",@"filePath":imgData};
         [self loadImageWithDic:dic];
     }
     [self.tabV reloadData];
@@ -592,34 +641,49 @@
 /// 保存
 - (void)TMDSSubmitRequest {
     
-//    NSString *bodyStr = [NSString stringWithFormat:@"%@?zuowumc=%@􏱻􏱻􏰧􏰧􏱭􏱭&remarks=%@&id=f774f06d434d4e549da35de897196559&filecode=a8894ed2-48a4-d549-8680-9ca6fba5bba0&weidu1=&jingdu1=&weidu=0&jingdu=0&weidu2=%f&jingdu2=%f&province=%@&city=%@&district=%@&renwuid=&chaoxiang=146&jingduzhi=high&zhuangtai=5",BS_Url.dataSave,[[self.dataArr objectAtIndex:1] objectForKey:@"text"],[[self.dataArr objectAtIndex:5] objectForKey:@"text"],self.nowClCoor2d.latitude,self.nowClCoor2d.longitude,self.provinceStr,self.cityStr,self.districtStr];
-    NSDictionary *bodyDic = @{@"zuowumc":[[self.dataArr objectAtIndex:1] objectForKey:@"text"],
-                              @"remarks":[[self.dataArr objectAtIndex:5] objectForKey:@"text"],
-                              @"id":App_Utility.currentUser.userid,
-                              @"filecode":@"",
-                              @"weidu1":@"",
-                              @"jingdu1":@"",
-                              @"weidu":@"",
-                              @"jingdu":@"",
-                              @"weidu2":@(self.nowClCoor2d.latitude),
-                              @"jingdu2":@(self.nowClCoor2d.longitude),
-                              @"province":self.provinceStr != nil ? self.provinceStr : @"",
-                              @"city":self.cityStr != nil ? self.cityStr : @"",
-                              @"district":self.districtStr != nil ? self.districtStr : @"",
-                              @"renwuid":@"",
-                              @"chaoxiang":@"146",
-                              @"jingduzhi":@"high",
-                              @"zhuangtai":@"",
-                              @"isfugai":@"0",
-                              @"zhizhuzpid":self.zhizhuID != nil ? self.zhizhuID : @"",
-                              @"yepianzpid":self.yepianID != nil ? self.yepianID : @"",
-                              @"dikuaizpid":self.dikuaiID != nil ? self.dikuaiID : @""
-    };
+    NSDictionary *bodyDic;
+    if (self.type == 0) {
+        bodyDic = @{@"zuowumc":[[self.dataArr objectAtIndex:1] objectForKey:@"text"],
+                    @"remarks":[[self.dataArr objectAtIndex:5] objectForKey:@"text"],
+                    @"filecode":self.GUID,
+                    @"weidu1":@(self.nowClCoor2d.latitude),
+                    @"jingdu1":@(self.nowClCoor2d.longitude),
+                    @"weidu":@(self.nowClCoor2d.latitude),
+                    @"jingdu":@(self.nowClCoor2d.longitude),
+                    @"weidu2":@(self.nowClCoor2d.latitude),
+                    @"jingdu2":@(self.nowClCoor2d.longitude),
+                    @"province":self.provinceStr != nil ? self.provinceStr : @"",
+                    @"city":self.cityStr != nil ? self.cityStr : @"",
+                    @"district":self.districtStr != nil ? self.districtStr : @"",
+                    @"chaoxiang":self.chaoxiang != nil ? self.chaoxiang : @"",
+                    @"jingduzhi":@"",
+                    @"zhuangtai":@"5"
+        };
+    }else{
+        bodyDic = @{@"zuowumc":[[self.dataArr objectAtIndex:1] objectForKey:@"text"],
+                    @"remarks":[[self.dataArr objectAtIndex:5] objectForKey:@"text"],
+                    @"filecode":self.GUID,
+                    @"weidu1":@(self.nowClCoor2d.latitude),
+                    @"jingdu1":@(self.nowClCoor2d.longitude),
+                    @"weidu":@(self.nowClCoor2d.latitude),
+                    @"jingdu":@(self.nowClCoor2d.longitude),
+                    @"weidu2":@(self.nowClCoor2d.latitude),
+                    @"jingdu2":@(self.nowClCoor2d.longitude),
+                    @"province":self.provinceStr != nil ? self.provinceStr : @"",
+                    @"city":self.cityStr != nil ? self.cityStr : @"",
+                    @"district":self.districtStr != nil ? self.districtStr : @"",
+                    @"chaoxiang":self.chaoxiang != nil ? self.chaoxiang : @"",
+                    @"jingduzhi":@"",
+                    @"zhuangtai":@"5",
+                    @"id":self.model.ID
+        };
+    }
+    
+    
     
     [LSNetworkService getDataCollectionSaveWithString:bodyDic response:^(id dict, BSError *error) {
         if (dict != nil) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
-            NSLog(@"%@",dic);
+            NSDictionary *dic = dict;
             if ([dic[@"status"] integerValue] == 1) {
                 
                 UIAlertController *cameraAc = [UIAlertController alertControllerWithTitle:nil message:@"保存成功" preferredStyle:UIAlertControllerStyleAlert];
@@ -651,6 +715,20 @@
     [self.tabV reloadData];
 }
 
+
+- (NSString *)getUniqueStrByUUID
+{
+    CFUUIDRef    uuidObj = CFUUIDCreate(nil);//create a new UUID
+
+    //get the string representation of the UUID
+
+    NSString    *uuidString = (__bridge_transfer NSString *)CFUUIDCreateString(nil, uuidObj);
+
+    CFRelease(uuidObj);
+
+    return uuidString;
+
+}
 
 
 @end

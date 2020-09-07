@@ -26,17 +26,22 @@
 // POST
 - (void)postNetWorkPostWithPostDic:(NSDictionary *)postDic Url:(NSString *)url headerDic:(NSDictionary *)headDic withCompletion:(void(^)(id completion))completion {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
     NSLog(@"1111111``````%@",url);
     NSLog(@"222222`````%@",postDic);
     
-    manager.requestSerializer=[AFJSONRequestSerializer serializer];
    
     if (headDic != nil){
         [manager.requestSerializer setValue:[[headDic allValues] firstObject] forHTTPHeaderField:[[headDic allKeys] firstObject]];
     }
     
+    if([url rangeOfString:@"wx/markerfill/save"].location !=NSNotFound){
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"multipart/form-data", nil];
+    }else{
+        manager.responseSerializer = [AFJSONResponseSerializer serializer];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        manager.requestSerializer=[AFJSONRequestSerializer serializer];
+    }
     
     [manager POST:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] parameters:postDic progress:^(NSProgress * _Nonnull uploadProgress) {
         

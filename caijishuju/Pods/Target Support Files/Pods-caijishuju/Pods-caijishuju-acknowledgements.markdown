@@ -24,21 +24,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-## AMap2DMap-NO-IDFA
-
-Copyright © 2014 AutoNavi. All Rights Reserved.
-
-
-## AMapFoundation-NO-IDFA
-
-Copyright © 2014 AutoNavi. All Rights Reserved.
-
-
-## AMapLocation-NO-IDFA
-
-Copyright © 2014 AutoNavi. All Rights Reserved.
-
-
 ## ASIHTTPRequest
 
 * Copyright (c) 2007-2011, All-Seeing Interactive
@@ -255,6 +240,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
+## Tencent-MapSDK
+
+Copyright © 1998-2018 Tencent All Rights Reserved
 
 ## YYImage
 

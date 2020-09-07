@@ -118,10 +118,14 @@
     }else{
         cell.typeImageView.image = [UIImage imageNamed:@"小麦选项"];
     }
-    if ([model.zhuangtai integerValue] == 20) {
+    if ([model.zhuangtai integerValue] == 5) {
+        cell.shareImageView.image = [UIImage imageNamed:@"未共享"];
+    }else if ([model.zhuangtai integerValue] == 10){
+        cell.shareImageView.image = [UIImage imageNamed:@"待审核"];
+    }else if ([model.zhuangtai integerValue] == 20){
         cell.shareImageView.image = [UIImage imageNamed:@"共享"];
-    }else{
-        cell.shareImageView.image = [UIImage imageNamed:@"为共享"];
+    }else if ([model.zhuangtai integerValue] == 30){
+        cell.shareImageView.image = [UIImage imageNamed:@"未通过"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

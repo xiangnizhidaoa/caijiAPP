@@ -43,39 +43,6 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright © 2014 AutoNavi. All Rights Reserved.
-</string>
-			<key>License</key>
-			<string>Copyright</string>
-			<key>Title</key>
-			<string>AMap2DMap-NO-IDFA</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
-			<string>Copyright © 2014 AutoNavi. All Rights Reserved.
-</string>
-			<key>License</key>
-			<string>Copyright</string>
-			<key>Title</key>
-			<string>AMapFoundation-NO-IDFA</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
-			<string>Copyright © 2014 AutoNavi. All Rights Reserved.
-</string>
-			<key>License</key>
-			<string>Copyright</string>
-			<key>Title</key>
-			<string>AMapLocation-NO-IDFA</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
 			<string>* Copyright (c) 2007-2011, All-Seeing Interactive
 * All rights reserved.
 *
@@ -354,6 +321,16 @@ SOFTWARE.
 			<string>MIT</string>
 			<key>Title</key>
 			<string>TYCyclePagerView</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
+			<string>Copyright © 1998-2018 Tencent All Rights Reserved</string>
+			<key>License</key>
+			<string>CopyRight</string>
+			<key>Title</key>
+			<string>Tencent-MapSDK</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

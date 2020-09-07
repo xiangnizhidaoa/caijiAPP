@@ -113,7 +113,8 @@
     NSString *detailStr = [[self.dataArr objectAtIndex:indexPath.row] objectForKey:@"text"];
     if ([typeStr isEqualToString:@"1"]) {
         MyTaskDetailsOneCell *cellOne = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsOneCell" forIndexPath:indexPath];
-        [cellOne MTDTCreateMap];
+//        [cellOne MTDTCreateMap];
+        [cellOne MTDTCreateMap:self.tkModel.jingdu2 weidu:self.tkModel.weidu2];
          return cellOne;
     } else if ([typeStr isEqualToString:@"2"]) {
         MyTaskDetailsTwoCell *cellTwo = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsTwoCell" forIndexPath:indexPath];

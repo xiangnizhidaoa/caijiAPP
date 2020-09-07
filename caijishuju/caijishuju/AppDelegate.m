@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <QMapKit/QMapKit.h>
+#import "HHRLaunchViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [QMapServices sharedServices].APIKey = @"F7ABZ-EKRWW-MEGR4-RIYHI-GQHIH-7CFHU";
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login:) name:@"login" object:nil];
     return YES;
 }
@@ -29,7 +32,7 @@
     navc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.window.rootViewController presentViewController:navc animated:nil completion:nil];
     
-    [AMapServices sharedServices].apiKey = @"17eba3596dc056770a725b19d93ef4e0";
+ 
     
 }
 
