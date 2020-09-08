@@ -190,6 +190,9 @@
     [self.wkWV addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
     
     [self.wkWV.configuration.userContentController addScriptMessageHandler:self name:@"markerfill"];
+    [self.wkWV.configuration.userContentController addScriptMessageHandler:self name:@"dingweicx"];
+    [self.wkWV.configuration.userContentController addScriptMessageHandler:self name:@"showmarkerfillinfo"];
+    [self.wkWV.configuration.userContentController addScriptMessageHandler:self name:@"showmarkerfillinfoview"];
 }
 
 /**
@@ -223,6 +226,12 @@
                 }
             }
         }];
+    }else if ([message.name isEqualToString:@"dingweicx"]){
+        [self startSerialLocation];
+    }else if ([message.name isEqualToString:@"showmarkerfillinfo"]){
+        NSLog(@"%@",message.body);
+    }else if ([message.name isEqualToString:@"showmarkerfillinfoview"]){
+        NSLog(@"%@",message.body);
     }
 }
 

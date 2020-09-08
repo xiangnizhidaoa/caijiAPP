@@ -132,6 +132,13 @@
     
     [self HPSILocationJurisdiction];
     self.GUID = [self getUniqueStrByUUID];
+    if (self.type == 1) {
+        [[self.dataArr objectAtIndex:1] setObject:self.model.zuowumc forKey:@"text"];
+        [[self.dataArr objectAtIndex:2] setObject:self.model.yepianzpid forKey:@"text"];
+        [[self.dataArr objectAtIndex:3] setObject:self.model.zhizhuzpid forKey:@"text"];
+        [[self.dataArr objectAtIndex:4] setObject:self.model.dikuaizpid forKey:@"text"];
+        [[self.dataArr objectAtIndex:5] setObject:self.model.remarks forKey:@"text"];
+    }
     
 }
 
@@ -228,7 +235,6 @@
                 }else {
                     [self HPSICameraJurisdiction];
                 }
-//                445011
             };
             
             if (indexPath.row==2) {
@@ -244,12 +250,37 @@
             MyTaskDetailsThrCell *cellThr = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsThrCell" forIndexPath:indexPath];
             cellThr.titleLb.text = titleStr;
             if (indexPath.row == 2) {
-                [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.model.yepianzpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
+                if (self.yeziImg != nil) {
+                    cellThr.detailsIv.image = self.yeziImg;
+                }else{
+                    [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,detailStr]] placeholderImage:[UIImage imageNamed:@"upload"]];
+                }
             }else if (indexPath.row == 3){
-                [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.model.zhizhuzpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
+                if (self.zhizhuImg != nil) {
+                    cellThr.detailsIv.image = self.zhizhuImg;
+                }else{
+                    [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,detailStr]] placeholderImage:[UIImage imageNamed:@"upload"]];
+                }
             }else if (indexPath.row == 4){
-                [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.model.dikuaizpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
+                if (self.dikuaiImg != nil) {
+                    cellThr.detailsIv.image = self.dikuaiImg;
+                }else{
+                    [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,detailStr]] placeholderImage:[UIImage imageNamed:@"upload"]];
+                }
             }
+            cellThr.selectBlock = ^{
+                [self.view endEditing:YES];
+                self.imgSelect = indexPath.row;
+                if (![detailStr isEqualToString:@""] && indexPath.row == 3) {
+                    [self TMDSSelectCellIndex:indexPath.row];
+                }else if (![detailStr isEqualToString:@""] && indexPath.row == 2){
+                    [self TMDSSelectCellIndex:indexPath.row];
+                }else if (![detailStr isEqualToString:@""] && indexPath.row == 4){
+                    [self TMDSSelectCellIndex:indexPath.row];
+                }else {
+                    [self HPSICameraJurisdiction];
+                }
+            };
             return cellThr;
         }
    } else if ([typeStr isEqualToString:@"4"]) {
@@ -290,12 +321,16 @@
         ctmpdc.isModification = NO;
         ctmpdc.cellInd = 0;
         ctmpdc.delegate = self;
-        if (row==2) {
-            [ctmpdc.photosDetailsArr addObject:self.yeziImg];
-        } else if (row==3) {
-            [ctmpdc.photosDetailsArr addObject:self.zhizhuImg];
-        } else if (row==4) {
-            [ctmpdc.photosDetailsArr addObject:self.dikuaiImg];
+        if (self.type == 0) {
+            if (row==2) {
+                [ctmpdc.photosDetailsArr addObject:self.yeziImg];
+            } else if (row==3) {
+                [ctmpdc.photosDetailsArr addObject:self.zhizhuImg];
+            } else if (row==4) {
+                [ctmpdc.photosDetailsArr addObject:self.dikuaiImg];
+            }
+        }else{
+            
         }
         [self.navigationController pushViewController:ctmpdc animated:YES];
     }]];
@@ -361,7 +396,7 @@
             MLog(@"拒绝");
             self.clAc = [UIAlertController alertControllerWithTitle:@"请允许定位服务" message:@"去手机系统\"设置-隐私-定位服务\"开启一下吧" preferredStyle:UIAlertControllerStyleAlert];
             [self.clAc addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                [self.navigationController popViewControllerAnimated:YES];
+                [self.navigationController popToRootViewControllerAnimated:YES];
             }]];
             [self presentViewController:self.clAc animated:YES completion:nil];
             
@@ -623,15 +658,15 @@
         return NO;
     }
     if (self.yeziImg==nil) {
-        [MViewToast MShowWithText:@"请添加叶子照片"];
+        [MViewToast MShowWithText:@"请添加/修改叶子照片"];
         return NO;
     }
     if (self.zhizhuImg==nil) {
-        [MViewToast MShowWithText:@"请添加植株照片"];
+        [MViewToast MShowWithText:@"请添加/修改植株照片"];
         return NO;
     }
     if (self.dikuaiImg==nil) {
-        [MViewToast MShowWithText:@"请添加地块照片"];
+        [MViewToast MShowWithText:@"请添加/修改地块照片"];
         return NO;
     }
     return YES;
@@ -643,22 +678,42 @@
     
     NSDictionary *bodyDic;
     if (self.type == 0) {
-        bodyDic = @{@"zuowumc":[[self.dataArr objectAtIndex:1] objectForKey:@"text"],
-                    @"remarks":[[self.dataArr objectAtIndex:5] objectForKey:@"text"],
-                    @"filecode":self.GUID,
-                    @"weidu1":@(self.nowClCoor2d.latitude),
-                    @"jingdu1":@(self.nowClCoor2d.longitude),
-                    @"weidu":@(self.nowClCoor2d.latitude),
-                    @"jingdu":@(self.nowClCoor2d.longitude),
-                    @"weidu2":@(self.nowClCoor2d.latitude),
-                    @"jingdu2":@(self.nowClCoor2d.longitude),
-                    @"province":self.provinceStr != nil ? self.provinceStr : @"",
-                    @"city":self.cityStr != nil ? self.cityStr : @"",
-                    @"district":self.districtStr != nil ? self.districtStr : @"",
-                    @"chaoxiang":self.chaoxiang != nil ? self.chaoxiang : @"",
-                    @"jingduzhi":@"",
-                    @"zhuangtai":@"5"
-        };
+        if (self.ID != nil) {
+            bodyDic = @{@"zuowumc":[[self.dataArr objectAtIndex:1] objectForKey:@"text"],
+                        @"remarks":[[self.dataArr objectAtIndex:5] objectForKey:@"text"],
+                        @"filecode":self.GUID,
+                        @"weidu1":@(self.nowClCoor2d.latitude),
+                        @"jingdu1":@(self.nowClCoor2d.longitude),
+                        @"weidu":@(self.nowClCoor2d.latitude),
+                        @"jingdu":@(self.nowClCoor2d.longitude),
+                        @"weidu2":@(self.nowClCoor2d.latitude),
+                        @"jingdu2":@(self.nowClCoor2d.longitude),
+                        @"province":self.provinceStr != nil ? self.provinceStr : @"",
+                        @"city":self.cityStr != nil ? self.cityStr : @"",
+                        @"district":self.districtStr != nil ? self.districtStr : @"",
+                        @"chaoxiang":self.chaoxiang != nil ? self.chaoxiang : @"",
+                        @"jingduzhi":@"high",
+                        @"zhuangtai":@"",
+                        @"id":self.ID
+            };
+        }else{
+            bodyDic = @{@"zuowumc":[[self.dataArr objectAtIndex:1] objectForKey:@"text"],
+                        @"remarks":[[self.dataArr objectAtIndex:5] objectForKey:@"text"],
+                        @"filecode":self.GUID,
+                        @"weidu1":@(self.nowClCoor2d.latitude),
+                        @"jingdu1":@(self.nowClCoor2d.longitude),
+                        @"weidu":@(self.nowClCoor2d.latitude),
+                        @"jingdu":@(self.nowClCoor2d.longitude),
+                        @"weidu2":@(self.nowClCoor2d.latitude),
+                        @"jingdu2":@(self.nowClCoor2d.longitude),
+                        @"province":self.provinceStr != nil ? self.provinceStr : @"",
+                        @"city":self.cityStr != nil ? self.cityStr : @"",
+                        @"district":self.districtStr != nil ? self.districtStr : @"",
+                        @"chaoxiang":self.chaoxiang != nil ? self.chaoxiang : @"",
+                        @"jingduzhi":@"high",
+                        @"zhuangtai":@""
+            };
+        }
     }else{
         bodyDic = @{@"zuowumc":[[self.dataArr objectAtIndex:1] objectForKey:@"text"],
                     @"remarks":[[self.dataArr objectAtIndex:5] objectForKey:@"text"],
@@ -673,8 +728,8 @@
                     @"city":self.cityStr != nil ? self.cityStr : @"",
                     @"district":self.districtStr != nil ? self.districtStr : @"",
                     @"chaoxiang":self.chaoxiang != nil ? self.chaoxiang : @"",
-                    @"jingduzhi":@"",
-                    @"zhuangtai":@"5",
+                    @"jingduzhi":@"high",
+                    @"zhuangtai":self.model.zhuangtai,
                     @"id":self.model.ID
         };
     }
@@ -689,7 +744,7 @@
                 UIAlertController *cameraAc = [UIAlertController alertControllerWithTitle:nil message:@"保存成功" preferredStyle:UIAlertControllerStyleAlert];
                 [cameraAc addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                     self.tabBarController.tabBar.hidden = NO;
-                    [self.navigationController popViewControllerAnimated:YES];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
                 }]];
                 [self presentViewController:cameraAc animated:YES completion:nil];
                 
@@ -706,10 +761,22 @@
  */
 - (void)photosDetailsWithDelete:(NSInteger)arrInd {
     if (self.imgSelect==2) {
-        self.yeziImg=nil;
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:2 inSection:0];
+        MyTaskDetailsThrCell *cell = [self.tabV cellForRowAtIndexPath:indexPath];
+        cell.detailsIv.image = nil;
+        [[self.dataArr objectAtIndex:2] setObject:@"" forKey:@"text"];
+        self.yeziImg = nil;
     } else if (self.imgSelect==3) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:3 inSection:0];
+        MyTaskDetailsThrCell *cell = [self.tabV cellForRowAtIndexPath:indexPath];
+        cell.detailsIv.image = nil;
+        [[self.dataArr objectAtIndex:3] setObject:@"" forKey:@"text"];
         self.zhizhuImg=nil;
     } else if (self.imgSelect==4) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:4 inSection:0];
+        MyTaskDetailsThrCell *cell = [self.tabV cellForRowAtIndexPath:indexPath];
+        cell.detailsIv.image = nil;
+        [[self.dataArr objectAtIndex:4] setObject:@"" forKey:@"text"];
         self.dikuaiImg=nil;
     }
     [self.tabV reloadData];

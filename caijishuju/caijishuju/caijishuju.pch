@@ -23,6 +23,7 @@
 #import <AdSupport/AdSupport.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import <TencentLBS/TencentLBS.h>
+#import <QMapKit/QMapKit.h>
 
 
 #import "ZYNetworkAccessibility.h"

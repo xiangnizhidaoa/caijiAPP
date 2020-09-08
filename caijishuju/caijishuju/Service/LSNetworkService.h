@@ -53,4 +53,7 @@
 //图片识别
 +(void)getZhiwuImageWithDic:(NSDictionary *)dic response:(BSResponse)response;
 
+//任务状态
++(void)getTaskStatuseWithID:(NSString *)ID response:(BSResponse)response;
+
 @end

@@ -12,6 +12,7 @@
 #import "TaskByModel.h"
 #import "MyTaskTableViewCell.h"
 #import "MyTaskDetailsController.h"
+#import "TaskMapDataSubmitController.h"
 
 @interface MyTaskTableViewController ()<UISearchBarDelegate,UITextFieldDelegate>
 
@@ -144,6 +145,11 @@
     return view;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    self.zuowuName = textField.text;
+    [self loadData];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 50.0;
 }
@@ -152,9 +158,18 @@
  点击cell
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    MyTaskDetailsController *mtdc = [MyTaskDetailsController new];
-    mtdc.tkModel = [self.modelArray objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:mtdc animated:YES];
+    TaskModel *model = self.modelArray[indexPath.row];
+    if ([model.zhuangtai integerValue] == 30) {
+        TaskMapDataSubmitController *tmdsc = [TaskMapDataSubmitController new];
+        tmdsc.type = 1;
+        tmdsc.model = model;
+        [self.navigationController pushViewController:tmdsc animated:YES];
+    }else{
+        MyTaskDetailsController *mtdc = [MyTaskDetailsController new];
+        mtdc.tkModel = model;
+        [self.navigationController pushViewController:mtdc animated:YES];
+    }
+    
 }
 
 @end

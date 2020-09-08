@@ -9,6 +9,7 @@
 #import "TaskViewController.h"
 #import <WebKit/WebKit.h>
 #import "TaskMapDataSubmitController.h"
+#import "NewTaskViewController.h"
 
 @interface TaskViewController ()<WKNavigationDelegate,WKScriptMessageHandler,CLLocationManagerDelegate,TencentLBSLocationManagerDelegate>
 
@@ -167,7 +168,7 @@
        [self loadWeb];
         
         [self stopSerialLocation];
-    }
+}
 
     -(void)loadWeb{
         self.view.backgroundColor = [UIColor whiteColor];
@@ -187,7 +188,7 @@
         
         [self.wkWV addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
         
-        [self.wkWV.configuration.userContentController addScriptMessageHandler:self name:@"tianbaoHandler"];
+        [self.wkWV.configuration.userContentController addScriptMessageHandler:self name:@"markertask"];
     }
 
 /**
@@ -202,24 +203,29 @@
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    if ([message.name isEqualToString:@"tianbaoHandler"]) {
+    if ([message.name isEqualToString:@"markertask"]) {
+        NSArray *array = [message.body componentsSeparatedByString:@"#"]; //从字符A中分隔成2个元素的数组
         //这里通过捕获这个先判断是否登录 未登录登录 登录跳转录入数据页面(记得修改下你现在这里是任务地图 不是采集地图).
         //这个请求是判断当前用户是否已经登录
-        [LSNetworkService getIsLoginResponse:^(id dict, BSError *error) {
-            if (dict != nil) {
-                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
-                NSLog(@"%@",dic);
-                if ([dic[@"status"] integerValue] == 1) {
-                    //这里处理登录后的逻辑就行
-                    TaskMapDataSubmitController *tmdsc = [TaskMapDataSubmitController new];
-                    tmdsc.type = 0;
-                    [self.navigationController pushViewController:tmdsc animated:YES];
-                }else{
-                    // 所有需要弹出登录的时候直接发送通知就好
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
+        if ([array[0] boolValue]) {
+            [LSNetworkService getIsLoginResponse:^(id dict, BSError *error) {
+                if (dict != nil) {
+                    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
+                    NSLog(@"%@",dic);
+                    if ([dic[@"status"] integerValue] == 1) {
+                        //这里处理登录后的逻辑就行
+                        NewTaskViewController *tmdsc = [NewTaskViewController new];
+                        tmdsc.ID = array[1];
+                        [self.navigationController pushViewController:tmdsc animated:YES];
+                    }else{
+                        // 所有需要弹出登录的时候直接发送通知就好
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self];
+                    }
                 }
-            }
-        }];
+            }];
+        }else{
+            [LPUnitily showToastWithText:@"任务未激活"];
+        }
     }
 }
 

@@ -128,6 +128,13 @@
         cellThr.selectBlock = ^{
             
         };
+        if (indexPath.row == 9) {
+            [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.tkModel.yepianzpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
+        }else if (indexPath.row == 10){
+            [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.tkModel.zhizhuzpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
+        }else if (indexPath.row == 11){
+            [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.tkModel.dikuaizpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
+        }
          return cellThr;
     } else if ([typeStr isEqualToString:@"4"]) {
         MyTaskDetailsHeadCell *cellFou = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsHeadCell" forIndexPath:indexPath];
@@ -145,7 +152,8 @@
         cellFiv.finishBlock = ^(NSString * _Nonnull text) {
             [[self.dataArr objectAtIndex:indexPath.row] setObject:[self isNoBlankText:text] forKey:@"text"];
         };
-        
+        cellFiv.detailTv.text = self.tkModel.remarks;
+        cellFiv.hintLb.hidden = YES;
         return cellFiv;
    } else if ([typeStr isEqualToString:@"6"]) {
       MyTaskDetailsFootCell *cellSix = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsFootCell" forIndexPath:indexPath];
@@ -278,25 +286,25 @@
 #pragma mark - 网络请求
 - (void)MTDSubmitRequest {
     
-    NSString *bodyStr = [NSString stringWithFormat:@"%@?zuowumc=%@􏱻􏱻􏰧􏰧􏱭􏱭&remarks=%@&id=%@&fi lecode=%@&weidu1=%@&jingdu1=%@&weidu=%@&jingdu=%@&weidu2=%@&jingdu2=%@&province=%@&city=%@&district=%@&renwuid=&chaoxiang=146&jingduzhi=high&zhuangtai=5",BS_Url.dataSave,self.tkModel.zuowumc,[[self.dataArr objectAtIndex:12] objectForKey:@"text"],self.tkModel.ID,self.tkModel.filecode,self.tkModel.weidu1,self.tkModel.jingdu1,self.tkModel.weidu,self.tkModel.jingdu,self.tkModel.weidu2,self.tkModel.jingdu2,self.tkModel.province,self.tkModel.city,self.tkModel.district];
-    
-    [LSNetworkService getDataCollectionSaveWithString:bodyStr response:^(id dict, BSError *error) {
-        if (dict != nil) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
-            NSLog(@"%@",dic);
-            if ([dic[@"status"] integerValue] == 1) {
-                
-                UIAlertController *cameraAc = [UIAlertController alertControllerWithTitle:nil message:@"保存成功" preferredStyle:UIAlertControllerStyleAlert];
-                [cameraAc addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                    [self.navigationController popViewControllerAnimated:YES];
-                }]];
-                [self presentViewController:cameraAc animated:YES completion:nil];
-                
-            }else{
-                [LPUnitily showToastWithText:dic[@"message"]];
-            }
-        }
-    }];
+//    NSString *bodyStr = [NSString stringWithFormat:@"%@?zuowumc=%@􏱻􏱻􏰧􏰧􏱭􏱭&remarks=%@&id=%@&fi lecode=%@&weidu1=%@&jingdu1=%@&weidu=%@&jingdu=%@&weidu2=%@&jingdu2=%@&province=%@&city=%@&district=%@&renwuid=&chaoxiang=146&jingduzhi=high&zhuangtai=5",BS_Url.dataSave,self.tkModel.zuowumc,[[self.dataArr objectAtIndex:12] objectForKey:@"text"],self.tkModel.ID,self.tkModel.filecode,self.tkModel.weidu1,self.tkModel.jingdu1,self.tkModel.weidu,self.tkModel.jingdu,self.tkModel.weidu2,self.tkModel.jingdu2,self.tkModel.province,self.tkModel.city,self.tkModel.district];
+//
+//    [LSNetworkService getDataCollectionSaveWithString:bodyStr response:^(id dict, BSError *error) {
+//        if (dict != nil) {
+//            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
+//            NSLog(@"%@",dic);
+//            if ([dic[@"status"] integerValue] == 1) {
+//
+//                UIAlertController *cameraAc = [UIAlertController alertControllerWithTitle:nil message:@"保存成功" preferredStyle:UIAlertControllerStyleAlert];
+//                [cameraAc addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//                    [self.navigationController popViewControllerAnimated:YES];
+//                }]];
+//                [self presentViewController:cameraAc animated:YES completion:nil];
+//
+//            }else{
+//                [LPUnitily showToastWithText:dic[@"message"]];
+//            }
+//        }
+//    }];
     
     
 }

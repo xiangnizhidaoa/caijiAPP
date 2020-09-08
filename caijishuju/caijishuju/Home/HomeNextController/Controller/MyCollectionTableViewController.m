@@ -13,6 +13,7 @@
 #import "TaskByModel.h"
 #import "MyCollectionTableViewCell.h"
 #import "TaskMapDataSubmitController.h"
+#import "MyTaskDetailsController.h"
 
 @interface MyCollectionTableViewController ()<UISearchBarDelegate,UITextFieldDelegate,CollectionSearchViewDelegate,TimeTypeViewControllerDelegate,THDatePickerViewDelegate,MyCollectionTableViewCellDelegate>
 
@@ -50,6 +51,7 @@
     self.clickType = 0;
     self.starttime = @"";
     self.endtime = @"";
+    self.zuowuName = @"";
     self.pageNo = 1;
     self.modelArray = [NSMutableArray array];
     [self loadData];
@@ -61,6 +63,7 @@
         self.clickType = 0;
         self.starttime = @"";
         self.endtime = @"";
+        self.zuowuName = @"";
         self.pageNo = 1;
         self.modelArray = [NSMutableArray array];
         [self loadData];
@@ -73,7 +76,7 @@
 }
 
 -(void)loadData{
-    [LSNetworkService getMyCollectionWithDic:@{@"pageNo":@(self.pageNo),@"pageSize":@(self.pageSize),@"timetype":@(self.timetype),@"starttime":self.starttime,@"endtime":self.endtime} response:^(id dict, BSError *error) {
+    [LSNetworkService getMyCollectionWithDic:@{@"pageNo":@(self.pageNo),@"pageSize":@(self.pageSize),@"timetype":@(self.timetype),@"starttime":self.starttime,@"endtime":self.endtime,@"zuowumc":self.zuowuName} response:^(id dict, BSError *error) {
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         if (dict != nil) {
@@ -154,10 +157,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     TaskModel *model = self.modelArray[indexPath.row];
-    TaskMapDataSubmitController *tmdsc = [TaskMapDataSubmitController new];
-    tmdsc.type = 1;
-    tmdsc.model = model;
-    [self.navigationController pushViewController:tmdsc animated:YES];
+    if ([model.zhuangtai integerValue] == 5 || [model.zhuangtai integerValue] == 30) {
+        TaskMapDataSubmitController *tmdsc = [TaskMapDataSubmitController new];
+        tmdsc.type = 1;
+        tmdsc.model = model;
+        [self.navigationController pushViewController:tmdsc animated:YES];
+    }else{
+        MyTaskDetailsController *mtdc = [MyTaskDetailsController new];
+        mtdc.tkModel = [self.modelArray objectAtIndex:indexPath.row];
+        [self.navigationController pushViewController:mtdc animated:YES];
+    }
+    
 }
 
 - (void)deleatWithTag:(NSInteger)tag{
@@ -190,6 +200,11 @@
     searchField.text = self.zuowuName;
     searchField.delegate = self;
     return view;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    self.zuowuName = textField.text;
+    [self loadData];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

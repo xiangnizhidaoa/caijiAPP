@@ -50,8 +50,24 @@
 //    pointAnnotation.subtitle = @"腾讯北京总部";
 
     // 将点标记添加到地图中
-    [self.mapView addAnnotation:pointAnnotation];
     
+    [self.mapView selectAnnotation:pointAnnotation animated:YES];
+    [self.mapView addAnnotation:pointAnnotation];
+}
+
+- (QAnnotationView *)mapView:(QMapView *)mapView viewForAnnotation:(id<QAnnotation>)annotation {
+    if ([annotation isKindOfClass:[QPointAnnotation class]]) {
+        static NSString *annotationIdentifier = @"pointAnnotation";
+        QPinAnnotationView *pinView = (QPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+        if (pinView == nil) {
+            pinView = [[QPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
+            pinView.canShowCallout = YES;
+        }
+        
+        return pinView;
+    }
+    
+    return nil;
 }
 
 @end

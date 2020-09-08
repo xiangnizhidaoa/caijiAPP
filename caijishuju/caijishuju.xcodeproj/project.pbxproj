@@ -40,6 +40,8 @@
 		0924076F24FC88D50049F671 /* RegiestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0924076D24FC88D50049F671 /* RegiestViewController.xib */; };
 		0924077C24FC923B0049F671 /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0924077A24FC923B0049F671 /* PasswordViewController.m */; };
 		0924077D24FC923B0049F671 /* PasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0924077B24FC923B0049F671 /* PasswordViewController.xib */; };
+		09544E282507570F00B42D0A /* NewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09544E262507570F00B42D0A /* NewTaskViewController.m */; };
+		09544E292507570F00B42D0A /* NewTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09544E272507570F00B42D0A /* NewTaskViewController.xib */; };
 		0959202924ECC2C300958627 /* TypeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0959202824ECC2C300958627 /* TypeButton.m */; };
 		09737F4724EA27B700C0E319 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09737F4624EA27B700C0E319 /* AppDelegate.m */; };
 		09737F5024EA27B700C0E319 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09737F4E24EA27B700C0E319 /* Main.storyboard */; };
@@ -189,6 +191,9 @@
 		0924077924FC923B0049F671 /* PasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordViewController.h; sourceTree = "<group>"; };
 		0924077A24FC923B0049F671 /* PasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordViewController.m; sourceTree = "<group>"; };
 		0924077B24FC923B0049F671 /* PasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordViewController.xib; sourceTree = "<group>"; };
+		09544E252507570F00B42D0A /* NewTaskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewTaskViewController.h; sourceTree = "<group>"; };
+		09544E262507570F00B42D0A /* NewTaskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewTaskViewController.m; sourceTree = "<group>"; };
+		09544E272507570F00B42D0A /* NewTaskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewTaskViewController.xib; sourceTree = "<group>"; };
 		0959202724ECC2C300958627 /* TypeButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeButton.h; sourceTree = "<group>"; };
 		0959202824ECC2C300958627 /* TypeButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TypeButton.m; sourceTree = "<group>"; };
 		09737F4224EA27B700C0E319 /* 视田.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "视田.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -541,6 +546,24 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		09544E23250756E600B42D0A /* NewTask */ = {
+			isa = PBXGroup;
+			children = (
+				09544E24250756F200B42D0A /* NewTaskViewController */,
+			);
+			path = NewTask;
+			sourceTree = "<group>";
+		};
+		09544E24250756F200B42D0A /* NewTaskViewController */ = {
+			isa = PBXGroup;
+			children = (
+				09544E252507570F00B42D0A /* NewTaskViewController.h */,
+				09544E262507570F00B42D0A /* NewTaskViewController.m */,
+				09544E272507570F00B42D0A /* NewTaskViewController.xib */,
+			);
+			path = NewTaskViewController;
+			sourceTree = "<group>";
+		};
 		09737F3924EA27B700C0E319 = {
 			isa = PBXGroup;
 			children = (
@@ -783,6 +806,7 @@
 		0973800824EA322100C0E319 /* TaskMap */ = {
 			isa = PBXGroup;
 			children = (
+				09544E23250756E600B42D0A /* NewTask */,
 				0C5314EC2501A5770010675A /* PhotosDetails */,
 				0C626CCD24F8116900F0E1E2 /* Submit */,
 				0973801124EA325C00C0E319 /* Root */,
@@ -1177,6 +1201,7 @@
 				091E4FE124F6031000C3BE79 /* CollectionSearchView.xib in Resources */,
 				0C5315002501AB150010675A /* HHRLaunchPageCell.xib in Resources */,
 				0903A39E24F4EA5A003A0430 /* AboutUsTableViewCell.xib in Resources */,
+				09544E292507570F00B42D0A /* NewTaskViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1231,6 +1256,7 @@
 			files = (
 				0910200724EE19F800E495F8 /* MyViewController.m in Sources */,
 				09737FC024EA2E8700C0E319 /* AppUtility.m in Sources */,
+				09544E282507570F00B42D0A /* NewTaskViewController.m in Sources */,
 				0903A39324F4C246003A0430 /* ExportViewController.m in Sources */,
 				0973800524EA2EB300C0E319 /* CustomPickView.m in Sources */,
 				09737FC324EA2E8700C0E319 /* UINavigationBar+NavAlpha.m in Sources */,

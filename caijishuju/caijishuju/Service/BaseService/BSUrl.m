@@ -52,6 +52,8 @@ static BSUrl * instance = nil;
         
         self.zhiwuImage = [BSUrl hostUrlWithParam:@"/wx/imageclassify/zhiwusavepicforhighfind"];
         
+        self.taskStatise = [BSUrl hostUrlWithParam:@"/wx/markertask/form"];
+        
     }
     return self;
 }

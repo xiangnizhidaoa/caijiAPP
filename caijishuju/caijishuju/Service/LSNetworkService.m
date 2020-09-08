@@ -77,7 +77,7 @@
 //我的采集
 +(void)getMyCollectionWithDic:(NSDictionary *)dic response:(BSResponse)response
 {
-    NSString *url = [NSString stringWithFormat:@"%@?pageNo=%@&pageSize=%@&timetype=%@&starttime=%@&endtime=%@&token=%@",BS_Url.myCollection,dic[@"pageNo"],dic[@"pageSize"],dic[@"timetype"],dic[@"starttime"],dic[@"endtime"],App_Utility.currentUser.token];
+    NSString *url = [NSString stringWithFormat:@"%@?pageNo=%@&pageSize=%@&zuowumc=%@&timetype=%@&starttime=%@&endtime=%@&token=%@",BS_Url.myCollection,dic[@"pageNo"],dic[@"pageSize"],dic[@"zuowumc"],dic[@"timetype"],dic[@"starttime"],dic[@"endtime"],App_Utility.currentUser.token];
     [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
         response(completion,nil);
     }];
@@ -135,6 +135,15 @@
 +(void)getZhiwuImageWithDic:(NSDictionary *)dic response:(BSResponse)response
 {
     NSString *url = [NSString stringWithFormat:@"%@?fileid=%@&token=%@",BS_Url.zhiwuImage,dic[@"fileid"],App_Utility.currentUser.token];
+    [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
+        response(completion,nil);
+    }];
+}
+
+//任务状态
++(void)getTaskStatuseWithID:(NSString *)ID response:(BSResponse)response
+{
+    NSString *url = [NSString stringWithFormat:@"%@?id=%@&token=%@",BS_Url.taskStatise,ID,App_Utility.currentUser.token];
     [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
         response(completion,nil);
     }];

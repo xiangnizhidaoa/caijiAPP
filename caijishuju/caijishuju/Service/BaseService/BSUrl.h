@@ -51,6 +51,8 @@
 
 @property (nonatomic, copy) NSString *zhiwuImage;//植物识别
 
+@property (nonatomic, copy) NSString *taskStatise;//任务状态
+
 
 + (NSString *)hostUrlWithParam:(NSString *)param;
 
