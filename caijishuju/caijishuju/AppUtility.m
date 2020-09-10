@@ -41,6 +41,7 @@ static AppUtility *instance = nil;
             _currentUser = [[LSCurrentUser alloc] init];
             _currentUser.userName = @"";
             _currentUser.token = @"";
+            _currentUser.isShow = @"0";
         }
     }
     return self;

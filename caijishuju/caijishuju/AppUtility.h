@@ -28,6 +28,8 @@
 
 @property (nonatomic, strong) NSString *userid;
 
+@property (nonatomic, strong) NSString *isShow;
+
 @end
 
 @interface AppUtility : NSObject

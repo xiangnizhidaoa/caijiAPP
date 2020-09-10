@@ -102,7 +102,7 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="发送验证码">
-                                <color key="titleColor" red="0.40784313725490196" green="0.68627450980392157" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.0" green="0.60392156862745094" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
                                 <action selector="senderCode:" destination="-1" eventType="touchUpInside" id="0ac-li-TTf"/>
@@ -137,7 +137,7 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9R-ur-qCp">
                     <rect key="frame" x="20" y="407" width="374" height="45"/>
-                    <color key="backgroundColor" red="0.40784313729999999" green="0.68627450980000004" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.60392156862745094" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="1As-I8-a36"/>
                     </constraints>
@@ -158,7 +158,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heA-Gz-veQ">
                     <rect key="frame" x="20" y="472" width="374" height="45"/>
-                    <color key="backgroundColor" red="0.40784313729999999" green="0.68627450980000004" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.60392156860000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="w23-qn-atm"/>
                     </constraints>

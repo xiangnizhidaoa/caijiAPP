@@ -9,6 +9,7 @@
 #import "CollectionViewController.h"
 #import <WebKit/WebKit.h>
 #import "TaskMapDataSubmitController.h"
+#import "HHRLaunchViewController.h"
 
 @interface CollectionViewController ()<WKNavigationDelegate,WKScriptMessageHandler,CLLocationManagerDelegate,TencentLBSLocationManagerDelegate>
 
@@ -39,8 +40,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"采集地图";
-    
-    
+    if ([App_Utility.currentUser.isShow integerValue] == 0) {
+        HHRLaunchViewController *lvc = [[HHRLaunchViewController alloc] initWithNibName:@"HHRLaunchViewController" bundle:nil];
+        lvc.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:lvc animated:YES completion:nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{

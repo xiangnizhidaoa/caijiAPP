@@ -50,7 +50,7 @@
         if (!cell) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"AboutUsTableViewCell" owner:nil options:nil] firstObject];
         }
-        cell.contentLabel.text = @"小程序由中国农业科学院农业资源与农业区划研究所智慧农业团队开发，用于农田地块时空信息抽样、监测，支持ios(iphone\ipad)、Android、windows等系统。小程序主要用于作物（油料作物、粮食作物、经济作物等）时空信息采集、作物长势监测、病虫害信息采集等。小程序面向科研人员、广大农户以及相关领域工作者，便于大家随时随地采集、记录、查看、管理信息。";
+        cell.contentLabel.text = @"视田APP由中国农业科学院农业资源与农业区划研究所智慧农业团队开发，用于农田地块时空信息抽样、监测，支持ios(iphone\\ipad)、Android等系统。视田APP主要用于作物（油料作物、粮食作物、经济作物等）时空信息采集、作物长势监测、病虫害信息采集等。视田APP面向科研人员、广大农户以及相关领域工作者，便于大家随时随地采集、记录、查看、管理信息。";
         return cell;
     }else{
         MyMsgTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyMsgTableViewCell"];

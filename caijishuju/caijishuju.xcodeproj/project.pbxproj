@@ -994,11 +994,11 @@
 			children = (
 				0C5315042501AB610010675A /* ZJPageControl */,
 				0C5314FA2501AB150010675A /* HHRLaunchPageCell.h */,
-				0C5314FB2501AB150010675A /* HHRLaunchViewController.h */,
-				0C5314FC2501AB150010675A /* HHRLaunchPageCell.xib */,
 				0C5314FD2501AB150010675A /* HHRLaunchPageCell.m */,
-				0C5314FE2501AB150010675A /* HHRLaunchViewController.xib */,
+				0C5314FC2501AB150010675A /* HHRLaunchPageCell.xib */,
+				0C5314FB2501AB150010675A /* HHRLaunchViewController.h */,
 				0C5314FF2501AB150010675A /* HHRLaunchViewController.m */,
+				0C5314FE2501AB150010675A /* HHRLaunchViewController.xib */,
 			);
 			path = FirstLaunchPage;
 			sourceTree = "<group>";
@@ -1484,8 +1484,9 @@
 			baseConfigurationReference = EBFA23F975C2FF2A993D4731 /* Pods-caijishuju.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P2E94BPQ57;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = T6NAUL5NTV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/caijishuju/Third",
@@ -1499,6 +1500,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shitian.www;
 				PRODUCT_NAME = "视田";
+				PROVISIONING_PROFILE_SPECIFIER = shitianceshi;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1508,8 +1510,9 @@
 			baseConfigurationReference = 011D7498E98EE56337529954 /* Pods-caijishuju.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P2E94BPQ57;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = T6NAUL5NTV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/caijishuju/Third",
@@ -1523,6 +1526,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shitian.www;
 				PRODUCT_NAME = "视田";
+				PROVISIONING_PROFILE_SPECIFIER = shitianceshi;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

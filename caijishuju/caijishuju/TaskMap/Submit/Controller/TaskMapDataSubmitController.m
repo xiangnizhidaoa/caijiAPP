@@ -441,11 +441,12 @@
 - (void)isHomeGetMyLocation {
     
     self.locationManager = [[TencentLBSLocationManager alloc] init];
-    [self.locationManager setDelegate:self];
+    self.locationManager.delegate = self;
     [self.locationManager setApiKey:@"F7ABZ-EKRWW-MEGR4-RIYHI-GQHIH-7CFHU"];
     [self.locationManager setPausesLocationUpdatesAutomatically:NO];
     // 如果需要POI信息的话，根据所需要的级别来设定，定位结果将会根据设定的POI级别来返回，如：
     [self.locationManager setRequestLevel:TencentLBSRequestLevelPoi];
+    self.locationManager.headingFilter = kCLHeadingFilterNone;
 //    [self.locationManager requestLocationWithCompletionBlock:^(TencentLBSLocation *location, NSError *error) {
 //
 //        if (error) {
@@ -470,11 +471,22 @@
 - (void)startSerialLocation {
     //开始定位
     [self.locationManager startUpdatingLocation];
+    [self.locationManager startUpdatingHeading];
 }
  
 - (void)stopSerialLocation {
     //停止定位
     [self.locationManager stopUpdatingLocation];
+    [self.locationManager stopUpdatingHeading];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self stopSerialLocation];
+}
+
+- (BOOL)tencentLBSLocationManagerShouldDisplayHeadingCalibration:(TencentLBSLocationManager *)manager{
+    return YES;
 }
 
 /**
@@ -483,8 +495,33 @@
  *  @param manager 定位 TencentLBSLocationManager 类
  *  @param newHeading  新的定位朝向
  */
+
 - (void)tencentLBSLocationManager:(TencentLBSLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
-    self.chaoxiang = [NSString stringWithFormat:@"%@",newHeading];
+    CGFloat chaoxiang = newHeading.trueHeading;
+    self.chaoxiang = [self huoquchaoxiangWithFloat:chaoxiang];
+    NSLog(@"%@",self.chaoxiang);
+}
+
+-(NSString *)huoquchaoxiangWithFloat:(CGFloat)chaoxiang{
+    if ((chaoxiang <= 22.5 && chaoxiang >= 0) || (chaoxiang > 337.5 && chaoxiang <= 360)) {
+        return @"北";
+    }else if (chaoxiang > 22.5 && chaoxiang <= 67.5){
+        return @"东北";
+    }else if (chaoxiang > 67.5 && chaoxiang <= 112.5){
+        return @"东";
+    }else if (chaoxiang > 112.5 && chaoxiang <= 157.5){
+        return @"东南";
+    }else if (chaoxiang > 157.5 && chaoxiang <= 202.5){
+        return @"南";
+    }else if (chaoxiang > 202.5 && chaoxiang <= 247.5){
+        return @"西南";
+    }else if (chaoxiang > 247.5 && chaoxiang <= 292.5){
+        return @"西";
+    }else if (chaoxiang > 292.5 && chaoxiang <= 337.5){
+        return @"西北";
+    }else{
+        return @"";
+    }
 }
 
 - (void)tencentLBSLocationManager:(TencentLBSLocationManager *)manager

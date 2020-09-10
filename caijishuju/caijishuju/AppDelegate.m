@@ -21,7 +21,11 @@
     // Override point for customization after application launch.
     [QMapServices sharedServices].APIKey = @"F7ABZ-EKRWW-MEGR4-RIYHI-GQHIH-7CFHU";
     
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login:) name:@"login" object:nil];
+    
+    
     return YES;
 }
 
@@ -30,7 +34,7 @@
     LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     BSNavigationController *navc = [[BSNavigationController alloc] initWithRootViewController:login];
     navc.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self.window.rootViewController presentViewController:navc animated:nil completion:nil];
+    [self.window.rootViewController presentViewController:navc animated:YES completion:nil];
     
  
     

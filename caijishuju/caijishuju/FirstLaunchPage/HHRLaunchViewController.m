@@ -86,8 +86,9 @@
 /// 设置主控制器
 - (void)startRootController {
 #warning 设置主控制器
-//    HHRLoginViewController *lvc = [[HHRLoginViewController alloc] init];
-//    [self presentViewController:lvc animated:YES completion:nil];
+    App_Utility.currentUser.isShow = @"1";
+    [App_Utility saveCurrentUser];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UICollectionView

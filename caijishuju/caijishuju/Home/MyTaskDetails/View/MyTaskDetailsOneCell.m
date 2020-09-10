@@ -42,6 +42,8 @@
     //把mapView添加到view中进行显示
     [self.contentView addSubview:self.mapView];
     
+    self.mapView.centerCoordinate = CLLocationCoordinate2DMake([weidu doubleValue],[jingdu doubleValue]);
+    
     QPointAnnotation *pointAnnotation = [[QPointAnnotation alloc] init];
     pointAnnotation.coordinate = CLLocationCoordinate2DMake([weidu doubleValue], [jingdu doubleValue]);
 //    // 点标注的标题
