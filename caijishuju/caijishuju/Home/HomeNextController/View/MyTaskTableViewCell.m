@@ -21,4 +21,9 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)detail:(UIButton *)sender {
+    [self.delegate detaliWithModel:self.model];
+}
+
+
 @end

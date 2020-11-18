@@ -1,44 +1,32 @@
 //
-//  LoginViewController.m
+//  CodeLoginViewController.m
 //  caijishuju
 //
-//  Created by 牛方路 on 2020/8/17.
+//  Created by 牛方路 on 2020/9/14.
 //  Copyright © 2020 牛方路. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "CodeLoginViewController.h"
 #import "RegiestViewController.h"
 #import "PasswordViewController.h"
-#import "CodeLoginViewController.h"
 
-@interface LoginViewController ()<UITextFieldDelegate>
+@interface CodeLoginViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 
-@property (weak, nonatomic) IBOutlet UITextField *codde;
-
-@property (weak, nonatomic) IBOutlet UIButton *sendBtn;
-
-@property (weak, nonatomic) IBOutlet UILabel *passwordLabel;
-
-@property (weak, nonatomic) IBOutlet UIButton *changeBtn;
-
-@property (nonatomic, assign) NSInteger isCode;
+@property (weak, nonatomic) IBOutlet UITextField *code;
 
 @property (nonatomic, assign) NSInteger isPhone;
 
 @end
 
-@implementation LoginViewController
+@implementation CodeLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.isCode = 0;
-    self.isPhone = 0;
-    self.passwordLabel.text = @"密码";
-    self.codde.placeholder = @"请输入密码";
-    self.sendBtn.hidden = YES;
+    self.title = @"验证码登录";
     self.phone.delegate = self;
+    self.isPhone = 0;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
@@ -52,10 +40,40 @@
     }
 }
 
+- (IBAction)sendCode:(UIButton *)sender {
+    if (self.isPhone == 1) {
+        if (self.phone.text.length > 0) {
+            [LSNetworkService getPhoneCodeWithPhone:self.phone.text response:^(id dict, BSError *error) {
+                if (dict != nil) {
+                    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
+                    NSLog(@"%@",dic);
+                    if ([dic[@"status"] integerValue] == 1) {
+                        [LPUnitily showToastWithText:dic[@"message"]];
+                        sender.enabled = NO;
+                        // 开始倒计时
+                        [UtilFunc countDown:60 complete:^{
+                            sender.enabled = YES;
+                            [sender setTitle:@"重新获取" forState:UIControlStateNormal];
+                        } progress:^(id time) {
+                            [sender setTitle:[NSString stringWithFormat:@"%@秒后重发", time] forState:UIControlStateNormal];
+                        }];
+                    }else{
+                        [LPUnitily showToastWithText:dic[@"message"]];
+                    }
+                }
+            }];
+        }else{
+            [LPUnitily showToastWithText:@"请填写手机号后点击"];
+        }
+    }else{
+        [LPUnitily showToastWithText:@"手机号输入有误,请重新输入"];
+    }
+}
+
 - (IBAction)login:(UIButton *)sender {
     if (self.isPhone == 1) {
-        if (self.phone.text.length > 0 && self.codde.text.length > 0) {
-            [LSNetworkService postLoginWithDic:@{@"userName":self.phone.text,@"password":self.codde.text} response:^(id dict, BSError *error) {
+        if (self.phone.text.length > 0 && self.code.text.length > 0) {
+            [LSNetworkService getCodeLoginWithDic:@{@"userName":self.phone.text,@"password":self.code.text} response:^(id dict, BSError *error) {
                 if (dict != nil) {
                     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
                     NSLog(@"%@",dic);
@@ -77,16 +95,11 @@
                 }
             }];
         }else{
-            [LPUnitily showToastWithText:@"账号或密码填写错误,请重新填写"];
+            [LPUnitily showToastWithText:@"账号或验证码填写错误,请重新填写"];
         }
     }else{
         [LPUnitily showToastWithText:@"手机号输入有误,请重新输入"];
     }
-    
-}
-- (IBAction)changeLoginType:(UIButton *)sender {
-    CodeLoginViewController *codeLogin = [[CodeLoginViewController alloc] initWithNibName:@"CodeLoginViewController" bundle:nil];
-    [self.navigationController pushViewController:codeLogin animated:YES];
 }
 
 - (IBAction)regiest:(UIButton *)sender {
@@ -99,19 +112,10 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"map" object:self];
 }
 
-- (IBAction)forgetPassword:(UIButton *)sender {
+- (IBAction)password:(UIButton *)sender {
     PasswordViewController *password = [[PasswordViewController alloc] initWithNibName:@"PasswordViewController" bundle:nil];
     [self.navigationController pushViewController:password animated:YES];
 }
-
-//获取验证码
-- (IBAction)senderCode:(UIButton *)sender {
-    
-}
-
-
-
-
 
 
 @end

@@ -25,5 +25,10 @@
     [self.delegate deleatWithTag:self.tag];
 }
 
+- (IBAction)detail:(UIButton *)sender {
+    [self.delegate detailWithTag:self.tag];
+}
+
+
 
 @end

@@ -15,6 +15,7 @@
 #import "MyTaskDetailsFootCell.h"
 #import "UIImageView+WebCache.h"
 #import "MyTaskDetailsFivCell.h"
+#import "CarTaskManagePhotoDetailsController.h"
 
 @interface MyTaskDetailsController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -65,6 +66,9 @@
 
 /** 采集地图 */
 - (IBAction)MTDMapBtAction:(UIButton *)sender {
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"collectionMap" object:self];
+//    self.tabBarController.tabBar.hidden = NO;
+//    [self.navigationController popToRootViewControllerAnimated:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -119,14 +123,31 @@
     } else if ([typeStr isEqualToString:@"2"]) {
         MyTaskDetailsTwoCell *cellTwo = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsTwoCell" forIndexPath:indexPath];
         cellTwo.titleLb.text = titleStr;
-        cellTwo.detailsLb.text = detailStr;
+        
+        if (indexPath.row == 5) {
+            cellTwo.detailsLb.text = [NSString stringWithFormat:@"%@%ld",[self huoquchaoxiangWithFloat:[detailStr doubleValue]],[detailStr integerValue]];
+        }else if (indexPath.row == 6){
+            cellTwo.detailsLb.text = detailStr.length != 0 ? @"高":@"";
+        }else if (indexPath.row == 8){
+            if ([detailStr integerValue] == 5) {
+                cellTwo.detailsLb.text = @"未共享";
+            }else if ([detailStr integerValue] == 10){
+                cellTwo.detailsLb.text = @"待审核";
+            }else if ([detailStr integerValue] == 20){
+                cellTwo.detailsLb.text = @"共享";
+            }else if ([detailStr integerValue] == 30){
+                cellTwo.detailsLb.text = @"未通过";
+            }
+        }else{
+            cellTwo.detailsLb.text = detailStr;
+        }
          return cellTwo;
     } else if ([typeStr isEqualToString:@"3"]) {
         MyTaskDetailsThrCell *cellThr = [self.tabV dequeueReusableCellWithIdentifier:@"MyTaskDetailsThrCell" forIndexPath:indexPath];
         cellThr.titleLb.text = titleStr;
         [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:detailStr] placeholderImage:[UIImage imageNamed:@"upload"]];
         cellThr.selectBlock = ^{
-            
+            [self loadImageViewCellIndex:indexPath.row];
         };
         if (indexPath.row == 9) {
             [cellThr.detailsIv sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,self.tkModel.yepianzpid]] placeholderImage:[UIImage imageNamed:@"upload"]];
@@ -152,6 +173,7 @@
         cellFiv.finishBlock = ^(NSString * _Nonnull text) {
             [[self.dataArr objectAtIndex:indexPath.row] setObject:[self isNoBlankText:text] forKey:@"text"];
         };
+        [[self.dataArr objectAtIndex:indexPath.row] setObject:self.tkModel.remarks forKey:@"text"];
         cellFiv.detailTv.text = self.tkModel.remarks;
         cellFiv.hintLb.hidden = YES;
         return cellFiv;
@@ -162,11 +184,47 @@
     return nil;
 }
 
+-(void)loadImageViewCellIndex:(NSInteger)row{
+    CarTaskManagePhotoDetailsController *ctmpdc = [CarTaskManagePhotoDetailsController new];
+    ctmpdc.isModification = NO;
+    ctmpdc.cellInd = 0;
+    if (row == 9) {
+        [ctmpdc.photosDetailsArr addObject:self.tkModel.yepianzpid];
+    }else if (row == 10){
+        [ctmpdc.photosDetailsArr addObject:self.tkModel.zhizhuzpid];
+    }else if (row == 11){
+        [ctmpdc.photosDetailsArr addObject:self.tkModel.dikuaizpid];
+    }
+    [self.navigationController pushViewController:ctmpdc animated:YES];
+}
+
 /**
  点击cell
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+-(NSString *)huoquchaoxiangWithFloat:(CGFloat)chaoxiang{
+    if ((chaoxiang <= 22.5 && chaoxiang >= 0) || (chaoxiang > 337.5 && chaoxiang <= 360)) {
+        return @"北";
+    }else if (chaoxiang > 22.5 && chaoxiang <= 67.5){
+        return @"东北";
+    }else if (chaoxiang > 67.5 && chaoxiang <= 112.5){
+        return @"东";
+    }else if (chaoxiang > 112.5 && chaoxiang <= 157.5){
+        return @"东南";
+    }else if (chaoxiang > 157.5 && chaoxiang <= 202.5){
+        return @"南";
+    }else if (chaoxiang > 202.5 && chaoxiang <= 247.5){
+        return @"西南";
+    }else if (chaoxiang > 247.5 && chaoxiang <= 292.5){
+        return @"西";
+    }else if (chaoxiang > 292.5 && chaoxiang <= 337.5){
+        return @"西北";
+    }else{
+        return @"";
+    }
 }
 
 - (void)MTDCreateUIInfo {
@@ -286,26 +344,38 @@
 #pragma mark - 网络请求
 - (void)MTDSubmitRequest {
     
-//    NSString *bodyStr = [NSString stringWithFormat:@"%@?zuowumc=%@􏱻􏱻􏰧􏰧􏱭􏱭&remarks=%@&id=%@&fi lecode=%@&weidu1=%@&jingdu1=%@&weidu=%@&jingdu=%@&weidu2=%@&jingdu2=%@&province=%@&city=%@&district=%@&renwuid=&chaoxiang=146&jingduzhi=high&zhuangtai=5",BS_Url.dataSave,self.tkModel.zuowumc,[[self.dataArr objectAtIndex:12] objectForKey:@"text"],self.tkModel.ID,self.tkModel.filecode,self.tkModel.weidu1,self.tkModel.jingdu1,self.tkModel.weidu,self.tkModel.jingdu,self.tkModel.weidu2,self.tkModel.jingdu2,self.tkModel.province,self.tkModel.city,self.tkModel.district];
-//
-//    [LSNetworkService getDataCollectionSaveWithString:bodyStr response:^(id dict, BSError *error) {
-//        if (dict != nil) {
-//            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
-//            NSLog(@"%@",dic);
-//            if ([dic[@"status"] integerValue] == 1) {
-//
-//                UIAlertController *cameraAc = [UIAlertController alertControllerWithTitle:nil message:@"保存成功" preferredStyle:UIAlertControllerStyleAlert];
-//                [cameraAc addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//                    [self.navigationController popViewControllerAnimated:YES];
-//                }]];
-//                [self presentViewController:cameraAc animated:YES completion:nil];
-//
-//            }else{
-//                [LPUnitily showToastWithText:dic[@"message"]];
-//            }
-//        }
-//    }];
+    NSDictionary *bodyDic = @{@"zuowumc":self.tkModel.zuowumc,
+                              @"remarks":[[self.dataArr objectAtIndex:12] objectForKey:@"text"],
+                              @"filecode":self.tkModel.filecode,
+                              @"weidu1":self.tkModel.weidu1,
+                              @"jingdu1":self.tkModel.jingdu1,
+                              @"weidu":self.tkModel.weidu,
+                              @"jingdu":self.tkModel.jingdu,
+                              @"weidu2":self.tkModel.weidu2,
+                              @"jingdu2":self.tkModel.jingdu2,
+                              @"province":self.tkModel.province,
+                              @"city":self.tkModel.city,
+                              @"district":self.tkModel.district,
+                              @"chaoxiang":self.tkModel.chaoxiang,
+                              @"jingduzhi":self.tkModel.jingduzhi,
+                              @"zhuangtai":self.tkModel.zhuangtai,
+                              @"id":self.tkModel.ID
+    };
     
+    [LSNetworkService getDataCollectionSaveWithString:bodyDic response:^(id dict, BSError *error) {
+        if (dict != nil) {
+            NSDictionary *dic = dict;
+            if ([dic[@"status"] integerValue] == 1) {
+                [LPUnitily showToastWithText:@"保存成功"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self.navigationController popViewControllerAnimated:YES];
+                });
+                
+            }else{
+                [LPUnitily showToastWithText:dic[@"message"]];
+            }
+        }
+    }];
     
 }
 

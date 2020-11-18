@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskMapDataSubmitController">
             <connections>
+                <outlet property="collectionMap" destination="uQA-wr-gvy" id="KcV-OI-feG"/>
                 <outlet property="tabV" destination="RHF-9a-IJa" id="HTe-YF-Ldz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

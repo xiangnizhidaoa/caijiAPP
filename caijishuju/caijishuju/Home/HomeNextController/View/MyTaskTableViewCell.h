@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaskModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol MyTaskTableViewCellDelegate <NSObject>
+
+-(void)detaliWithModel:(TaskModel *)model;
+
+@end
 
 @interface MyTaskTableViewCell : UITableViewCell
 
@@ -21,6 +28,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *typeImageView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *shareImageView;
+
+@property (nonatomic, strong) TaskModel *model;
+
+@property (nonatomic, weak) id <MyTaskTableViewCellDelegate> delegate;
 
 @end
 

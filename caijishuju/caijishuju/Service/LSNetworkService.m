@@ -50,7 +50,7 @@
 //我的任务
 +(void)getMyTaskWithDic:(NSDictionary *)dic response:(BSResponse)response
 {
-    NSString *url = [NSString stringWithFormat:@"%@?istask=ture&pageNo=%@&pageSize=%@&zuowumc=%@&token=%@",BS_Url.MyTask,dic[@"pageNo"],dic[@"pageSize"],dic[@"zuowumc"],App_Utility.currentUser.token];
+    NSString *url = [NSString stringWithFormat:@"%@?istask=true&pageNo=%@&pageSize=%@&zuowumc=%@&token=%@&loginName=%@&userid=%@",BS_Url.MyTask,dic[@"pageNo"],dic[@"pageSize"],dic[@"zuowumc"],App_Utility.currentUser.token,App_Utility.currentUser.phone,App_Utility.currentUser.userid];
     [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
         response(completion,nil);
     }];
@@ -77,7 +77,7 @@
 //我的采集
 +(void)getMyCollectionWithDic:(NSDictionary *)dic response:(BSResponse)response
 {
-    NSString *url = [NSString stringWithFormat:@"%@?pageNo=%@&pageSize=%@&zuowumc=%@&timetype=%@&starttime=%@&endtime=%@&token=%@",BS_Url.myCollection,dic[@"pageNo"],dic[@"pageSize"],dic[@"zuowumc"],dic[@"timetype"],dic[@"starttime"],dic[@"endtime"],App_Utility.currentUser.token];
+    NSString *url = [NSString stringWithFormat:@"%@?pageNo=%@&pageSize=%@&zuowumc=%@&timetype=%@&starttime=%@&endtime=%@&token=%@&loginName=%@&userid=%@",BS_Url.myCollection,dic[@"pageNo"],dic[@"pageSize"],dic[@"zuowumc"],dic[@"timetype"],dic[@"starttime"],dic[@"endtime"],App_Utility.currentUser.token,App_Utility.currentUser.phone,App_Utility.currentUser.userid];
     [[MK_UseAFNetWorking NewNewWork] getNetWorkGetWithGetDic:nil Url:url headerDic:nil withCompletion:^(id completion) {
         response(completion,nil);
     }];

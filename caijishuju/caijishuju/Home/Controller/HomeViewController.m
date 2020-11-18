@@ -20,6 +20,16 @@
     [super viewDidLoad];
     self.title = @"首页";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(map) name:@"map" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionMap) name:@"collectionMap" object:nil];
+    self.tabBarController.selectedIndex = 1;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userlogin) name:@"userlogin" object:nil];
+}
+
+-(void)userlogin{
+    self.tabBarController.selectedIndex = 0;
+}
+
+-(void)collectionMap{
     self.tabBarController.selectedIndex = 1;
 }
 

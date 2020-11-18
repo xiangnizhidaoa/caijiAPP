@@ -137,7 +137,7 @@ NSNotificationName const CTMNDeletePhotoReloadNotification = @"CTMNDeletePhotoRe
     if (self.isModification) {
         cell.imgV.image = [self.photosDetailsArr objectAtIndex:indexPath.row];
     } else {
-        [cell.imgV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[self.photosDetailsArr objectAtIndex:indexPath.row]]] placeholderImage:nil];
+        [cell.imgV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?type=s&id=%@",BS_Url.downImage,[self.photosDetailsArr objectAtIndex:indexPath.row]]] placeholderImage:nil];
     }
     self.nowIndex = indexPath.row;
     MLog(@"cell: %ld",self.nowIndex);

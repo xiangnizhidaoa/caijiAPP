@@ -45,7 +45,10 @@
         lvc.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:lvc animated:YES completion:nil];
     }
+    
 }
+
+
 
 - (void)viewWillAppear:(BOOL)animated{
     [self HPSILocationJurisdiction];

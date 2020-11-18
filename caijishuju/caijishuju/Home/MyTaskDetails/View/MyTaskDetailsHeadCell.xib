@@ -36,28 +36,28 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6GV-ge-GeJ">
-                                <rect key="frame" x="17" y="26" width="286" height="15"/>
+                                <rect key="frame" x="16" y="18" width="288" height="12"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="hxI-oC-U8p"/>
+                                    <constraint firstAttribute="height" constant="12" id="hxI-oC-U8p"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b11-hg-X0T">
-                                <rect key="frame" x="16" y="23" width="288" height="16"/>
+                                <rect key="frame" x="16" y="24" width="288" height="8"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="4cT-iP-dbb"/>
+                                    <constraint firstAttribute="height" constant="8" id="4cT-iP-dbb"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="b11-hg-X0T" firstAttribute="leading" secondItem="8tZ-Eg-UIB" secondAttribute="leading" constant="16" id="2pl-T9-lBm"/>
-                            <constraint firstAttribute="bottom" secondItem="6GV-ge-GeJ" secondAttribute="bottom" constant="-9" id="3Bw-8j-umt"/>
+                            <constraint firstAttribute="bottom" secondItem="6GV-ge-GeJ" secondAttribute="bottom" constant="2" id="3Bw-8j-umt"/>
                             <constraint firstItem="AhX-bO-MF0" firstAttribute="leading" secondItem="b11-hg-X0T" secondAttribute="trailing" constant="-1" id="7Kp-qL-Okn"/>
-                            <constraint firstAttribute="trailing" secondItem="6GV-ge-GeJ" secondAttribute="trailing" constant="17" id="880-z3-3cP"/>
-                            <constraint firstItem="6GV-ge-GeJ" firstAttribute="leading" secondItem="8tZ-Eg-UIB" secondAttribute="leading" constant="17" id="9fB-LE-y5s"/>
-                            <constraint firstAttribute="bottom" secondItem="b11-hg-X0T" secondAttribute="bottom" constant="-7" id="GOT-uK-3g8"/>
+                            <constraint firstAttribute="trailing" secondItem="6GV-ge-GeJ" secondAttribute="trailing" constant="16" id="880-z3-3cP"/>
+                            <constraint firstItem="6GV-ge-GeJ" firstAttribute="leading" secondItem="8tZ-Eg-UIB" secondAttribute="leading" constant="16" id="9fB-LE-y5s"/>
+                            <constraint firstAttribute="bottom" secondItem="b11-hg-X0T" secondAttribute="bottom" id="GOT-uK-3g8"/>
                             <constraint firstItem="b11-hg-X0T" firstAttribute="leading" secondItem="4lV-14-fnY" secondAttribute="trailing" constant="-1" id="Izy-B4-kav"/>
                             <constraint firstAttribute="bottom" secondItem="AhX-bO-MF0" secondAttribute="bottom" constant="-1" id="Nmg-sg-d1Q"/>
                             <constraint firstAttribute="bottom" secondItem="4lV-14-fnY" secondAttribute="bottom" constant="-1" id="jAg-Tt-7y6"/>
@@ -66,7 +66,7 @@
                         </constraints>
                     </view>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vli-70-r4o">
-                        <rect key="frame" x="16" y="24" width="288" height="8"/>
+                        <rect key="frame" x="15" y="24" width="290" height="8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="8" id="j5q-nX-YZ0"/>
@@ -77,9 +77,9 @@
                     <constraint firstItem="8tZ-Eg-UIB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="R93-Q0-efS"/>
                     <constraint firstAttribute="trailing" secondItem="8tZ-Eg-UIB" secondAttribute="trailing" id="SYd-Fj-lpA"/>
                     <constraint firstAttribute="bottom" secondItem="8tZ-Eg-UIB" secondAttribute="bottom" id="Tst-WS-D8d"/>
-                    <constraint firstItem="Vli-70-r4o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Y6V-D3-mhg"/>
+                    <constraint firstItem="Vli-70-r4o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Y6V-D3-mhg"/>
                     <constraint firstAttribute="bottom" secondItem="Vli-70-r4o" secondAttribute="bottom" id="d0m-nj-XZQ"/>
-                    <constraint firstAttribute="trailing" secondItem="Vli-70-r4o" secondAttribute="trailing" constant="16" id="jTj-Hc-sQf"/>
+                    <constraint firstAttribute="trailing" secondItem="Vli-70-r4o" secondAttribute="trailing" constant="15" id="jTj-Hc-sQf"/>
                     <constraint firstItem="8tZ-Eg-UIB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="jWO-Rm-j05"/>
                 </constraints>
             </tableViewCellContentView>

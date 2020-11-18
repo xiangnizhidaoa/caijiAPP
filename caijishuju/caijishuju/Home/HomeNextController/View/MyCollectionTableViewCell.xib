@@ -58,11 +58,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyn-f0-fP8">
-                                <rect key="frame" x="240" y="60" width="60" height="25"/>
+                                <rect key="frame" x="240" y="61.5" width="60" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="EW9-cm-UJU"/>
+                                    <constraint firstAttribute="height" constant="22" id="EW9-cm-UJU"/>
                                     <constraint firstAttribute="width" constant="60" id="mNr-Vg-M06"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="删除">
                                     <color key="titleColor" red="0.40784313729999999" green="0.68627450980000004" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -74,7 +75,7 @@
                                         <color key="value" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="12.5"/>
+                                        <real key="value" value="11"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -82,14 +83,17 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qwa-gd-P0s">
-                                <rect key="frame" x="170" y="60" width="60" height="25"/>
+                                <rect key="frame" x="170" y="61.5" width="60" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Wwo-2F-zGI"/>
+                                    <constraint firstAttribute="height" constant="22" id="Wwo-2F-zGI"/>
                                     <constraint firstAttribute="width" constant="60" id="zpI-tv-4dg"/>
                                 </constraints>
                                 <state key="normal" image="详情"/>
+                                <connections>
+                                    <action selector="detail:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ZNz-hH-VL1"/>
+                                </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="共享" translatesAutoresizingMaskIntoConstraints="NO" id="CKh-cC-FEt">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CKh-cC-FEt">
                                 <rect key="frame" x="137.5" y="15" width="35" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="X1w-Ah-ivl"/>
@@ -125,6 +129,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="deleat" destination="pyn-f0-fP8" id="4jK-nL-6Tr"/>
                 <outlet property="name" destination="kBk-f0-Y9o" id="vMc-fC-anb"/>
                 <outlet property="shareImageView" destination="CKh-cC-FEt" id="kCu-Vn-XfQ"/>
                 <outlet property="time" destination="Vgo-TD-hxI" id="T9l-Da-MnK"/>
@@ -135,7 +140,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="共享" width="35" height="13.5"/>
         <image name="植物" width="70" height="70"/>
         <image name="详情" width="55" height="22"/>
     </resources>

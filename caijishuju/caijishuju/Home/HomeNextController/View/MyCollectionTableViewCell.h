@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)deleatWithTag:(NSInteger)tag;
 
+-(void)detailWithTag:(NSInteger)tag;
+
 @end
 
 @interface MyCollectionTableViewCell : UITableViewCell
@@ -29,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIImageView *shareImageView;
 
 @property (nonatomic, strong) id <MyCollectionTableViewCellDelegate> delegate;
+
+@property (weak, nonatomic) IBOutlet UIButton *deleat;
+
 
 @end
 

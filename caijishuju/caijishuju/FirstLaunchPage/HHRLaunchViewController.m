@@ -28,7 +28,7 @@
 
 - (NSArray *)imgArray {
     if (!_imgArray) {
-        self.imgArray = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4", nil];
+        self.imgArray = [NSArray arrayWithObjects:@"引导页_1",@"引导页_2",@"引导页_3",@"引导页_4", nil];
     }
     return _imgArray;
 }
@@ -52,40 +52,46 @@
 //    [self.launchCv registerClass:[HHRLaunchPageCell class] forCellWithReuseIdentifier:@"HHRLaunchPageCell"];
     [self.launchCv registerNib:[UINib nibWithNibName:@"HHRLaunchPageCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"HHRLaunchPageCell"];
     
-    /* pageControl */
-    self.laPageC = [[ZJPageControl alloc] init];
-    self.laPageC.backgroundColor = [UIColor clearColor];
-    self.laPageC.frame = CGRectMake(0, SCREENH_HEIGHT - 80, SCREEN_WIDTH, 30);
-    self.laPageC.pageIndicatorTintColor = [UIColor colorWithRed:1 green:1 blue:170 / 255.0 alpha:0.6];
-    self.laPageC.numberOfPages = self.imgArray.count;
-    self.laPageC.currentPage = 0;
-    self.laPageC.lineWidth = 1;
-    self.laPageC.radius = 4;
-    self.laPageC.padding = 6;
-    [self.laPageC addTarget:self action:@selector(launchPageChangeValue:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:self.laPageC];
-    
-    /* 开始体验 */
-    self.clickBt = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.clickBt.frame = CGRectMake((SCREEN_WIDTH-200)/2 , SCREENH_HEIGHT - 140, 200, 40);
-    self.clickBt.alpha = 0;
-    self.clickBt.hidden = YES;
-    self.clickBt.backgroundColor = [UIColor clearColor];
-    self.clickBt.layer.masksToBounds = YES;
-    self.clickBt.layer.cornerRadius = 4;
-    self.clickBt.layer.borderWidth = 1.0;
-    self.clickBt.layer.borderColor=[UIColor whiteColor].CGColor;
-    [self.clickBt setTitle:@"开始体验" forState:UIControlStateNormal];
-    [self.clickBt addTarget:self action:@selector(startRootController) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.clickBt];
+//    /* pageControl */
+//    self.laPageC = [[ZJPageControl alloc] init];
+//    self.laPageC.backgroundColor = [UIColor clearColor];
+//    self.laPageC.frame = CGRectMake(0, SCREENH_HEIGHT - 80, SCREEN_WIDTH, 30);
+//    self.laPageC.pageIndicatorTintColor = [UIColor colorWithRed:1 green:1 blue:170 / 255.0 alpha:0.6];
+//    self.laPageC.numberOfPages = self.imgArray.count;
+//    self.laPageC.currentPage = 0;
+//    self.laPageC.lineWidth = 1;
+//    self.laPageC.radius = 4;
+//    self.laPageC.padding = 6;
+//    [self.laPageC addTarget:self action:@selector(launchPageChangeValue:) forControlEvents:UIControlEventValueChanged];
+//    [self.view addSubview:self.laPageC];
+//
+//    /* 开始体验 */
+//    self.clickBt = [UIButton buttonWithType:UIButtonTypeCustom];
+//    self.clickBt.frame = CGRectMake((SCREEN_WIDTH-200)/2 , SCREENH_HEIGHT - 140, 200, 40);
+//    self.clickBt.alpha = 0;
+//    self.clickBt.hidden = YES;
+//    self.clickBt.backgroundColor = [UIColor clearColor];
+//    self.clickBt.layer.masksToBounds = YES;
+//    self.clickBt.layer.cornerRadius = 4;
+//    self.clickBt.layer.borderWidth = 1.0;
+//    self.clickBt.layer.borderColor=[UIColor whiteColor].CGColor;
+//    [self.clickBt setTitle:@"开始体验" forState:UIControlStateNormal];
+//    [self.clickBt addTarget:self action:@selector(startRootController) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:self.clickBt];
     
 }
 
-
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 3) {
+        NSLog(@"进入");
+        [self startRootController];
+    }
+    return YES;
+}
 
 /// 设置主控制器
 - (void)startRootController {
-#warning 设置主控制器
+//#warning 设置主控制器
     App_Utility.currentUser.isShow = @"1";
     [App_Utility saveCurrentUser];
     [self dismissViewControllerAnimated:YES completion:nil];

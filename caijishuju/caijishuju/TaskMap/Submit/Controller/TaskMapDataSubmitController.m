@@ -58,6 +58,9 @@
 
 @property (nonatomic, strong) NSString *GUID;
 
+@property (weak, nonatomic) IBOutlet UIButton *collectionMap;
+
+
 
 @end
 
@@ -131,13 +134,18 @@
     [self.tabV registerNib:[UINib nibWithNibName:@"MyTaskDetailsFivCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"MyTaskDetailsFivCell"];
     
     [self HPSILocationJurisdiction];
-    self.GUID = [self getUniqueStrByUUID];
+    
     if (self.type == 1) {
         [[self.dataArr objectAtIndex:1] setObject:self.model.zuowumc forKey:@"text"];
         [[self.dataArr objectAtIndex:2] setObject:self.model.yepianzpid forKey:@"text"];
         [[self.dataArr objectAtIndex:3] setObject:self.model.zhizhuzpid forKey:@"text"];
         [[self.dataArr objectAtIndex:4] setObject:self.model.dikuaizpid forKey:@"text"];
         [[self.dataArr objectAtIndex:5] setObject:self.model.remarks forKey:@"text"];
+        [self.collectionMap setTitle:@"我的采集" forState:UIControlStateNormal];
+        self.GUID = self.model.filecode;
+    }else{
+        [self.collectionMap setTitle:@"采集地图" forState:UIControlStateNormal];
+        self.GUID = [self getUniqueStrByUUID];
     }
     
 }
@@ -152,7 +160,13 @@
 
 /** 采集地图 */
 - (IBAction)TMDSMapBtAction:(UIButton *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.type == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"collectionMap" object:self];
+        self.tabBarController.tabBar.hidden = NO;
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 
@@ -330,7 +344,13 @@
                 [ctmpdc.photosDetailsArr addObject:self.dikuaiImg];
             }
         }else{
-            
+            if (row==2) {
+                [ctmpdc.photosDetailsArr addObject:[[self.dataArr objectAtIndex:2] objectForKey:@"text"]];
+            } else if (row==3) {
+                [ctmpdc.photosDetailsArr addObject:[[self.dataArr objectAtIndex:3] objectForKey:@"text"]];
+            } else if (row==4) {
+                [ctmpdc.photosDetailsArr addObject:[[self.dataArr objectAtIndex:4] objectForKey:@"text"]];
+            }
         }
         [self.navigationController pushViewController:ctmpdc animated:YES];
     }]];
@@ -497,31 +517,8 @@
  */
 
 - (void)tencentLBSLocationManager:(TencentLBSLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
-    CGFloat chaoxiang = newHeading.trueHeading;
-    self.chaoxiang = [self huoquchaoxiangWithFloat:chaoxiang];
+    self.chaoxiang = [NSString stringWithFormat:@"%f",newHeading.trueHeading];
     NSLog(@"%@",self.chaoxiang);
-}
-
--(NSString *)huoquchaoxiangWithFloat:(CGFloat)chaoxiang{
-    if ((chaoxiang <= 22.5 && chaoxiang >= 0) || (chaoxiang > 337.5 && chaoxiang <= 360)) {
-        return @"北";
-    }else if (chaoxiang > 22.5 && chaoxiang <= 67.5){
-        return @"东北";
-    }else if (chaoxiang > 67.5 && chaoxiang <= 112.5){
-        return @"东";
-    }else if (chaoxiang > 112.5 && chaoxiang <= 157.5){
-        return @"东南";
-    }else if (chaoxiang > 157.5 && chaoxiang <= 202.5){
-        return @"南";
-    }else if (chaoxiang > 202.5 && chaoxiang <= 247.5){
-        return @"西南";
-    }else if (chaoxiang > 247.5 && chaoxiang <= 292.5){
-        return @"西";
-    }else if (chaoxiang > 292.5 && chaoxiang <= 337.5){
-        return @"西北";
-    }else{
-        return @"";
-    }
 }
 
 - (void)tencentLBSLocationManager:(TencentLBSLocationManager *)manager
@@ -694,18 +691,18 @@
         [MViewToast MShowWithText:@"请填写作物名称"];
         return NO;
     }
-    if (self.yeziImg==nil) {
-        [MViewToast MShowWithText:@"请添加/修改叶子照片"];
-        return NO;
-    }
-    if (self.zhizhuImg==nil) {
-        [MViewToast MShowWithText:@"请添加/修改植株照片"];
-        return NO;
-    }
-    if (self.dikuaiImg==nil) {
-        [MViewToast MShowWithText:@"请添加/修改地块照片"];
-        return NO;
-    }
+//    if (self.yeziImg==nil) {
+//        [MViewToast MShowWithText:@"请添加/修改叶子照片"];
+//        return NO;
+//    }
+//    if (self.zhizhuImg==nil) {
+//        [MViewToast MShowWithText:@"请添加/修改植株照片"];
+//        return NO;
+//    }
+//    if (self.dikuaiImg==nil) {
+//        [MViewToast MShowWithText:@"请添加/修改地块照片"];
+//        return NO;
+//    }
     return YES;
 }
 
@@ -729,8 +726,8 @@
                         @"city":self.cityStr != nil ? self.cityStr : @"",
                         @"district":self.districtStr != nil ? self.districtStr : @"",
                         @"chaoxiang":self.chaoxiang != nil ? self.chaoxiang : @"",
-                        @"jingduzhi":@"high",
-                        @"zhuangtai":@"",
+                        @"jingduzhi":@"高",
+                        @"zhuangtai":@"5",
                         @"id":self.ID
             };
         }else{
@@ -747,8 +744,8 @@
                         @"city":self.cityStr != nil ? self.cityStr : @"",
                         @"district":self.districtStr != nil ? self.districtStr : @"",
                         @"chaoxiang":self.chaoxiang != nil ? self.chaoxiang : @"",
-                        @"jingduzhi":@"high",
-                        @"zhuangtai":@""
+                        @"jingduzhi":@"高",
+                        @"zhuangtai":@"5"
             };
         }
     }else{
@@ -765,7 +762,7 @@
                     @"city":self.cityStr != nil ? self.cityStr : @"",
                     @"district":self.districtStr != nil ? self.districtStr : @"",
                     @"chaoxiang":self.chaoxiang != nil ? self.chaoxiang : @"",
-                    @"jingduzhi":@"high",
+                    @"jingduzhi":@"高",
                     @"zhuangtai":self.model.zhuangtai,
                     @"id":self.model.ID
         };
@@ -777,13 +774,12 @@
         if (dict != nil) {
             NSDictionary *dic = dict;
             if ([dic[@"status"] integerValue] == 1) {
-                
-                UIAlertController *cameraAc = [UIAlertController alertControllerWithTitle:nil message:@"保存成功" preferredStyle:UIAlertControllerStyleAlert];
-                [cameraAc addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                [LPUnitily showToastWithText:@"保存成功"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"collectionMap" object:self];
                     self.tabBarController.tabBar.hidden = NO;
                     [self.navigationController popToRootViewControllerAnimated:YES];
-                }]];
-                [self presentViewController:cameraAc animated:YES completion:nil];
+                });
                 
             }else{
                 [LPUnitily showToastWithText:dic[@"message"]];

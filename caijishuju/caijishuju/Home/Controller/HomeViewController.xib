@@ -19,12 +19,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="视田-农田信息移动采集器" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ko-bd-VsC">
-                    <rect key="frame" x="20" y="20" width="210" height="20"/>
+                    <rect key="frame" x="102" y="20" width="210" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="8ed-N3-Pm2"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="cnk-1P-B3B"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -169,6 +169,7 @@
                 <constraint firstItem="m0g-gc-p4z" firstAttribute="top" secondItem="2je-gO-X7a" secondAttribute="bottom" constant="15" id="1wx-9S-zMP"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="AIS-mu-K5K" secondAttribute="trailing" constant="15" id="5iP-Hr-buf"/>
                 <constraint firstItem="2je-gO-X7a" firstAttribute="top" secondItem="RzF-5n-ifO" secondAttribute="bottom" constant="20" id="AtN-pj-FCY"/>
+                <constraint firstItem="4ko-bd-VsC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KbO-qr-tJy"/>
                 <constraint firstItem="aqV-md-gaL" firstAttribute="top" secondItem="4ko-bd-VsC" secondAttribute="bottom" constant="20" id="NnF-mI-LYk"/>
                 <constraint firstItem="RzF-5n-ifO" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="O7Y-gv-n3c"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="QyE-CP-c8M" secondAttribute="trailing" constant="15" id="Qhh-By-IH8"/>
@@ -184,7 +185,6 @@
                 <constraint firstItem="QyE-CP-c8M" firstAttribute="top" secondItem="RzF-5n-ifO" secondAttribute="top" id="caf-mm-0B0"/>
                 <constraint firstItem="AIS-mu-K5K" firstAttribute="leading" secondItem="m0g-gc-p4z" secondAttribute="trailing" constant="15" id="dL3-Uj-Rpz"/>
                 <constraint firstItem="4ko-bd-VsC" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="duW-ZT-Mcg"/>
-                <constraint firstItem="4ko-bd-VsC" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="dyg-ee-RoQ"/>
                 <constraint firstItem="RzF-5n-ifO" firstAttribute="width" secondItem="QyE-CP-c8M" secondAttribute="width" id="jf4-Sg-Ue9"/>
                 <constraint firstItem="AIS-mu-K5K" firstAttribute="height" secondItem="m0g-gc-p4z" secondAttribute="height" id="lKl-4z-Tto"/>
                 <constraint firstItem="AIS-mu-K5K" firstAttribute="width" secondItem="m0g-gc-p4z" secondAttribute="width" id="lPt-ET-r44"/>

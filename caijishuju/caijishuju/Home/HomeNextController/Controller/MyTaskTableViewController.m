@@ -14,7 +14,7 @@
 #import "MyTaskDetailsController.h"
 #import "TaskMapDataSubmitController.h"
 
-@interface MyTaskTableViewController ()<UISearchBarDelegate,UITextFieldDelegate>
+@interface MyTaskTableViewController ()<UISearchBarDelegate,UITextFieldDelegate,MyTaskTableViewCellDelegate>
 
 @property (nonatomic, assign) NSInteger pageNo;
 
@@ -43,7 +43,7 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         self.pageNo = 1;
         self.pageSize = 10;
-        self.zuowuName = @"";
+//        self.zuowuName = @"";
         self.modelArray = [NSMutableArray array];
         [self loadData];
     }];
@@ -129,7 +129,22 @@
         cell.shareImageView.image = [UIImage imageNamed:@"未通过"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.delegate = self;
+    cell.model = model;
     return cell;
+}
+
+- (void)detaliWithModel:(TaskModel *)model{
+    if ([model.zhuangtai integerValue] == 30) {
+        TaskMapDataSubmitController *tmdsc = [TaskMapDataSubmitController new];
+        tmdsc.type = 1;
+        tmdsc.model = model;
+        [self.navigationController pushViewController:tmdsc animated:YES];
+    }else{
+        MyTaskDetailsController *mtdc = [MyTaskDetailsController new];
+        mtdc.tkModel = model;
+        [self.navigationController pushViewController:mtdc animated:YES];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

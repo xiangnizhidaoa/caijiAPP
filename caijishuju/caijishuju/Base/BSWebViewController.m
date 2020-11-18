@@ -51,7 +51,9 @@
         self.webView.scrollView.bounces = NO;
         [LSNetworkService getHandBookResponse:^(id dict, BSError *error)  {
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:dict options:NSJSONReadingMutableLeaves error:nil];
-            [self.webView loadHTMLString:dic[@"data"] baseURL:nil];
+            if (dic != nil) {
+                [self.webView loadHTMLString:dic[@"data"] baseURL:nil];
+            }
         }];
         [self.view addSubview:self.webView];
     }

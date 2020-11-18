@@ -28,7 +28,6 @@
     self.headV.layer.shadowOffset = CGSizeMake(0, 0);//设置偏移量
     self.headV.layer.cornerRadius = 4.0;
     self.headV.layer.shadowRadius = 4.0;
-    self.topV.layer.cornerRadius = 4.0;
      self.leftV.layer.shadowColor = [UIColor blackColor].CGColor;
      self.leftV.layer.shadowOffset = CGSizeMake(0, 0);
      self.leftV.layer.shadowOpacity = 0.8;

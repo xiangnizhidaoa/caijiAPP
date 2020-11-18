@@ -59,11 +59,11 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"MyCollectionTableViewCell" bundle:nil] forCellReuseIdentifier:@"MyCollectionTableViewCell"];
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         self.pageSize = 10;
-        self.timetype = 0;
-        self.clickType = 0;
-        self.starttime = @"";
-        self.endtime = @"";
-        self.zuowuName = @"";
+//        self.timetype = 0;
+//        self.clickType = 0;
+//        self.starttime = @"";
+//        self.endtime = @"";
+//        self.zuowuName = @"";
         self.pageNo = 1;
         self.modelArray = [NSMutableArray array];
         [self loadData];
@@ -142,12 +142,16 @@
     }
     if ([model.zhuangtai integerValue] == 5) {
         cell.shareImageView.image = [UIImage imageNamed:@"未共享"];
+        cell.deleat.hidden = NO;
     }else if ([model.zhuangtai integerValue] == 10){
         cell.shareImageView.image = [UIImage imageNamed:@"待审核"];
+        cell.deleat.hidden = NO;
     }else if ([model.zhuangtai integerValue] == 20){
         cell.shareImageView.image = [UIImage imageNamed:@"共享"];
+        cell.deleat.hidden = YES;
     }else if ([model.zhuangtai integerValue] == 30){
         cell.shareImageView.image = [UIImage imageNamed:@"未通过"];
+        cell.deleat.hidden = NO;
     }
     cell.delegate = self;
     cell.tag = 2000 + indexPath.row;
@@ -162,16 +166,29 @@
         tmdsc.type = 1;
         tmdsc.model = model;
         [self.navigationController pushViewController:tmdsc animated:YES];
-    }else{
+    }else if ([model.zhuangtai integerValue] == 10 || [model.zhuangtai integerValue] == 20){
         MyTaskDetailsController *mtdc = [MyTaskDetailsController new];
-        mtdc.tkModel = [self.modelArray objectAtIndex:indexPath.row];
+        mtdc.tkModel = model;
         [self.navigationController pushViewController:mtdc animated:YES];
     }
     
 }
 
+- (void)detailWithTag:(NSInteger)tag{
+    TaskModel *model = self.modelArray[tag - 2000];
+    if ([model.zhuangtai integerValue] == 5 || [model.zhuangtai integerValue] == 30) {
+        TaskMapDataSubmitController *tmdsc = [TaskMapDataSubmitController new];
+        tmdsc.type = 1;
+        tmdsc.model = model;
+        [self.navigationController pushViewController:tmdsc animated:YES];
+    }else if ([model.zhuangtai integerValue] == 10 || [model.zhuangtai integerValue] == 20){
+        MyTaskDetailsController *mtdc = [MyTaskDetailsController new];
+        mtdc.tkModel = model;
+        [self.navigationController pushViewController:mtdc animated:YES];
+    }
+}
+
 - (void)deleatWithTag:(NSInteger)tag{
-    NSLog(@"%ld",tag);
     TaskModel *model = self.modelArray[tag - 2000];
     [LSNetworkService getDeleatWithID:model.ID response:^(id dict, BSError *error) {
         if (dict != nil) {
