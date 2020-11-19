@@ -23,7 +23,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(export:)];
     [self.exportView addGestureRecognizer:tap];
 }
-
+/** 复制链接 */
 -(void)export:(UITapGestureRecognizer *)tap{
     UIPasteboard *pab = [UIPasteboard generalPasteboard];
 

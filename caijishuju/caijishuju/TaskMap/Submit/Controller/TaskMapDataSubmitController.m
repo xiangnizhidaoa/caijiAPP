@@ -39,11 +39,11 @@
 
 /** 图片下表 */
 @property (nonatomic, assign) NSInteger imgSelect;
-/*** 省 ***/
+/** 省 */
 @property (nonatomic, copy) NSString *provinceStr;
-/*** 市 ***/
+/** 市 */
 @property (nonatomic, copy) NSString *cityStr;
-/*** 区 ***/
+/** 区 */
 @property (nonatomic, copy) NSString *districtStr;
 
 @property (nonatomic, strong) NSString *yepianID;
@@ -467,22 +467,6 @@
     // 如果需要POI信息的话，根据所需要的级别来设定，定位结果将会根据设定的POI级别来返回，如：
     [self.locationManager setRequestLevel:TencentLBSRequestLevelPoi];
     self.locationManager.headingFilter = kCLHeadingFilterNone;
-//    [self.locationManager requestLocationWithCompletionBlock:^(TencentLBSLocation *location, NSError *error) {
-//
-//        if (error) {
-//            MLog(@"定位异常\nlocError:{%ld - %@};", (long)error.code, error.localizedDescription);
-//            return;
-//        }
-//
-//        self.provinceStr = location.province;
-//        self.cityStr = location.city;
-//        self.districtStr = location.district;
-////        self.nowClCoor2d = CLLocationCoordinate2DMake(location.latitude, location.location);
-//        MLog(@"%@, %@, %@", location.location, location.name, location.address);
-//
-//
-//
-//    }];
     [self startSerialLocation];
     
 }

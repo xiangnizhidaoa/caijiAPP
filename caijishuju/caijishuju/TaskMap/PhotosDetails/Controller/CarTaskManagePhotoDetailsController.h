@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/** 查看图片页面 */
 @class CarTaskManagePhotoDetailsController;
 @protocol CTMPhotoDetailsDelegate <NSObject>
 //@optional

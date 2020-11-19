@@ -9,7 +9,7 @@
 #import "BSTableViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+/** 采集地图列表页面 */
 @interface MyCollectionTableViewController : BSTableViewController
 
 @end

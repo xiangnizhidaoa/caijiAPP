@@ -18,11 +18,11 @@
 @property (nonatomic, strong) UIProgressView *progressV;
 /** 朝向 */
 @property (nonatomic, strong) NSString *chaoxiang;
-/*** 省 ***/
+/** 省 */
 @property (nonatomic, copy) NSString *provinceStr;
-/*** 市 ***/
+/** 市 */
 @property (nonatomic, copy) NSString *cityStr;
-/*** 区 ***/
+/** 区 */
 @property (nonatomic, copy) NSString *districtStr;
 /** 当前位置 */
 @property (nonatomic, assign) CLLocationCoordinate2D nowClCoor2d;

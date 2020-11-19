@@ -17,23 +17,23 @@
 
 @interface MyCollectionTableViewController ()<UISearchBarDelegate,UITextFieldDelegate,CollectionSearchViewDelegate,TimeTypeViewControllerDelegate,THDatePickerViewDelegate,MyCollectionTableViewCellDelegate>
 
-@property (nonatomic, strong) NSString *starttime;
+@property (nonatomic, strong) NSString *starttime;/** 检索开始时间 */
 
-@property (nonatomic, strong) NSString *endtime;
+@property (nonatomic, strong) NSString *endtime;/** 检索结束时间 */
 
-@property (nonatomic, strong) NSString *zuowuName;
+@property (nonatomic, strong) NSString *zuowuName;/** 作物名称 */
 
-@property (nonatomic, assign) NSInteger pageNo;
+@property (nonatomic, assign) NSInteger pageNo;/** 页码 */
 
-@property (nonatomic, assign) NSInteger pageSize;
+@property (nonatomic, assign) NSInteger pageSize;/** 页码数据量 */
 
-@property (nonatomic, assign) NSInteger timetype;
+@property (nonatomic, assign) NSInteger timetype;/** 检索的时间类型 */
 
-@property (nonatomic, strong) NSMutableArray *modelArray;
+@property (nonatomic, strong) NSMutableArray *modelArray;/** 请求数据集合 */
 
 @property (nonatomic, strong) UIImageView *imageView;
 
-@property (nonatomic, strong) TimeTypeViewController *alertView;
+@property (nonatomic, strong) TimeTypeViewController *alertView;/** 弹窗 */
 
 @property (strong, nonatomic) THDatePickerView *dateView;
 
@@ -74,7 +74,7 @@
         [self loadData];
     }];
 }
-
+/** 数据请求 */
 -(void)loadData{
     [LSNetworkService getMyCollectionWithDic:@{@"pageNo":@(self.pageNo),@"pageSize":@(self.pageSize),@"timetype":@(self.timetype),@"starttime":self.starttime,@"endtime":self.endtime,@"zuowumc":self.zuowuName} response:^(id dict, BSError *error) {
         [self.tableView.mj_header endRefreshing];
@@ -187,7 +187,7 @@
         [self.navigationController pushViewController:mtdc animated:YES];
     }
 }
-
+/** 数据详情请求 */
 - (void)deleatWithTag:(NSInteger)tag{
     TaskModel *model = self.modelArray[tag - 2000];
     [LSNetworkService getDeleatWithID:model.ID response:^(id dict, BSError *error) {

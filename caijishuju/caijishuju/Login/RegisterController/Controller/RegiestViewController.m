@@ -10,7 +10,7 @@
 
 @interface RegiestViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *phone;
+@property (weak, nonatomic) IBOutlet UITextField *phone;/** 手机号 */
 
 
 @end
@@ -21,7 +21,7 @@
     [super viewDidLoad];
     self.title = @"注册";
 }
-
+/** 注册 */
 - (IBAction)regiest:(UIButton *)sender {
     if (self.phone.text.length == 11) {
         [LSNetworkService postRegiestWithDic:@{@"lianxidh":self.phone.text} response:^(id dict, BSError *error) {

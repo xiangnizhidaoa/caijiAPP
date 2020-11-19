@@ -9,7 +9,7 @@
 #import "BSViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+/** 忘记密码页面 */
 @interface PasswordViewController : BSViewController
 
 @end

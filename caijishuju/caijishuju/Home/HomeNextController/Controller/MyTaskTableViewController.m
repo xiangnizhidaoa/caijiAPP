@@ -16,13 +16,13 @@
 
 @interface MyTaskTableViewController ()<UISearchBarDelegate,UITextFieldDelegate,MyTaskTableViewCellDelegate>
 
-@property (nonatomic, assign) NSInteger pageNo;
+@property (nonatomic, assign) NSInteger pageNo;/** 请求的页码 */
 
-@property (nonatomic, assign) NSInteger pageSize;
+@property (nonatomic, assign) NSInteger pageSize;/** 请求页码的数量 */
 
-@property (nonatomic, strong) NSString *zuowuName;
+@property (nonatomic, strong) NSString *zuowuName;/** 作物名称 */
 
-@property (nonatomic, strong) NSMutableArray *modelArray;
+@property (nonatomic, strong) NSMutableArray *modelArray;/** 页面数据 */
 
 @property (nonatomic, strong) UIImageView *imageView;
 
@@ -53,7 +53,7 @@
         [self loadData];
     }];
 }
-
+/** 数据请求 */
 -(void)loadData{
     [LSNetworkService getMyTaskWithDic:@{@"pageNo":@(self.pageNo),@"pageSize":@(self.pageSize),@"zuowumc":self.zuowuName} response:^(id dict, BSError *error) {
         [self.tableView.mj_header endRefreshing];
@@ -133,7 +133,7 @@
     cell.model = model;
     return cell;
 }
-
+/** 数据详情 */
 - (void)detaliWithModel:(TaskModel *)model{
     if ([model.zhuangtai integerValue] == 30) {
         TaskMapDataSubmitController *tmdsc = [TaskMapDataSubmitController new];

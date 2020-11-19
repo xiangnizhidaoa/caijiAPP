@@ -24,11 +24,11 @@
     self.tabBarController.selectedIndex = 1;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userlogin) name:@"userlogin" object:nil];
 }
-
+/** 登录后通知执行的时间 */
 -(void)userlogin{
     self.tabBarController.selectedIndex = 0;
 }
-
+/** 跳转采集地图 */
 -(void)collectionMap{
     self.tabBarController.selectedIndex = 1;
 }
@@ -48,28 +48,28 @@
         }
     }];
 }
-
+/** 跳转采集地图 */
 -(void)map{
     self.tabBarController.selectedIndex = 1;
 }
 
-//采集地图
+/** 跳转采集地图 */
 - (IBAction)collection:(UIButton *)sender {
     self.tabBarController.selectedIndex = 1;
 }
 
-//我的采集
+/** 跳转我的采集 */
 - (IBAction)myCollection:(UIButton *)sender {
     MyCollectionTableViewController *myCollection = [[MyCollectionTableViewController alloc] initWithNibName:@"MyCollectionTableViewController" bundle:nil];
     [self.navigationController pushViewController:myCollection animated:YES];
 }
 
-//任务地图
+/** 跳转任务地图 */
 - (IBAction)task:(UIButton *)sender {
     self.tabBarController.selectedIndex = 2;
 }
 
-//我的任务
+/** 跳转我的任务 */
 - (IBAction)myTask:(UIButton *)sender {
     MyTaskTableViewController *myTask = [[MyTaskTableViewController alloc] initWithNibName:@"MyTaskTableViewController" bundle:nil];
     [self.navigationController pushViewController:myTask animated:YES];

@@ -9,7 +9,7 @@
 #import "BSTableViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+/** 关于我的页面 */
 @interface AboutUsTableViewController : BSTableViewController
 
 @end

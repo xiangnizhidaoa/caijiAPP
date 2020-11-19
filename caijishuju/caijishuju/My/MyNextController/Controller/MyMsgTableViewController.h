@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/** 我的消息页面 */
 @interface MyMsgTableViewController : BSTableViewController
 
 @end

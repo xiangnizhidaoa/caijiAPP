@@ -9,7 +9,7 @@
 #import "BSViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+/** 采集地图页面 */
 @interface CollectionViewController : BSViewController
 
 @end

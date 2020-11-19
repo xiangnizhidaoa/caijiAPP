@@ -13,9 +13,9 @@
 
 @interface MyViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *headerImage;
+@property (weak, nonatomic) IBOutlet UIImageView *headerImage;/** 头像 */
 
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;/** 姓名 */
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
@@ -47,27 +47,27 @@
     self.nameLabel.text  = App_Utility.currentUser.userName.length > 0 ? App_Utility.currentUser.userName : @"";
     self.contentLabel.text = App_Utility.currentUser.roleNames.length > 0 ? App_Utility.currentUser.roleNames : @"";
 }
-
+/** 跳转采集地图页面 */
 -(void)map{
     self.tabBarController.selectedIndex = 1;
 }
-
+/** 导出页面 */
 - (IBAction)exportData:(UIButton *)sender {
     ExportViewController *export = [[ExportViewController alloc] initWithNibName:@"ExportViewController" bundle:nil];
     [self.navigationController pushViewController:export animated:YES];
 }
-
+/** 我的消息页面 */
 - (IBAction)userMsg:(UIButton *)sender {
     MyMsgTableViewController *myMsg = [[MyMsgTableViewController alloc] initWithNibName:@"MyMsgTableViewController" bundle:nil];
     [self.navigationController pushViewController:myMsg animated:YES];
 }
-
+/** 关于我们页面 */
 - (IBAction)about:(UIButton *)sender {
     AboutUsTableViewController *aboutUs = [[AboutUsTableViewController alloc] initWithNibName:@"AboutUsTableViewController" bundle:nil];
     [self.navigationController pushViewController:aboutUs animated:YES];
 }
 
-
+/** 退出登录 */
 - (IBAction)logOut:(UIButton *)sender {
     [LSNetworkService getLogOutResponse:^(id dict, BSError *error) {
         if (dict != nil) {

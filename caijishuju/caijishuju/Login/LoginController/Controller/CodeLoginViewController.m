@@ -12,11 +12,11 @@
 
 @interface CodeLoginViewController ()<UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *phone;
+@property (weak, nonatomic) IBOutlet UITextField *phone;/** 手机号 */
 
-@property (weak, nonatomic) IBOutlet UITextField *code;
+@property (weak, nonatomic) IBOutlet UITextField *code;/** 验证码 */
 
-@property (nonatomic, assign) NSInteger isPhone;
+@property (nonatomic, assign) NSInteger isPhone;/** 是否是手机号 */
 
 @end
 
@@ -28,7 +28,7 @@
     self.phone.delegate = self;
     self.isPhone = 0;
 }
-
+/** 手机号校验 */
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     NSString *nicknameRegex = @"^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199|(147))\\d{8}$";
     NSPredicate *passWordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",nicknameRegex];
@@ -39,7 +39,7 @@
         [LPUnitily showToastWithText:@"手机号输入有误,请重新输入"];
     }
 }
-
+/** 发送验证码 */
 - (IBAction)sendCode:(UIButton *)sender {
     if (self.isPhone == 1) {
         if (self.phone.text.length > 0) {
@@ -69,7 +69,7 @@
         [LPUnitily showToastWithText:@"手机号输入有误,请重新输入"];
     }
 }
-
+/** 登录按钮 */
 - (IBAction)login:(UIButton *)sender {
     if (self.isPhone == 1) {
         if (self.phone.text.length > 0 && self.code.text.length > 0) {
@@ -101,17 +101,17 @@
         [LPUnitily showToastWithText:@"手机号输入有误,请重新输入"];
     }
 }
-
+/** 注册按钮 */
 - (IBAction)regiest:(UIButton *)sender {
     RegiestViewController *regiest = [[RegiestViewController alloc] initWithNibName:@"RegiestViewController" bundle:nil];
     [self.navigationController pushViewController:regiest animated:YES];
 }
-
+/** 切换采集地图 */
 - (IBAction)map:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"map" object:self];
 }
-
+/** 忘记密码按钮 */
 - (IBAction)password:(UIButton *)sender {
     PasswordViewController *password = [[PasswordViewController alloc] initWithNibName:@"PasswordViewController" bundle:nil];
     [self.navigationController pushViewController:password animated:YES];

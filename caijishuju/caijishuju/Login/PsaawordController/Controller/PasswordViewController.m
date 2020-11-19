@@ -10,13 +10,13 @@
 
 @interface PasswordViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *phone;
+@property (weak, nonatomic) IBOutlet UITextField *phone;/** 手机号 */
 
-@property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet UITextField *password;/** 密码 */
 
-@property (weak, nonatomic) IBOutlet UITextField *repassword;
+@property (weak, nonatomic) IBOutlet UITextField *repassword;/** 重复密码 */
 
-@property (weak, nonatomic) IBOutlet UITextField *code;
+@property (weak, nonatomic) IBOutlet UITextField *code;/** 验证码 */
 
 @end
 
@@ -26,7 +26,7 @@
     [super viewDidLoad];
     self.title = @"找回密码";
 }
-
+/** 发送验证码 */
 - (IBAction)sendCode:(UIButton *)sender {
     if (self.phone.text.length > 0) {
         [LSNetworkService getPhoneCodeWithPhone:self.phone.text response:^(id dict, BSError *error) {
@@ -53,6 +53,7 @@
     }
 }
 
+/** 找回密码 */
 - (IBAction)findPassword:(UIButton *)sender {
     if ([self.password.text isEqualToString:self.repassword.text]) {
         [LSNetworkService getPasswordWithDic:@{@"phone":self.phone.text,@"plainPassword":self.password.text,@"yanzhengma":self.code.text} response:^(id dict, BSError *error) {

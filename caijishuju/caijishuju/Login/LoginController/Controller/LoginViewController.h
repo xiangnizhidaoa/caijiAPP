@@ -9,7 +9,7 @@
 #import "BSViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+/** 账号密码登录页面 */
 @interface LoginViewController : BSViewController
 
 @end

@@ -41,20 +41,17 @@ alpha:alphaValue]
 #define GetFont(x) [UIFont systemFontOfSize:x]
 #define GetBoldFont(x) [UIFont boldSystemFontOfSize:x]
 
-//16.沙盒目录文件
-// NSUserDefaults 实例化
 #define skyUserDefaults [NSUserDefaults standardUserDefaults]
 
-//获取temp
 #define skyPathTemp NSTemporaryDirectory()
 
-// 沙盒Document路径
+/** 沙盒Document路径 */
 #define AppDocumentPath  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 
-//获取沙盒 Cache
+/** 获取沙盒 Cache */
 #define skyPathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
 
-//手机版本
+/** 手机版本 */
 #define IsIphone5 (SCREEN_HEIGHT == 568) ? YES:NO
 #define IsIphone6 (SCREEN_HEIGHT == 667) ? YES:NO
 #define IsIphone6Plus (SCREEN_HEIGHT == 736) ? YES:NO

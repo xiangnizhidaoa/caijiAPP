@@ -29,8 +29,11 @@
     return YES;
 }
 
+/**
+ 通知开启登录页
+ */
+
 -(void)login:(NSNotification *)notif{
-//    登录页
     LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
     BSNavigationController *navc = [[BSNavigationController alloc] initWithRootViewController:login];
     navc.modalPresentationStyle = UIModalPresentationFullScreen;

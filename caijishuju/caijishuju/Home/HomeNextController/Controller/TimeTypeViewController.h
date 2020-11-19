@@ -9,14 +9,14 @@
 #import "BSViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+/** 搜索选择时间弹窗页面 */
 @protocol TimeTypeViewControllerDelegate <NSObject>
 
--(void)chooseTypeWithTag:(NSInteger)tag;
+-(void)chooseTypeWithTag:(NSInteger)tag;/** 选择时间类型 */
 
--(void)cancle;
+-(void)cancle;/** 取消按钮 */
 
--(void)sure;
+-(void)sure;/** 确定按钮 */
 
 @end
 

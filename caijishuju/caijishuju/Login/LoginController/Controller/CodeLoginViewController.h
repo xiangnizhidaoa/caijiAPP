@@ -9,7 +9,7 @@
 #import "BSViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+/** 验证码登录页 */
 @interface CodeLoginViewController : BSViewController
 
 @end

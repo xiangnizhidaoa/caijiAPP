@@ -10,7 +10,7 @@
 #import "TaskModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+/** 我的采集详情页面 */
 @interface MyTaskDetailsController : BSViewController
 
 @property (nonatomic, strong) TaskModel *tkModel;

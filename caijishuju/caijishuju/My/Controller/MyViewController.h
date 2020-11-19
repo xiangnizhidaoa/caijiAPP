@@ -9,7 +9,7 @@
 #import "BSViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+/** 我的页面 */
 @interface MyViewController : BSViewController
 
 @end

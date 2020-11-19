@@ -8,52 +8,51 @@
 
 #import <Foundation/Foundation.h>
 #import "ServicesDefine.h"
-
+/** 数据请求 */
 @interface LSNetworkService : NSObject
 
-//一键登录
+/** 一键登录 */
 +(void)postLoginWithDic:(NSDictionary *)dic response:(BSResponse)response;
 
-//获取验证码
+/** 获取验证码 */
 +(void)getPhoneCodeWithPhone:(NSString *)phone response:(BSResponse)response;
 
-//验证码登录
+/** 验证码登录 */
 +(void)getCodeLoginWithDic:(NSDictionary *)dic response:(BSResponse)response;
 
-//使用手册
+/** 使用手册 */
 +(void)getHandBookResponse:(BSResponse)response;
 
-//我的任务
+/** 我的任务 */
 +(void)getMyTaskWithDic:(NSDictionary *)dic response:(BSResponse)response;
 
-//是否登录(token是否过期)
+/** 是否登录(token是否过期) */
 +(void)getIsLoginResponse:(BSResponse)response;
 
-//退出登录
+/** 退出登录 */
 +(void)getLogOutResponse:(BSResponse)response;
 
-//我的采集
+/** 我的采集 */
 +(void)getMyCollectionWithDic:(NSDictionary *)dic response:(BSResponse)response;
 
-//删除数据填报
+/** 删除数据填报 */
 +(void)getDeleatWithID:(NSString *)ID response:(BSResponse)response;
 
-//注册
+/** 注册 */
 +(void)postRegiestWithDic:(NSDictionary *)dic response:(BSResponse)response;
 
-//找回密码
+/** 找回密码 */
 +(void)getPasswordWithDic:(NSDictionary *)dic response:(BSResponse)response;
-
-/// 数据采集保存请求
+/** 数据采集保存请求 */
 + (void)getDataCollectionSaveWithString:(NSDictionary *)bodyStr response:(BSResponse)response;
 
-//上传图片
+/** 上传图片 */
 +(void)postUpLoadImageWithDic:(NSDictionary *)dic response:(BSResponse)response;
 
-//图片识别
+/** 图片识别 */
 +(void)getZhiwuImageWithDic:(NSDictionary *)dic response:(BSResponse)response;
 
-//任务状态
+/** 任务状态 */
 +(void)getTaskStatuseWithID:(NSString *)ID response:(BSResponse)response;
 
 @end

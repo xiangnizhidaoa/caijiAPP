@@ -40,7 +40,6 @@ NSNotificationName const CTMNDeletePhotoReloadNotification = @"CTMNDeletePhotoRe
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//    [self setUpNavStyle:2];
     self.navigationItem.title = [NSString stringWithFormat:@"共 %ld 张", self.photosDetailsArr.count];
 
     if (self.isModification) {
@@ -67,7 +66,6 @@ NSNotificationName const CTMNDeletePhotoReloadNotification = @"CTMNDeletePhotoRe
     UIAlertController *pac = [UIAlertController alertControllerWithTitle:nil message:@"确认删除吗" preferredStyle:UIAlertControllerStyleActionSheet];
     [pac addAction:[UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         MLog(@"删除：%ld",self.cellInd);
-//        [[NSNotificationCenter defaultCenter] postNotificationName:CTMNDeletePhotoReloadNotification object:[NSString stringWithFormat:@"%ld",self.cellInd]];
         
         
         if (self.photosDetailsArr.count==1) {
@@ -93,7 +91,7 @@ NSNotificationName const CTMNDeletePhotoReloadNotification = @"CTMNDeletePhotoRe
 
 
 
-//  创建
+/** 创建 */
 - (void)creatDetailPhoto {
     //布局
     UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -102,7 +100,6 @@ NSNotificationName const CTMNDeletePhotoReloadNotification = @"CTMNDeletePhotoRe
 
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     //内边距，列、行间距
-//    flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     flowLayout.minimumInteritemSpacing = 0;
     flowLayout.minimumLineSpacing = 0;
     [self.clcV setCollectionViewLayout:flowLayout];
@@ -116,14 +113,12 @@ NSNotificationName const CTMNDeletePhotoReloadNotification = @"CTMNDeletePhotoRe
 }
 
 #pragma mark ----- collection
-//  分区
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
 
     return 1;
 
 }
 
-//
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
 
     return self.photosDetailsArr.count;
@@ -148,11 +143,6 @@ NSNotificationName const CTMNDeletePhotoReloadNotification = @"CTMNDeletePhotoRe
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-//    NSIndexPath *indPath = [NSIndexPath indexPathForRow:self.cellInd inSection:0];
-////    NSIndexPath *index = [NSIndexPath indexPathForRow:self.cellInd inSection:0];
-////    UITableViewCell * cell = [self.tableView cellForRowAtIndexPath:indexPath];
-//    CTMPhotosDetailsCell *cell = [self.clcV cellForItemAtIndexPath:indPath];
-//    [cell minPictureZoom];
     self.nowIndex = round(scrollView.contentOffset.x / scrollView.frame.size.width);
     MLog(@"滚动: %ld",self.nowIndex);
 }
@@ -161,9 +151,7 @@ NSNotificationName const CTMNDeletePhotoReloadNotification = @"CTMNDeletePhotoRe
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     
     if([keyPath isEqualToString:@"nowIndex"]) {
-//        self.navigationItem.title = [NSString stringWithFormat:@"%ld/%ld", [[change valueForKey:@"new"] integerValue]+1, self.photosDetailsArr.count];
         self.navigationItem.title = [NSString stringWithFormat:@"共 %ld 张", self.photosDetailsArr.count];
-//        self.cellInd = [[change valueForKey:@"new"] integerValue];
     }
     
 }

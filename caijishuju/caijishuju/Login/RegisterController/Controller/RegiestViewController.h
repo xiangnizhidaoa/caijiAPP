@@ -9,7 +9,7 @@
 #import "BSViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+/** 注册页面 */
 @interface RegiestViewController : BSViewController
 
 @end

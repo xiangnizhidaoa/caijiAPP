@@ -9,7 +9,7 @@
 #import "BSViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
+/** 主页 */
 @interface HomeViewController : BSViewController
 
 @end
